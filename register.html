@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Family First Matchmaking</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Learner
+  * Template URL: https://bootstrapmade.com/learner-bootstrap-course-template/
+  * Updated: Jul 08 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      
+                <img src="assets/img/logo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
+                <span style="color: rgb(209, 73, 28); font-size: 17px; font-weight: 500;">Family First</span> 
+           
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#courses-hero">Home</a></li>
+          <li><a href="index.html#featured-courses">How It Works</a></li>
+          <li><a href="index.html#testimonials">Real Stories</a></li>
+          <li><a href="index.html#cta">Why Us</a></li>
+          <li><a href="index.html#course-details">Pricing</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="register.html">Register</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+      <!-- ======= Registration Form Section ======= -->
+  <main class="container py-5 mt-5">
+    <section id="registrationForm" class="py-5 animate__animated animate__fadeIn">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="card p-4 p-md-5">
+            <h2 class="text-center mb-4 display-5 fw-bold">Create Your Profile</h2>
+
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+              <div class="step-item active" data-step="1">
+                <span class="step-icon">1</span>
+                <span class="step-label">Personal Info</span>
+              </div>
+              <div class="step-item" data-step="2">
+                <span class="step-icon">2</span>
+                <span class="step-label">Partner Prefs</span>
+              </div>
+            </div>
+
+            <!-- Multi Step Form -->
+            <form id="multiStepForm">
+
+              <!-- Step 1 -->
+              <div class="form-step" data-step="1">
+                <h4 class="mb-3">About You</h4>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age" min="18" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select" id="gender" required>
+                      <option value="">Choose...</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="location" class="form-label">Location (City, Country)</label>
+                    <input type="text" class="form-control" id="location" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="profession" class="form-label">Profession</label>
+                    <input type="text" class="form-control" id="profession" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="race" class="form-label">Race</label>
+                    <select class="form-select" id="race" required>
+                      <option value="">Choose...</option>
+                      <option value="asian">Asian</option>
+                      <option value="black">Black</option>
+                      <option value="hispanic">Hispanic</option>
+                      <option value="white">White</option>
+                      <option value="mixed">Mixed</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="faith" class="form-label">Faith</label>
+                    <select class="form-select" id="faith" required>
+                      <option value="">Choose...</option>
+                      <option value="christianity">Christianity</option>
+                      <option value="islam">Islam</option>
+                      <option value="hinduism">Hinduism</option>
+                      <option value="judaism">Judaism</option>
+                      <option value="buddhism">Buddhism</option>
+                      <option value="none">No Religion</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="height" class="form-label">Height (optional)</label>
+                    <input type="number" class="form-control" id="height" placeholder="cm">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="children" class="form-label">Do you have children?</label>
+                    <select class="form-select" id="children" required>
+                      <option value="">Choose...</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="aboutMe" class="form-label">Tell us about yourself</label>
+                    <textarea class="form-control" id="aboutMe" rows="3" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label for="familyMeaning" class="form-label">What does 'family' mean to you?</label>
+                    <textarea class="form-control" id="familyMeaning" rows="2" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label for="visionForMarriage" class="form-label">What's your vision for a future with a spouse?</label>
+                    <textarea class="form-control" id="visionForMarriage" rows="2" required></textarea>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary-custom float-end mt-4" id="nextStepBtn">
+                  Next Step <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="form-step d-none" data-step="2">
+                <h4 class="mb-3">Your Ideal Partner</h4>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="prefAgeMin" class="form-label">Age Range (Min)</label>
+                    <input type="number" class="form-control" id="prefAgeMin" min="18">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefAgeMax" class="form-label">Age Range (Max)</label>
+                    <input type="number" class="form-control" id="prefAgeMax">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefLocation" class="form-label">Preferred Location</label>
+                    <input type="text" class="form-control" id="prefLocation">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefRace" class="form-label">Preferred Race</label>
+                    <select class="form-select" id="prefRace">
+                      <option value="">No Preference</option>
+                      <option value="asian">Asian</option>
+                      <option value="black">Black</option>
+                      <option value="hispanic">Hispanic</option>
+                      <option value="white">White</option>
+                      <option value="mixed">Mixed</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefFaith" class="form-label">Preferred Faith</label>
+                    <select class="form-select" id="prefFaith">
+                      <option value="">No Preference</option>
+                      <option value="christianity">Christianity</option>
+                      <option value="islam">Islam</option>
+                      <option value="hinduism">Hinduism</option>
+                      <option value="judaism">Judaism</option>
+                      <option value="buddhism">Buddhism</option>
+                      <option value="none">No Religion</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefHeightMin" class="form-label">Preferred Min Height (cm)</label>
+                    <input type="number" class="form-control" id="prefHeightMin">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefHeightMax" class="form-label">Preferred Max Height (cm)</label>
+                    <input type="number" class="form-control" id="prefHeightMax">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="prefChildren" class="form-label">Open to partner with children?</label>
+                    <select class="form-select" id="prefChildren">
+                      <option value="">No Preference</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Core Values</label>
+                    <div class="d-flex flex-wrap">
+                      <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="kindness" id="valueKindness">
+                        <label class="form-check-label" for="valueKindness">Kindness</label>
+                      </div>
+                      <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="humor" id="valueHumor">
+                        <label class="form-check-label" for="valueHumor">Humor</label>
+                      </div>
+                      <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="ambition" id="valueAmbition">
+                        <label class="form-check-label" for="valueAmbition">Ambition</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="spirituality" id="valueSpirituality">
+                        <label class="form-check-label" for="valueSpirituality">Spirituality</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="idealPartner" class="form-label">Describe your ideal partner in your own words</label>
+                    <textarea class="form-control" id="idealPartner" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between mt-4">
+                  <button type="button" class="btn btn-secondary" id="prevStepBtn">
+                    <i class="fas fa-arrow-left me-2"></i> Previous
+                  </button>
+                  <button type="submit" class="btn btn-primary-custom">
+                    Submit Application <i class="fas fa-check-circle ms-2"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<!-- Message Box -->
+<div id="messageBoxBackdrop" 
+     class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" 
+     style="z-index:1040;">
+</div>
+
+<div id="messageBox" 
+     class="position-fixed top-50 start-50 translate-middle bg-white rounded shadow-lg d-none text-center p-4" 
+     style="z-index:1050; max-width:420px; border-radius: 1rem; border-top: 6px solid var(--primary-color);">
+    
+    <h5 id="messageTitle" class="fw-bold mb-3" style="color: var(--accent-color);"></h5>
+    <p id="messageText" class="mb-4" style="color: var(--text-color); font-size: 0.95rem; line-height: 1.5;"></p>
+    
+    <button id="closeMessageBtn" 
+            class="btn mt-2 px-4 py-2" 
+            style="background-color: orange; border: none; border-radius: 50px; color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(255,140,0,0.4);">
+        OK
+    </button>
+</div>
+
+
+    
+
+  <footer id="footer" class="footer accent-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+      
+                <img src="assets/img/logo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
+                <span style="color: rgb(247, 244, 244); font-size: 17px; font-weight: 500;">Family First</span> 
+           
+      </a>
+          
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+             <li><a href="terms.html">Terms of service</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>Family First Matchmaking Pty</p>
+          <p>55 Richards Drive, Halfway House, Midrand</p>
+          <p>Gauteng, 1685</p>
+          <p>South Africa</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+27 73 545 4949</span></p>
+          <p><strong>Email:</strong> <span>amon@rivaindustries.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">familyfirstmatchmaking.com</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="controller/app.js"></script>
+
+</body>
+
+</html>
