@@ -13,19 +13,23 @@
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
 /* Fonts */
+/* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Ubuntu",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Ubuntu", sans-serif;
+  --primary-color: #4A90E2;
+    --default-color: #333;
+    --light-bg: #f5f8fd;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --primary-color: #A96262; /* Dusty Rose */
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #394450; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #223a58; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #edad45; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+:root {
+  --primary-color: #4A90E2; /* A vibrant blue for the main brand color */
+  --background-color: #F8FAFD; /* A very light blue for the background */
+  --default-color: #394450; /* A dark slate blue for most text */
+  --heading-color: #1A3E6D; /* A deep, rich blue for headings */
+  --accent-color: #1B85BC; /* A slightly darker blue for buttons and accents */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -37,11 +41,10 @@
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #394450; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #df7f20; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #1B85BC; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
 .light-background {
   --background-color: #f5faff;
   --surface-color: #ffffff;
@@ -56,11 +59,11 @@
 }
 
 .accent-background {
-  --background-color: #edad45;
+  --background-color: #1B85BC;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --accent-color: #acd0fc;
-  --surface-color: #edad45;
+  --accent-color: #4A90E2;
+  --surface-color: #1B85BC;
   --contrast-color: #ffffff;
 }
 
@@ -155,12 +158,12 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color:#edad45;
+  --background-color:#1B85BC;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --accent-color: #817548;
+  --accent-color: #4A90E2;
   color: var(--default-color);
-  background:  linear-gradient(to right, #ffffff 2%, #edad45 70%);
+  background: linear-gradient(to right, #ffffff 2%, #1B85BC 70%);
   padding: 15px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -171,7 +174,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 50px;
+  width: 120px;
   margin-right: 8px;
 }
 
@@ -487,7 +491,7 @@ h6 {
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
-  background-color: #817548;
+  background-color: #1A3E6D;
   font-size: 14px;
   padding-bottom: 50px;
   position: relative;
@@ -601,30 +605,41 @@ h6 {
   margin-top: 6px;
   font-size: 13px;
 }
+:root {
+    --primary-color: #4A90E2;
+    --default-color: #333;
+    --light-bg: #f5f8fd;
+}
 
 /* Registration Form */
 #registrationForm .card {
-   background: linear-gradient(145deg, #fff, #fdfdfd);
+    background: linear-gradient(145deg, #fff, #fdfdfd);
     border: 1px solid #eee;
     border-radius: 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-.form-control, .form-select {
+
+.form-control,
+.form-select {
     border-radius: 0.75rem;
     border: 1px solid #ddd;
     transition: all 0.3s;
 }
-.form-control:focus, .form-select:focus {
+
+.form-control:focus,
+.form-select:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.25rem rgba(169, 98, 98, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
     outline: none;
 }
+
 .step-indicator {
     display: flex;
     justify-content: space-around;
     margin-bottom: 2.5rem;
     position: relative;
 }
+
 .step-indicator::before {
     content: '';
     position: absolute;
@@ -635,6 +650,7 @@ h6 {
     background-color: #ddd;
     z-index: 1;
 }
+
 .step-item {
     display: flex;
     flex-direction: column;
@@ -643,6 +659,7 @@ h6 {
     z-index: 2;
     transition: all 0.3s ease;
 }
+
 .step-icon {
     width: 30px;
     height: 30px;
@@ -655,30 +672,202 @@ h6 {
     font-weight: bold;
     transition: all 0.3s ease;
 }
+
 .step-item.active .step-icon {
     background-color: var(--primary-color);
     transform: scale(1.2);
 }
+
 .step-item .step-label {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #888;
     transition: all 0.3s ease;
 }
+
 .step-item.active .step-label {
     color: var(--primary-color);
     font-weight: 600;
 }
+
 #closeMessageBtn:hover {
-  background-color: darkorange !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(255,140,0,0.5);
-}
-#closeMessageBtn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(255,140,0,0.4);
+    background-color: #1B85BC !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(27, 133, 188, 0.5);
 }
 
+#closeMessageBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(27, 133, 188, 0.4);
+}
+
+.form-check-input {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-input:checked::before {
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin: 0.15rem;
+}
+
+.form-check-input[type="radio"] {
+    border-radius: 50%;
+}
+
+.form-check-label {
+    font-size: 1rem;
+    color: var(--default-color);
+    padding-left: 0.5rem;
+    cursor: pointer;
+}
+
+.image-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.image-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.image-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+}
+
+.image-item.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.4);
+}
+
+.image-item:hover {
+    transform: translateY(-3px);
+}
+
+/* Rating options styling */
+.rating-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.rating-option {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rating-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Additional custom styles for the form */
+.card {
+    display: none;
+}
+.card.active {
+    display: block;
+}
+.form-check-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: #fff;
+    margin-right: 0.75rem;
+}
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.form-check-input[type="radio"] {
+    border-radius: 50%;
+}
+.form-check-label {
+    font-size: 1rem;
+    color: var(--default-color);
+    cursor: pointer;
+}
+.rating-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.rating-option {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    flex-grow: 1;
+}
+.rating-option:hover {
+    background-color: #f7f7f7;
+}
+.rating-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(169, 98, 98, 0.2);
+}
+.image-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+.image-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.image-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+}
+.image-item.selected {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(169, 98, 98, 0.4);
+}
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/

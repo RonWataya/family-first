@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Family First Matchmaking</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Family First Matchmaking - Register</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/logo.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
+   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -25,296 +18,1342 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Learner
-  * Template URL: https://bootstrapmade.com/learner-bootstrap-course-template/
-  * Updated: Jul 08 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <style>
+    /* Small safety styles when main.css missing */
+    .d-none { display: none !important; }
+    .step-indicator { gap: .5rem; }
+    .step-item { cursor: default; }
+    .rating-options, .image-selection-grid { display:flex; gap:.5rem; flex-wrap:wrap; }
+    .rating-option { padding:.5rem .6rem; border-radius:.5rem; border:1px solid #ddd; cursor:pointer; user-select:none; }
+    .rating-option.selected { border-color: var(--primary-color, #1B85BC); background: rgba(27,133,188,0.08); }
+    .image-item { border-radius:.6rem; overflow:hidden; border:2px solid transparent; cursor:pointer; }
+    .image-item.selected { border-color: var(--primary-color, #1B85BC); box-shadow: 0 0 0 4px rgba(27,133,188,0.12); transform: translateY(-3px); }
+    .step-icon { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ddd;color:#fff }
+    .step-item.active .step-icon { background: var(--primary-color, #1B85BC); transform: scale(1.05); }
+    .card[data-step] { display: none; }
+    .card[data-step].active { display: block; }
+    .message-backdrop { position: fixed; inset:0;background: rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:9999; }
+    .message-box { background: #fff; padding:1.5rem; border-radius: .75rem; max-width:420px; width:90%; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+    .image-selection-grid img { display:block; width:100%; height:auto; }
+  </style>
 </head>
-
-<body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center sticky-top">
+<body>
+   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
       
-                <img src="assets/img/logo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
-                <span style="color: rgb(209, 73, 28); font-size: 17px; font-weight: 500;">Family First</span> 
-           
+            <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
+            
+          
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html#courses-hero">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="index.html#featured-courses">How It Works</a></li>
           <li><a href="index.html#testimonials">Real Stories</a></li>
           <li><a href="index.html#cta">Why Us</a></li>
-          <li><a href="index.html#course-details">Pricing</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="blog.html">Blog</a></li>
+           <li><a href="register.html" class="active">Registration</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="register.html">Register</a>
+     
 
     </div>
   </header>
 
-  <main class="main">
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
 
-      <!-- ======= Registration Form Section ======= -->
-  <main class="container py-5 mt-5">
-    <section id="registrationForm" class="py-5 animate__animated animate__fadeIn">
-      <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
-          <div class="card p-4 p-md-5">
-            <h2 class="text-center mb-4 display-5 fw-bold">Create Your Profile</h2>
+        <!-- Step indicator: 10 steps -->
+        <div class="step-indicator mb-4">
+          <div class="step-item active" data-step="1"><div class="step-icon">1</div><div class="step-label">Personal</div></div>
+          <div class="step-item" data-step="2"><div class="step-icon">2</div><div class="step-label">Preferences</div></div>
+          <div class="step-item" data-step="3"><div class="step-icon">3</div><div class="step-label">Lifestyle</div></div>
+          <div class="step-item" data-step="4"><div class="step-icon">4</div><div class="step-label">Beliefs</div></div>
+          <div class="step-item" data-step="5"><div class="step-icon">5</div><div class="step-label">Personality 1</div></div>
+          <div class="step-item" data-step="6"><div class="step-icon">6</div><div class="step-label">Personality 2</div></div>
+          <div class="step-item" data-step="7"><div class="step-icon">7</div><div class="step-label">Traits</div></div>
+          <div class="step-item" data-step="8"><div class="step-icon">8</div><div class="step-label">Passions</div></div>
+          <div class="step-item" data-step="9"><div class="step-icon">9</div><div class="step-label">Family</div></div>
+          <div class="step-item" data-step="10"><div class="step-icon">10</div><div class="step-label">Background</div></div>
+        </div>
 
-            <!-- Step Indicator -->
-            <div class="step-indicator">
-              <div class="step-item active" data-step="1">
-                <span class="step-icon">1</span>
-                <span class="step-label">Personal Info</span>
+        <!-- Container used to show/hide the form -->
+        <section id="registrationForm">
+
+          <!-- The multi-step form -->
+          <form id="multiStepForm" class="mt-4" novalidate>
+            <!-- STEP 1: Personal Info (Q1-7) -->
+            <div class="card p-4 active" data-step="1">
+              <h2 class="mb-3">Let's start.</h2>
+
+              <!-- 1 -->
+              <div class="mb-3">
+                <label class="form-label">1. Please confirm your gender:</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" required><label class="form-check-label" for="genderFemale">Female</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male"><label class="form-check-label" for="genderMale">Male</label></div>
               </div>
-              <div class="step-item" data-step="2">
-                <span class="step-icon">2</span>
-                <span class="step-label">Partner Prefs</span>
+
+              <!-- 2 -->
+              <div class="mb-3">
+                <label class="form-label">2. Please confirm the gender of your desired partner:</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="partner_gender" id="partnerGenderFemale" value="Female" required><label class="form-check-label" for="partnerGenderFemale">Female</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="partner_gender" id="partnerGenderMale" value="Male"><label class="form-check-label" for="partnerGenderMale">Male</label></div>
+              </div>
+
+              <!-- 3 -->
+              <div class="mb-3">
+                <label class="form-label">3. What is your marital status?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalNeverMarried" value="I have never been married" required><label class="form-check-label" for="maritalNeverMarried">I have never been married</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalDivorced" value="I am divorced"><label class="form-check-label" for="maritalDivorced">I am divorced</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalSeparated" value="I am separated"><label class="form-check-label" for="maritalSeparated">I am separated</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalWidower" value="I am a widower"><label class="form-check-label" for="maritalWidower">I am a widower</label></div>
+              </div>
+
+              <!-- 4 -->
+              <div class="mb-3">
+                <label class="form-label">4. What is your level of education?</label>
+                <select class="form-select" name="education_level" required>
+                  <option value="">Select...</option>
+                  <option>No Education</option>
+                  <option>Primary Education</option>
+                  <option>High School Diploma</option>
+                  <option>Diploma</option>
+                  <option>Associate's Degree</option>
+                  <option>Bachelor's Degree</option>
+                  <option>Master's Degree</option>
+                  <option>Doctorate</option>
+                </select>
+              </div>
+
+              <!-- 5 -->
+              <div class="mb-3">
+                <label class="form-label">5. How important is intelligence and education level in a partner?</label>
+                <div class="rating-options" data-target="intelligence_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="intelligence_importance" required>
+              </div>
+
+              <!-- 6 -->
+              <div class="mb-3">
+                <label class="form-label">6. How tall are you?</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" name="height" placeholder="Enter height in Cm" min="0" required>
+                  <span class="input-group-text">Cm</span>
+                </div>
+              </div>
+
+              <!-- 7 -->
+              <div class="mb-3">
+                <label class="form-label">7. How important is it for you to be taller than your partner?</label>
+                <div class="rating-options" data-target="height_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="height_importance" required>
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
               </div>
             </div>
 
-            <!-- Multi Step Form -->
-            <form id="multiStepForm">
+            <!-- STEP 2: Preferences (Q8-17) -->
+            <div class="card p-4" data-step="2">
+              <h2 class="mb-3">You've made it this far! Let's keep going.</h2>
 
-              <!-- Step 1 -->
-              <div class="form-step" data-step="1">
-                <h4 class="mb-3">About You</h4>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="age" class="form-label">Age</label>
-                    <input type="number" class="form-control" id="age" min="18" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="gender" class="form-label">Gender</label>
-                    <select class="form-select" id="gender" required>
-                      <option value="">Choose...</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="location" class="form-label">Location (City, Country)</label>
-                    <input type="text" class="form-control" id="location" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="profession" class="form-label">Profession</label>
-                    <input type="text" class="form-control" id="profession" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="race" class="form-label">Race</label>
-                    <select class="form-select" id="race" required>
-                      <option value="">Choose...</option>
-                      <option value="asian">Asian</option>
-                      <option value="black">Black</option>
-                      <option value="hispanic">Hispanic</option>
-                      <option value="white">White</option>
-                      <option value="mixed">Mixed</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="faith" class="form-label">Faith</label>
-                    <select class="form-select" id="faith" required>
-                      <option value="">Choose...</option>
-                      <option value="christianity">Christianity</option>
-                      <option value="islam">Islam</option>
-                      <option value="hinduism">Hinduism</option>
-                      <option value="judaism">Judaism</option>
-                      <option value="buddhism">Buddhism</option>
-                      <option value="none">No Religion</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="height" class="form-label">Height (optional)</label>
-                    <input type="number" class="form-control" id="height" placeholder="cm">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="children" class="form-label">Do you have children?</label>
-                    <select class="form-select" id="children" required>
-                      <option value="">Choose...</option>
-                      <option value="no">No</option>
-                      <option value="yes">Yes</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <label for="aboutMe" class="form-label">Tell us about yourself</label>
-                    <textarea class="form-control" id="aboutMe" rows="3" required></textarea>
-                  </div>
-                  <div class="col-12">
-                    <label for="familyMeaning" class="form-label">What does 'family' mean to you?</label>
-                    <textarea class="form-control" id="familyMeaning" rows="2" required></textarea>
-                  </div>
-                  <div class="col-12">
-                    <label for="visionForMarriage" class="form-label">What's your vision for a future with a spouse?</label>
-                    <textarea class="form-control" id="visionForMarriage" rows="2" required></textarea>
-                  </div>
-                  <div class="col-12">
-  <label for="profileImage" class="form-label">Profile Image</label>
-  <input type="file" class="form-control" id="profileImage" name="profileImage" accept="image/*">
-</div>
+              <!-- 8 - image associate -->
+              <div class="mb-3">
+                <label class="form-label">8. Which picture do you most associate with?</label>
+                <div class="image-selection-grid" data-target="associate_image">
+                  <div class="image-item" data-value="image1" style="width:120px"><img src="assets/formimg/8.1.jpg" alt="Image 1"></div>
+                  <div class="image-item" data-value="image2" style="width:120px"><img src="assets/formimg/8.2.jpg" alt="Image 2"></div>
+                  <div class="image-item" data-value="image3" style="width:120px"><img src="assets/formimg/8.3.jpg" alt="Image 3"></div>
+                  <div class="image-item" data-value="image4" style="width:120px"><img src="assets/formimg/8.4.jpg" alt="Image 4"></div>
                 </div>
-                <button type="button" class="btn btn-primary-custom float-end mt-4" id="nextStepBtn">
-                  Next Step <i class="fas fa-arrow-right ms-2"></i>
-                </button>
+                <input type="hidden" name="associate_image" required>
               </div>
 
-              <!-- Step 2 -->
-              <div class="form-step d-none" data-step="2">
-                <h4 class="mb-3">Your Ideal Partner</h4>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="prefAgeMin" class="form-label">Age Range (Min)</label>
-                    <input type="number" class="form-control" id="prefAgeMin" min="18">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefAgeMax" class="form-label">Age Range (Max)</label>
-                    <input type="number" class="form-control" id="prefAgeMax">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefLocation" class="form-label">Preferred Location</label>
-                    <input type="text" class="form-control" id="prefLocation">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefRace" class="form-label">Preferred Race</label>
-                    <select class="form-select" id="prefRace">
-                      <option value="">No Preference</option>
-                      <option value="asian">Asian</option>
-                      <option value="black">Black</option>
-                      <option value="hispanic">Hispanic</option>
-                      <option value="white">White</option>
-                      <option value="mixed">Mixed</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefFaith" class="form-label">Preferred Faith</label>
-                    <select class="form-select" id="prefFaith">
-                      <option value="">No Preference</option>
-                      <option value="christianity">Christianity</option>
-                      <option value="islam">Islam</option>
-                      <option value="hinduism">Hinduism</option>
-                      <option value="judaism">Judaism</option>
-                      <option value="buddhism">Buddhism</option>
-                      <option value="none">No Religion</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefHeightMin" class="form-label">Preferred Min Height (cm)</label>
-                    <input type="number" class="form-control" id="prefHeightMin">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefHeightMax" class="form-label">Preferred Max Height (cm)</label>
-                    <input type="number" class="form-control" id="prefHeightMax">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="prefChildren" class="form-label">Open to partner with children?</label>
-                    <select class="form-select" id="prefChildren">
-                      <option value="">No Preference</option>
-                      <option value="no">No</option>
-                      <option value="yes">Yes</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <label class="form-label">Core Values</label>
-                    <div class="d-flex flex-wrap">
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="kindness" id="valueKindness">
-                        <label class="form-check-label" for="valueKindness">Kindness</label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="humor" id="valueHumor">
-                        <label class="form-check-label" for="valueHumor">Humor</label>
-                      </div>
-                      <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" value="ambition" id="valueAmbition">
-                        <label class="form-check-label" for="valueAmbition">Ambition</label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="spirituality" id="valueSpirituality">
-                        <label class="form-check-label" for="valueSpirituality">Spirituality</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="idealPartner" class="form-label">Describe your ideal partner in your own words</label>
-                    <textarea class="form-control" id="idealPartner" rows="3"></textarea>
-                  </div>
+              <!-- 9 - appealing image -->
+              <div class="mb-3">
+                <label class="form-label">9. Which picture is more appealing to you?</label>
+                <div class="image-selection-grid" data-target="appealing_image">
+                  <div class="image-item" data-value="image5" style="width:120px"><img src="assets/formimg/9.1.jpg" alt="Image 5"></div>
+                  <div class="image-item" data-value="image6" style="width:120px"><img src="assets/formimg/9.2.jpg" alt="Image 6"></div>
+                  <div class="image-item" data-value="image7" style="width:120px"><img src="assets/formimg/9.3.jpg" alt="Image 7"></div>
+                  <div class="image-item" data-value="image8" style="width:120px"><img src="assets/formimg/9.4.jpg" alt="Image 8"></div>
                 </div>
-                <div class="d-flex justify-content-between mt-4">
-                  <button type="button" class="btn btn-secondary" id="prevStepBtn">
-                    <i class="fas fa-arrow-left me-2"></i> Previous
-                  </button>
-                  <button type="submit" class="btn btn-primary-custom">
-                    Submit Application <i class="fas fa-check-circle ms-2"></i>
-                  </button>
+                <input type="hidden" name="appealing_image" required>
+              </div>
+
+              <!-- 10 -->
+              <div class="mb-3">
+                <label class="form-label">10. Which ethnic group do you belong to?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="White" required><label class="form-check-label">White</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Indian"><label class="form-check-label">Indian</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Asian"><label class="form-check-label">Asian</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Black or African"><label class="form-check-label">Black or African</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Other"><label class="form-check-label">Other</label></div>
+              </div>
+
+              <!-- 11 -->
+              <div class="mb-3">
+                <label class="form-label">11. Do you have ethnic preferences? (Please choose at least 1)</label>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="I don't mind" data-min="1"><label class="form-check-label">I don't mind</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="White"><label class="form-check-label">White</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Indian"><label class="form-check-label">Indian</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Asian"><label class="form-check-label">Asian</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Black or African"><label class="form-check-label">Black or African</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Other"><label class="form-check-label">Other</label></div>
+              </div>
+
+              <!-- 12 -->
+              <div class="mb-3">
+                <label class="form-label">12. How important is the ethnicity of your potential partner?</label>
+                <div class="rating-options" data-target="ethnicity_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="ethnicity_importance" required>
+              </div>
+
+              <!-- 13 -->
+              <div class="mb-3">
+                <label class="form-label">13. How satisfied are you with your appearance?</label>
+                <div class="rating-options" data-target="appearance_satisfaction">
+                  <div class="rating-option" data-value="Not at all">Not at all</div>
+                  <div class="rating-option" data-value="Not really">Not really</div>
+                  <div class="rating-option" data-value="Less">Less</div>
+                  <div class="rating-option" data-value="Slightly">Slightly</div>
+                  <div class="rating-option" data-value="Somewhat">Somewhat</div>
+                  <div class="rating-option" data-value="Mostly">Mostly</div>
+                  <div class="rating-option" data-value="Very much so">Very much so</div>
+                </div>
+                <input type="hidden" name="appearance_satisfaction" required>
+              </div>
+
+              <!-- 14 -->
+              <div class="mb-3">
+                <label class="form-label">14. How important is it to you that your partner has an attractive appearance?</label>
+                <div class="rating-options" data-target="partner_appearance_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="partner_appearance_importance" required>
+              </div>
+
+              <!-- 15 -->
+              <div class="mb-3">
+                <label class="form-label">15. Which of the following best describes your beliefs?</label>
+                <select class="form-select" name="beliefs" required>
+                  <option value="">Select...</option>
+                  <option>Christian</option>
+                  <option>Catholic</option>
+                  <option>Muslim</option>
+                  <option>Jewish</option>
+                  <option>Buddhist</option>
+                  <option>Hindu</option>
+                  <option>Other</option>
+                  <option>Agnostic</option>
+                  <option>Atheist</option>
+                </select>
+              </div>
+
+              <!-- 16 -->
+              <div class="mb-3">
+                <label class="form-label">16. Which religious beliefs would you be open to? (Please choose at least 1)</label>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="I don't mind" data-min="1"><label class="form-check-label">I don't mind</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Christian"><label class="form-check-label">Christian</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Catholic"><label class="form-check-label">Catholic</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Muslim"><label class="form-check-label">Muslim</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Jewish"><label class="form-check-label">Jewish</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Buddhist"><label class="form-check-label">Buddhist</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Hindu"><label class="form-check-label">Hindu</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Other"><label class="form-check-label">Other</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Agnostic"><label class="form-check-label">Agnostic</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Atheist"><label class="form-check-label">Atheist</label></div>
+              </div>
+
+              <!-- 17 -->
+              <div class="mb-3">
+                <label class="form-label">17. How important is your partner’s religion or spirituality to you?</label>
+                <div class="rating-options" data-target="religion_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="religion_importance" required>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Lifestyle (Q18-26) -->
+            <div class="card p-4" data-step="3">
+              <h2 class="mb-3">Tell us more about your way of life.</h2>
+
+              <!-- 18 -->
+              <div class="mb-3">
+                <label class="form-label">18. Which role would you like a partner to fulfill the most?</label>
+                <select class="form-select" name="partner_role" required>
+                  <option value="">Select...</option>
+                  <option>Destined soulmate</option>
+                  <option>Partner to raise a family</option>
+                  <option>Dreamy lover</option>
+                  <option>Partner in crime</option>
+                  <option>My closest confidant</option>
+                </select>
+              </div>
+
+              <!-- 19 - date activity images -->
+              <div class="mb-3">
+                <label class="form-label">19. Which activity are you most likely to choose for a first date?</label>
+                <div class="image-selection-grid" data-target="first_date_activity">
+                  <div class="image-item" data-value="date_activity1" style="width:120px"><img src="assets/formimg/19.1.jpg" alt="Activity 1"></div>
+                  <div class="image-item" data-value="date_activity2" style="width:120px"><img src="assets/formimg/19.2.jpg" alt="Activity 2"></div>
+                  <div class="image-item" data-value="date_activity3" style="width:120px"><img src="assets/formimg/19.3.jpg" alt="Activity 3"></div>
+                  <div class="image-item" data-value="date_activity4" style="width:120px"><img src="assets/formimg/19.4.jpg" alt="Activity 4"></div>
+                </div>
+                <input type="hidden" name="first_date_activity" required>
+              </div>
+
+              <!-- 20 -->
+              <div class="mb-3">
+                <label class="form-label">20. You're on a first date. What does your date notice most?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_date_impression" value="I have good conversation skills." required><label class="form-check-label">I have good conversation skills.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_date_impression" value="I am polite and respectful."><label class="form-check-label">I am polite and respectful.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_date_impression" value="I am punctual and organized."><label class="form-check-label">I am punctual and organized.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_date_impression" value="I am spontaneous and fun-loving."><label class="form-check-label">I am spontaneous and fun-loving.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_date_impression" value="I am relaxed and calm."><label class="form-check-label">I am relaxed and calm.</label></div>
+              </div>
+
+              <!-- 21 -->
+              <div class="mb-3">
+                <label class="form-label">21. When you like someone, how likely are you to initiate the first kiss?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_kiss_initiation" value="I feel confident enough to initiate the first kiss, maybe even on a first date." required><label class="form-check-label">I feel confident enough to initiate the first kiss, maybe even on a first date.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_kiss_initiation" value="I would initiate the first kiss after a couple of good dates."><label class="form-check-label">I would initiate the first kiss after a couple of good dates.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_kiss_initiation" value="I would only initiate the first kiss if I am 100% sure that my date feels the same."><label class="form-check-label">I would only initiate the first kiss if I am 100% sure that my date feels the same.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="first_kiss_initiation" value="I would probably wait for my date to initiate the first kiss."><label class="form-check-label">I would probably wait for my date to initiate the first kiss.</label></div>
+              </div>
+
+              <!-- 22 -->
+              <div class="mb-3">
+                <label class="form-label">22. If you're making weekend plans with your partner, which one would you choose?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="weekend_plans" value="Quality time at our favorite restaurant." required><label class="form-check-label">Quality time at our favorite restaurant.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="weekend_plans" value="An event we'd both enjoy."><label class="form-check-label">An event we'd both enjoy.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="weekend_plans" value="A local activity we've never tried."><label class="form-check-label">A local activity we've never tried.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="weekend_plans" value="A surprise trip away."><label class="form-check-label">A surprise trip away.</label></div>
+              </div>
+
+              <!-- 23 -->
+              <div class="mb-3">
+                <label class="form-label">23. If your partner suggests a shared calendar to align both your activities, how would you feel?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="shared_calendar" value="I don't use calendars, I live in the moment and don't want everything planned out." required><label class="form-check-label">I don't use calendars, I live in the moment and don't want everything planned out.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="shared_calendar" value="My own calendar is enough. We don't have to plan everything; spontaneity is refreshing."><label class="form-check-label">My own calendar is enough. We don't have to plan everything; spontaneity is refreshing.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="shared_calendar" value="I'm open to try it if it helps us make more time for each other."><label class="form-check-label">I'm open to try it if it helps us make more time for each other.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="shared_calendar" value="Planning is important to me and I'm in favor of my partner's suggestion."><label class="form-check-label">Planning is important to me and I'm in favor of my partner's suggestion.</label></div>
+              </div>
+
+              <!-- 24 -->
+              <div class="mb-3">
+                <label class="form-label">24. If you have an argument with your partner, how important is it to reconcile quickly?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="reconciliation" value="I can wait a couple of days to resolve it. Sometimes arguments are inevitable." required><label class="form-check-label">I can wait a couple of days to resolve it. Sometimes arguments are inevitable.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="reconciliation" value="I can wait until the next day to make up. Things will work out as they should."><label class="form-check-label">I can wait until the next day to make up. Things will work out as they should.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="reconciliation" value="I don't like going to bed without clearing the air, so I try to find a compromise on the same day."><label class="form-check-label">I don't like going to bed without clearing the air, so I try to find a compromise on the same day.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="reconciliation" value="I don't like leaving arguments without resolution, even if it means I have to cave in."><label class="form-check-label">I don't like leaving arguments without resolution, even if it means I have to cave in.</label></div>
+              </div>
+
+              <!-- 25 -->
+              <div class="mb-3">
+                <label class="form-label">25. If your partner is going to introduce you to their friends at a birthday party, what’s your first thought?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="meeting_friends" value="I am a little nervous, because it's very important to me to make a good first impression." required><label class="form-check-label">I am a little nervous, because it's very important to me to make a good first impression.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="meeting_friends" value="I would prefer to meet their friends in a smaller setting to have a chance to get to know them better."><label class="form-check-label">I would prefer to meet their friends in a smaller setting to have a chance to get to know them better.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="meeting_friends" value="A birthday party is a nice occasion to get to know some of my partner's friends."><label class="form-check-label">A birthday party is a nice occasion to get to know some of my partner's friends.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="meeting_friends" value="I’m excited to talk to as many of my partner's friends as possible."><label class="form-check-label">I’m excited to talk to as many of my partner's friends as possible.</label></div>
+              </div>
+
+              <!-- 26 -->
+              <div class="mb-3">
+                <label class="form-label">26. Things that are important to me in a relationship: (Please choose at least 1)</label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Moral values" data-min="1"><label class="form-check-label">Moral values</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Motivation"><label class="form-check-label">Motivation</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Fun and relaxation"><label class="form-check-label">Fun and relaxation</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Reliability"><label class="form-check-label">Reliability</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Sex appeal"><label class="form-check-label">Sex appeal</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Experimentation"><label class="form-check-label">Experimentation</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Similar beliefs"><label class="form-check-label">Similar beliefs</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Risk taking"><label class="form-check-label">Risk taking</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Physical appearance"><label class="form-check-label">Physical appearance</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Our chemistry"><label class="form-check-label">Our chemistry</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Our similarities"><label class="form-check-label">Our similarities</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Affection"><label class="form-check-label">Affection</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Personality"><label class="form-check-label">Personality</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Kindness"><label class="form-check-label">Kindness</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Sexual compatibility"><label class="form-check-label">Sexual compatibility</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Ability to communicate"><label class="form-check-label">Ability to communicate</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Conflict resolution"><label class="form-check-label">Conflict resolution</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Sociability"><label class="form-check-label">Sociability</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Emotional connection"><label class="form-check-label">Emotional connection</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="relationship_importance" value="Friendship"><label class="form-check-label">Friendship</label></div>
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Relationships & Beliefs (Q27-34) -->
+            <div class="card p-4" data-step="4">
+              <h2 class="mb-3">Next step.</h2>
+
+              <!-- 27 -->
+              <div class="mb-3">
+                <label class="form-label">27. I have a strong desire for sex.</label>
+                <div class="rating-options" data-target="sex_desire">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="sex_desire" required>
+              </div>
+
+              <!-- 28 -->
+              <div class="mb-3">
+                <label class="form-label">28. I believe that monogamy is essential in a relationship.</label>
+                <div class="rating-options" data-target="monogamy_belief">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="monogamy_belief" required>
+              </div>
+
+              <!-- 29 -->
+              <div class="mb-3">
+                <label class="form-label">29. Imagine your partner asks you to change a habit of yours. How willing are you to change for a partner?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="willingness_to_change" value="I would rather find a partner who doesn’t want to change anything about me." required><label class="form-check-label">I would rather find a partner who doesn’t want to change anything about me.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="willingness_to_change" value="Partnerships are based on compromise, so I will ask my partner to also change a habit."><label class="form-check-label">Partnerships are based on compromise, so I will ask my partner to also change a habit.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="willingness_to_change" value="I am likely to adapt to my partner's wish if it makes us both happy."><label class="form-check-label">I am likely to adapt to my partner's wish if it makes us both happy.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="willingness_to_change" value="I will adapt quickly to my partner's wish to avoid conflict."><label class="form-check-label">I will adapt quickly to my partner's wish to avoid conflict.</label></div>
+              </div>
+
+              <!-- 30 -->
+              <div class="mb-3">
+                <label class="form-label">30. If your partner shows up 15 minutes late to your date without telling you, how do you respond?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="tardiness_response" value="I also tend to be a couple of minutes late so I don't mind." required><label class="form-check-label">I also tend to be a couple of minutes late so I don't mind.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="tardiness_response" value="I won’t mention anything, because everyone can be late once in a while."><label class="form-check-label">I won’t mention anything, because everyone can be late once in a while.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="tardiness_response" value="I will show my partner that I am annoyed, but I won't say anything."><label class="form-check-label">I will show my partner that I am annoyed, but I won't say anything.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="tardiness_response" value="I dislike tardiness, and I will tell my partner that I definitely expect better."><label class="form-check-label">I dislike tardiness, and I will tell my partner that I definitely expect better.</label></div>
+              </div>
+
+              <!-- 31 - time share images -->
+              <div class="mb-3">
+                <label class="form-label">31. How much of your weekly time would you like to share with your partner?</label>
+                <div class="image-selection-grid" data-target="time_share">
+                  <div class="image-item" data-value="time_share1" style="width:120px"><img src="assets/formimg/31.1.jpg" alt="Time 1"></div>
+                  <div class="image-item" data-value="time_share2" style="width:120px"><img src="assets/formimg/31.2.jpg" alt="Time 2"></div>
+                  <div class="image-item" data-value="time_share3" style="width:120px"><img src="assets/formimg/31.3.jpg" alt="Time 3"></div>
+                  <div class="image-item" data-value="time_share4" style="width:120px"><img src="assets/formimg/31.4.jpg" alt="Time 4"></div>
+                </div>
+                <input type="hidden" name="time_share" required>
+              </div>
+
+              <!-- 33 - enjoy activity (note: doc numbering jumps, keep same ordering) -->
+              <div class="mb-3">
+                <label class="form-label">33. Which activity would you most enjoy?</label>
+                <div class="image-selection-grid" data-target="enjoy_activity">
+                  <div class="image-item" data-value="enjoy_activity1" style="width:120px"><img src="assets/formimg/33.1.jpg" alt="Enjoy 1"></div>
+                  <div class="image-item" data-value="enjoy_activity2" style="width:120px"><img src="assets/formimg/33.2.jpg" alt="Enjoy 2"></div>
+                  <div class="image-item" data-value="enjoy_activity3" style="width:120px"><img src="assets/formimg/33.3.jpg" alt="Enjoy 3"></div>
+                  <div class="image-item" data-value="enjoy_activity4" style="width:120px"><img src="assets/formimg/33.4.jpg" alt="Enjoy 4"></div>
+                </div>
+                <input type="hidden" name="enjoy_activity" required>
+              </div>
+
+              <!-- 34 - pattern preference -->
+              <div class="mb-3">
+                <label class="form-label">34. Which pattern do you prefer?</label>
+                <div class="image-selection-grid" data-target="pattern_preference">
+                  <div class="image-item" data-value="pattern1" style="width:120px"><img src="assets/formimg/34.1.jpg" alt="Pattern 1"></div>
+                  <div class="image-item" data-value="pattern2" style="width:120px"><img src="assets/formimg/34.2.jpg" alt="Pattern 2"></div>
+                  <div class="image-item" data-value="pattern3" style="width:120px"><img src="assets/formimg/34.3.jpg" alt="Pattern 3"></div>
+                  <div class="image-item" data-value="pattern4" style="width:120px"><img src="assets/formimg/34.4.jpg" alt="Pattern 4"></div>
+                </div>
+                <input type="hidden" name="pattern_preference" required>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 5: Personality Part 1 (Q35-44) -->
+            <div class="card p-4" data-step="5">
+              <h2 class="mb-3">Next step. Tell us more about your way of life.</h2>
+
+              <!-- 35 -->
+              <div class="mb-3">
+                <label class="form-label">35. I consider myself to be optimistic.</label>
+                <div class="rating-options" data-target="optimism_level">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="optimism_level" required>
+              </div>
+
+              <!-- 36 -->
+              <div class="mb-3">
+                <label class="form-label">36. Imagine you are moving to a new city. How do you settle in?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="settling_in" value="In the beginning I spend more time on the phone with my long-time friends, but eventually I will make friends in the new city." required><label class="form-check-label">In the beginning I spend more time on the phone with my long-time friends, but eventually I will make friends in the new city.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="settling_in" value="I try to build a new network by doing what I love, finding like-minded people in the spaces I feel comfortable."><label class="form-check-label">I try to build a new network by doing what I love, finding like-minded people in the spaces I feel comfortable.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="settling_in" value="I get to know my colleagues and ask them whether they would like to go out for a drink after work."><label class="form-check-label">I get to know my colleagues and ask them whether they would like to go out for a drink after work.</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="settling_in" value="I immediately attend networking and public events to get to know as many people as possible."><label class="form-check-label">I immediately attend networking and public events to get to know as many people as possible.</label></div>
+              </div>
+
+              <!-- 37 -->
+              <div class="mb-3">
+                <label class="form-label">37. I make time for others.</label>
+                <div class="rating-options" data-target="time_for_others">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="time_for_others" required>
+              </div>
+
+              <!-- 38 -->
+              <div class="mb-3">
+                <label class="form-label">38. I like order and consistency.</label>
+                <div class="rating-options" data-target="order_consistency">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="order_consistency" required>
+              </div>
+
+              <!-- 39 -->
+              <div class="mb-3">
+                <label class="form-label">39. I consider myself to be ambitious.</label>
+                <div class="rating-options" data-target="ambition_level">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="ambition_level" required>
+              </div>
+
+              <!-- 40 -->
+              <div class="mb-3">
+                <label class="form-label">40. I pay attention to detail.</label>
+                <div class="rating-options" data-target="attention_to_detail">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="attention_to_detail" required>
+              </div>
+
+              <!-- 41 -->
+              <div class="mb-3">
+                <label class="form-label">41. I get upset easily.</label>
+                <div class="rating-options" data-target="get_upset_easily">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="get_upset_easily" required>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 6: Personality Part 2 (Q42-53) -->
+            <div class="card p-4" data-step="6">
+              <h2 class="mb-3">Continue with personality.</h2>
+
+              <!-- 42 -->
+              <div class="mb-3">
+                <label class="form-label">42. I can handle a great deal of information.</label>
+                <div class="rating-options" data-target="handle_information">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="handle_information" required>
+              </div>
+
+              <!-- 43 -->
+              <div class="mb-3">
+                <label class="form-label">43. I like to do nice things for others.</label>
+                <div class="rating-options" data-target="do_nice_things">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="do_nice_things" required>
+              </div>
+
+              <!-- 44 -->
+              <div class="mb-3">
+                <label class="form-label">44. I consider myself to be protective.</label>
+                <div class="rating-options" data-target="protective">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="protective" required>
+              </div>
+
+              <!-- 45 -->
+              <div class="mb-3">
+                <label class="form-label">45. I consider myself to be understanding.</label>
+                <div class="rating-options" data-target="understanding">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="understanding" required>
+              </div>
+
+              <!-- 46 -->
+              <div class="mb-3">
+                <label class="form-label">46. I have little patience.</label>
+                <div class="rating-options" data-target="little_patience">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="little_patience" required>
+              </div>
+
+              <!-- 47 -->
+              <div class="mb-3">
+                <label class="form-label">47. I consider myself to be responsible.</label>
+                <div class="rating-options" data-target="responsible">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="responsible" required>
+              </div>
+
+              <!-- 48 -->
+              <div class="mb-3">
+                <label class="form-label">48. I consider myself to be well-informed.</label>
+                <div class="rating-options" data-target="well_informed">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="well_informed" required>
+              </div>
+
+              <!-- 49 -->
+              <div class="mb-3">
+                <label class="form-label">49. I consider myself to be creative.</label>
+                <div class="rating-options" data-target="creative">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="creative" required>
+              </div>
+
+              <!-- 50 -->
+              <div class="mb-3">
+                <label class="form-label">50. I accomplish a lot.</label>
+                <div class="rating-options" data-target="accomplish_a_lot">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="accomplish_a_lot" required>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 7: Traits (Q51-64) -->
+            <div class="card p-4" data-step="7">
+              <h2 class="mb-3">Your answers are being put to good use.</h2>
+
+              <!-- 51 - mood image -->
+              <div class="mb-3">
+                <label class="form-label">51. Which picture best describes your mood during an ordinary week?</label>
+                <div class="image-selection-grid" data-target="mood_week">
+                  <div class="image-item" data-value="mood1" style="width:120px"><img src="assets/formimg/51.1.jpg" alt="Mood 1"></div>
+                  <div class="image-item" data-value="mood2" style="width:120px"><img src="assets/formimg/51.2.jpg" alt="Mood 2"></div>
+                  <div class="image-item" data-value="mood3" style="width:120px"><img src="assets/formimg/51.3.jpg" alt="Mood 3"></div>
+                  <div class="image-item" data-value="mood4" style="width:120px"><img src="assets/formimg/51.4.jpg" alt="Mood 4"></div>
+                </div>
+                <input type="hidden" name="mood_week" required>
+              </div>
+
+              <!-- 52 - stressed picture -->
+              <div class="mb-3">
+                <label class="form-label">52. Which picture best describes you when you feel stressed?</label>
+                <div class="image-selection-grid" data-target="stressed_picture">
+                  <div class="image-item" data-value="stress1" style="width:120px"><img src="assets/formimg/52.1.jpg" alt="Stress 1"></div>
+                  <div class="image-item" data-value="stress2" style="width:120px"><img src="assets/formimg/52.2.jpg" alt="Stress 2"></div>
+                  <div class="image-item" data-value="stress3" style="width:120px"><img src="assets/formimg/52.3.jpg" alt="Stress 3"></div>
+                  <div class="image-item" data-value="stress4" style="width:120px"><img src="assets/formimg/52.4.jpg" alt="Stress 4"></div>
+                </div>
+                <input type="hidden" name="stressed_picture" required>
+              </div>
+
+              <!-- 53 - recharge images -->
+              <div class="mb-3">
+                <label class="form-label">53. What helps you recharge your batteries?</label>
+                <div class="image-selection-grid" data-target="recharge_help">
+                  <div class="image-item" data-value="recharge1" style="width:120px"><img src="assets/formimg/53.1.jpg" alt="Recharge 1"></div>
+                  <div class="image-item" data-value="recharge2" style="width:120px"><img src="assets/formimg/53.2.jpg" alt="Recharge 2"></div>
+                  <div class="image-item" data-value="recharge3" style="width:120px"><img src="assets/formimg/53.3.jpg" alt="Recharge 3"></div>
+                  <div class="image-item" data-value="recharge4" style="width:120px"><img src="assets/formimg/53.4.jpg" alt="Recharge 4"></div>
+                </div>
+                <input type="hidden" name="recharge_help" required>
+              </div>
+
+              <!-- 54 -->
+              <div class="mb-3">
+                <label class="form-label">54. I like a great deal of variety.</label>
+                <div class="rating-options" data-target="variety_liking">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="variety_liking" required>
+              </div>
+
+              <!-- 55 -->
+              <div class="mb-3">
+                <label class="form-label">55. I get stressed easily.</label>
+                <div class="rating-options" data-target="get_stressed_easily">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="get_stressed_easily" required>
+              </div>
+
+              <!-- 56 -->
+              <div class="mb-3">
+                <label class="form-label">56. I'm easily discouraged.</label>
+                <div class="rating-options" data-target="easily_discouraged">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="easily_discouraged" required>
+              </div>
+
+              <!-- 57 -->
+              <div class="mb-3">
+                <label class="form-label">57. I can easily make other people laugh.</label>
+                <div class="rating-options" data-target="make_people_laugh">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="make_people_laugh" required>
+              </div>
+
+              <!-- 58 -->
+              <div class="mb-3">
+                <label class="form-label">58. I consider myself to be spontaneous.</label>
+                <div class="rating-options" data-target="spontaneous">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="spontaneous" required>
+              </div>
+
+              <!-- 60 -->
+              <div class="mb-3">
+                <label class="form-label">60. Chatting with new people is easy for me.</label>
+                <div class="rating-options" data-target="chatting_easy">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="chatting_easy" required>
+              </div>
+
+              <!-- 61 -->
+              <div class="mb-3">
+                <label class="form-label">61. I consider myself to be outgoing.</label>
+                <div class="rating-options" data-target="outgoing">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="outgoing" required>
+              </div>
+
+              <!-- 62 -->
+              <div class="mb-3">
+                <label class="form-label">62. I consider myself to be trendy.</label>
+                <div class="rating-options" data-target="trendy">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="trendy" required>
+              </div>
+
+              <!-- 63 -->
+              <div class="mb-3">
+                <label class="form-label">63. I consider myself to be athletic.</label>
+                <div class="rating-options" data-target="athletic">
+                  <div class="rating-option" data-value="Doesn't apply at all">Doesn't apply at all</div>
+                  <div class="rating-option" data-value="Doesn't really apply">Doesn't really apply</div>
+                  <div class="rating-option" data-value="Applies to a lesser extent">Applies to a lesser extent</div>
+                  <div class="rating-option" data-value="Slightly applies">Slightly applies</div>
+                  <div class="rating-option" data-value="Applies to some extent">Applies to some extent</div>
+                  <div class="rating-option" data-value="Applies mostly">Applies mostly</div>
+                  <div class="rating-option" data-value="Completely applicable">Completely applicable</div>
+                </div>
+                <input type="hidden" name="athletic" required>
+              </div>
+
+              <!-- 64 -->
+              <div class="mb-3">
+                <label class="form-label">64. Which four terms would your friends use to describe you? (Please choose 4)</label>
+                <small class="text-muted d-block mb-2">Select up to 4</small>
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- Many checkboxes; allow up to 4 -->
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Good Listener"><label class="form-check-label">Good Listener</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Spontaneous"><label class="form-check-label">Spontaneous</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Optimistic"><label class="form-check-label">Optimistic</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Loyal"><label class="form-check-label">Loyal</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Articulate"><label class="form-check-label">Articulate</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Happy"><label class="form-check-label">Happy</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Hard working"><label class="form-check-label">Hard working</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Energetic"><label class="form-check-label">Energetic</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Respectful"><label class="form-check-label">Respectful</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Physically Fit"><label class="form-check-label">Physically Fit</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Reliable"><label class="form-check-label">Reliable</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Caring"><label class="form-check-label">Caring</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Spiritual"><label class="form-check-label">Spiritual</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Rational"><label class="form-check-label">Rational</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Quiet"><label class="form-check-label">Quiet</label></div>
+                    <div class="form-check"><input class="form-check-input friend-term" type="checkbox" name="friend_terms" value="Thoughtful"><label class="form-check-label">Thoughtful</label></div>
+                  </div>
+                </div>
+                <small class="text-muted">We will accept up to 4 selections.</small>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 8: Passions & Habits (Q65-71) -->
+            <div class="card p-4" data-step="8">
+              <h2 class="mb-3">Great! Tell us about passions & habits.</h2>
+
+              <!-- 65 -->
+              <div class="mb-3">
+                <label class="form-label">65. What two to three things are you most thankful for in your life?</label>
+                <textarea class="form-control" name="thankful_for" placeholder="I'll answer later" rows="2"></textarea>
+              </div>
+
+              <!-- 66 - interests -->
+              <div class="mb-3">
+                <label class="form-label">66. Which of these interests do you have? (Choose any)</label>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Music"><label class="form-check-label">Music</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Equestrian Sports"><label class="form-check-label">Equestrian Sports</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Adventure Sports"><label class="form-check-label">Adventure Sports</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Fine Food and Dining"><label class="form-check-label">Fine Food and Dining</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Arts and Crafts"><label class="form-check-label">Arts and Crafts</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Theatre / Dance / Opera / Ballet"><label class="form-check-label">Theatre / Dance / Opera / Ballet</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Nature / Gardening"><label class="form-check-label">Nature / Gardening</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Socialising / Clubbing"><label class="form-check-label">Socialising / Clubbing</label></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Dining out"><label class="form-check-label">Dining out</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Winter Sports"><label class="form-check-label">Winter Sports</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Movies / Cinema"><label class="form-check-label">Movies / Cinema</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Travelling"><label class="form-check-label">Travelling</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Art"><label class="form-check-label">Art</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Photography"><label class="form-check-label">Photography</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Sailing / Windsurfing / Water Sports"><label class="form-check-label">Sailing / Windsurfing / Water Sports</label></div>
+                    <div class="form-check"><input class="form-check-input" type="checkbox" name="interests" value="Literature / Reading"><label class="form-check-label">Literature / Reading</label></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 67 -->
+              <div class="mb-3">
+                <label class="form-label">67. What are you passionate about?</label>
+                <textarea class="form-control" name="passionate_about" placeholder="I'll answer later" rows="2"></textarea>
+              </div>
+
+              <!-- 68 -->
+              <div class="mb-3">
+                <label class="form-label">68. Describe three activities you most enjoy in your free time.</label>
+                <textarea class="form-control" name="top_free_time_activities" placeholder="I'll answer later" rows="3"></textarea>
+              </div>
+
+              <!-- 69 -->
+              <div class="mb-3">
+                <label class="form-label">69. How often do you smoke?</label>
+                <select class="form-select" name="smoking_frequency" required>
+                  <option value="">Select...</option>
+                  <option>Never</option>
+                  <option>Several times a year</option>
+                  <option>About once a week</option>
+                  <option>A few times a week</option>
+                  <option>Every day</option>
+                </select>
+              </div>
+
+              <!-- 70 -->
+              <div class="mb-3">
+                <label class="form-label">70. Please indicate which smoking habits you would accept from your partner.</label>
+                <select class="form-select" name="partner_smoking_acceptance" required>
+                  <option value="">Select...</option>
+                  <option>Never</option>
+                  <option>Several times a year</option>
+                  <option>About once a week</option>
+                  <option>A few times a week</option>
+                  <option>Every day</option>
+                </select>
+              </div>
+
+              <!-- 71 -->
+              <div class="mb-3">
+                <label class="form-label">71. How important are the smoking habits of your partner?</label>
+                <div class="rating-options" data-target="smoking_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="smoking_importance" required>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 9: Drinking, Children & Family (Q72-77) -->
+            <div class="card p-4" data-step="9">
+              <h2 class="mb-3">Family & lifestyle questions</h2>
+
+              <!-- 72 -->
+              <div class="mb-3">
+                <label class="form-label">72. How often do you drink?</label>
+                <select class="form-select" name="drinking_frequency" required>
+                  <option value="">Select...</option>
+                  <option>Never</option>
+                  <option>Several times a year</option>
+                  <option>About once a week</option>
+                  <option>A few times a week</option>
+                  <option>Every day</option>
+                </select>
+              </div>
+
+              <!-- 73 -->
+              <div class="mb-3">
+                <label class="form-label">73. Please indicate which drinking habits you would accept from your partner.</label>
+                <select class="form-select" name="partner_drinking_acceptance" required>
+                  <option value="">Select...</option>
+                  <option>Never</option>
+                  <option>Several times a year</option>
+                  <option>About once a week</option>
+                  <option>A few times a week</option>
+                  <option>Every day</option>
+                </select>
+              </div>
+
+              <!-- 74 -->
+              <div class="mb-3">
+                <label class="form-label">74. How important are your partner's drinking habits to you?</label>
+                <div class="rating-options" data-target="drinking_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="drinking_importance" required>
+              </div>
+
+              <!-- 75 -->
+              <div class="mb-3">
+                <label class="form-label">75. How many children under the age of 18 currently live in your household?</label>
+                <select class="form-select" name="children_under_18" required>
+                  <option value="">Select...</option>
+                  <option>No children</option>
+                  <option>One child</option>
+                  <option>Two children</option>
+                  <option>Three or more children</option>
+                </select>
+              </div>
+
+              <!-- 76 -->
+              <div class="mb-3">
+                <label class="form-label">76. Could you imagine having children or adopting with your partner and raising a family?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="imagine_children" value="Yes, definitely" required><label class="form-check-label">Yes, definitely</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="imagine_children" value="Maybe"><label class="form-check-label">Maybe</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="imagine_children" value="No, not for me"><label class="form-check-label">No, not for me</label></div>
+              </div>
+
+              <!-- 77 -->
+              <div class="mb-3">
+                <label class="form-label">77. Would you accept a partner who has children under the age of 18 in her household?</label>
+                <div class="form-check"><input class="form-check-input" type="radio" name="accept_partner_with_children" value="Yes" required><label class="form-check-label">Yes</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="accept_partner_with_children" value="Maybe"><label class="form-check-label">Maybe</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="accept_partner_with_children" value="No"><label class="form-check-label">No</label></div>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
+              </div>
+            </div>
+
+            <!-- STEP 10: Background (Q78-87) -->
+            <div class="card p-4" data-step="10">
+              <h2 class="mb-3">Final step — background & preferences</h2>
+
+              <!-- 78 -->
+              <div class="mb-3">
+                <label class="form-label">78. Please enter your first name:</label>
+                <input type="text" class="form-control" name="first_name" placeholder="First name or nickname" required>
+                <small class="text-muted">Your name will only be displayed to your matches.</small>
+              </div>
+
+              <!-- 79 -->
+              <div class="mb-3">
+                <label class="form-label">79. Where do you live?</label>
+                <input type="text" class="form-control" name="city" placeholder="City" required>
+                <small class="text-muted">Only the name of your city will be visible on your profile.</small>
+              </div>
+
+              <!-- 80 -->
+              <div class="mb-3">
+                <label class="form-label">80. What distance are you willing to travel in your search for a partner?</label>
+                <select class="form-select" name="willing_distance" required>
+                  <option value="">Select...</option>
+                  <option>50 Kms</option>
+                  <option>100 Kms</option>
+                  <option>200 Kms</option>
+                  <option>300 Kms</option>
+                  <option>I don't mind</option>
+                </select>
+              </div>
+
+              <!-- 81 -->
+              <div class="mb-3">
+                <label class="form-label">81. How important is the distance between you and your suggested matches?</label>
+                <div class="rating-options" data-target="distance_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="distance_importance" required>
+              </div>
+
+              <!-- 82 -->
+              <div class="mb-3">
+                <label class="form-label">82. When were you born?</label>
+                <div class="row g-2">
+                  <div class="col"><select class="form-select" name="birth_month" required>
+                    <option value="">Month</option>
+                    <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option>
+                    <option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+                  </select></div>
+                  <div class="col"><input class="form-control" name="birth_day" placeholder="DD" type="number" min="1" max="31" required></div>
+                  <div class="col"><input class="form-control" name="birth_year" placeholder="YYYY" type="number" min="1900" max="2099" required></div>
+                </div>
+                <small class="text-muted">Your date of birth will not be visible on your profile, only your age.</small>
+              </div>
+
+              <!-- 83 (importance) -->
+              <div class="mb-3">
+                <label class="form-label">83. How important is your partner's age?</label>
+                <div class="rating-options" data-target="age_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="age_importance" required>
+              </div>
+
+              <!-- 83 (ages open to) -->
+              <div class="mb-3">
+                <label class="form-label">83. What age(s) are you open to dating? (Select all that apply)</label>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="age_ranges" value="18-24"><label class="form-check-label">18-24</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="age_ranges" value="25-34"><label class="form-check-label">25-34</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="age_ranges" value="35-44"><label class="form-check-label">35-44</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="age_ranges" value="45-54"><label class="form-check-label">45-54</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="age_ranges" value="55-64"><label class="form-check-label">55-64</label></div>
+              </div>
+
+              <!-- 84 -->
+              <div class="mb-3">
+                <label class="form-label">84. What is your profession?</label>
+                <input class="form-control" name="profession" placeholder="Your occupation" required>
+              </div>
+
+              <!-- 85 -->
+              <div class="mb-3">
+                <label class="form-label">85. Which income bracket do you fall into?</label>
+                <select class="form-select" name="income_bracket" required>
+                  <option value="">Select...</option>
+                  <option>Less than R40,000 annually</option>
+                  <option>Between R40,000 – R75,000</option>
+                  <option>Between R75,001 – R100,000</option>
+                  <option>Between R100,001 – R150,000</option>
+                  <option>Between R150,001 – R250,000</option>
+                  <option>Between R250,001 - R400,000</option>
+                  <option>More than R400,001 annually</option>
+                </select>
+              </div>
+
+              <!-- 86 -->
+              <div class="mb-3">
+                <label class="form-label">86. How important is it that your partner has an income level that is comparable to your own?</label>
+                <div class="rating-options" data-target="income_importance">
+                  <div class="rating-option" data-value="Not important">Not important</div>
+                  <div class="rating-option" data-value="Less important">Less important</div>
+                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
+                  <div class="rating-option" data-value="Important">Important</div>
+                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
+                  <div class="rating-option" data-value="Very important">Very important</div>
+                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
+                </div>
+                <input type="hidden" name="income_importance" required>
+              </div>
+
+              <!-- 87 -->
+              <div class="mb-3">
+                <label class="form-label">87. How did you hear about us?</label>
+                <select class="form-select" name="how_heard" required>
+                  <option value="">Select...</option>
+                  <option>TV or streaming advertisement</option>
+                  <option>Radio advertisement</option>
+                  <option>Podcast</option>
+                  <option>Billboard/poster etc.</option>
+                  <option>Newspaper or magazine</option>
+                  <option>Friends or relatives</option>
+                  <option>Google or other search</option>
+                  <option>Facebook</option>
+                  <option>Youtube</option>
+                  <option>Event</option>
+                  <option>Comparison website</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                <button type="submit" class="btn btn-success">Submit Application</button>
+              </div>
+            </div>
+
+          </form>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
-<!-- Message Box -->
-<div id="messageBoxBackdrop" 
-     class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" 
-     style="z-index:1040;">
-</div>
-
-<div id="messageBox" 
-     class="position-fixed top-50 start-50 translate-middle bg-white rounded shadow-lg d-none text-center p-4" 
-     style="z-index:1050; max-width:420px; border-radius: 1rem; border-top: 6px solid var(--primary-color);">
-    
-    <h5 id="messageTitle" class="fw-bold mb-3" style="color: var(--accent-color);"></h5>
-    <p id="messageText" class="mb-4" style="color: var(--text-color); font-size: 0.95rem; line-height: 1.5;"></p>
-    
-    <button id="closeMessageBtn" 
-            class="btn mt-2 px-4 py-2" 
-            style="background-color: orange; border: none; border-radius: 50px; color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(255,140,0,0.4);">
-        OK
-    </button>
-</div>
-
-
-    
-
-  <footer id="footer" class="footer accent-background">
+  <!-- Message modal/backdrop -->
+  <div id="messageBoxBackdrop" class="message-backdrop">
+    <div class="message-box" id="messageBox">
+      <h5 id="messageTitle">Message</h5>
+      <p id="messageText">Text</p>
+      <div class="text-end">
+        <button id="closeMessageBtn" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+<footer id="footer" class="footer accent-background">
 
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
             <a href="index.html" class="logo d-flex align-items-center me-auto">
       
-                <img src="assets/img/logo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
-                <span style="color: rgb(247, 244, 244); font-size: 17px; font-weight: 500;">Family First</span> 
-           
+                <img src="assets/img/ffmlogo.jpg" alt="Family First Matchmaking Logo" width="150" height="100" class="d-inline-block align-middle me-2">
+                 
+      </a>
+            
       </a>
           
           <div class="social-links d-flex mt-4">
@@ -328,9 +1367,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">About us</a></li>
-             <li><a href="terms.html">Terms of service</a></li>
+            <li><a href="terms.html">Terms of service</a></li>
             <li><a href="privacy.html">Privacy policy</a></li>
+            <li><a href="terms.html">Trust & Safety</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">Frequent Asked Questions</a></li>
           </ul>
         </div>
 
@@ -351,21 +1392,16 @@
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">familyfirstmatchmaking.com</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a>
       </div>
     </div>
 
   </footer>
-
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -376,8 +1412,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!-- Scripts -->
+   <!-- Main JS File -->
   <script src="controller/app.js"></script>
-
-</body>
+  </body>
 
 </html>

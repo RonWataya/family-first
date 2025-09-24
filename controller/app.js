@@ -1,151 +1,134 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cache all necessary DOM elements for efficiency
-    const DOMElements = {
-        registerBtns: document.querySelectorAll('#registerBtn, #heroRegisterBtn'),
-        registrationFormSection: document.getElementById('registrationForm'),
-        multiStepForm: document.getElementById('multiStepForm'),
-        nextStepBtn: document.getElementById('nextStepBtn'),
-        prevStepBtn: document.getElementById('prevStepBtn'),
-        formSteps: document.querySelectorAll('.form-step'),
-        stepIndicators: document.querySelectorAll('.step-item'),
-        messageBox: document.getElementById('messageBox'),
-        messageTitle: document.getElementById('messageTitle'),
-        messageText: document.getElementById('messageText'),
-        closeMessageBtn: document.getElementById('closeMessageBtn'),
-        messageBoxBackdrop: document.getElementById('messageBoxBackdrop')
-    };
+    
+    // Multi-step logic
+   // Multi-step logic
+    (function () {
+      const form = document.getElementById('multiStepForm');
+      const cards = Array.from(form.querySelectorAll('.card[data-step]'));
+      const totalSteps = cards.length;
+      let currentIndex = 0;
 
-    let currentStep = 0;
+      // Step indicator items
+      const stepItems = Array.from(document.querySelectorAll('.step-item'));
 
-    // --- Utility Functions ---
+      // Initialize display
+      function showStep(index) {
+        cards.forEach((c, i) => {
+          c.classList.toggle('active', i === index);
+        });
+        stepItems.forEach((si, i) => {
+          si.classList.toggle('active', i === index);
+        });
+      }
 
-    /**
-     * Shows a custom message box with a title and message.
-     * @param {string} title The title of the message.
-     * @param {string} message The body text of the message.
-     */
-   function showMessageBox(title, message) {
-    DOMElements.messageTitle.textContent = title;
-    DOMElements.messageText.textContent = message;
-    DOMElements.messageBox.classList.remove('d-none');
-    DOMElements.messageBoxBackdrop.classList.remove('d-none');
-}
-
-function hideMessageBox() {
-    DOMElements.messageBox.classList.add('d-none');
-    DOMElements.messageBoxBackdrop.classList.add('d-none');
-}
-
-
-    /**
-     * Displays the current form step and updates the step indicators.
-     * @param {number} step The index of the step to display.
-     */
-    function showStep(step) {
-        DOMElements.formSteps.forEach((formStep, index) => {
-            formStep.classList.toggle('d-none', index !== step);
+      function validateStep(card) {
+        let valid = true;
+        const inputs = Array.from(card.querySelectorAll('[required]'));
+        inputs.forEach(input => {
+          input.reportValidity();
+          if (!input.checkValidity()) {
+            valid = false;
+          }
         });
 
-        DOMElements.stepIndicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === step);
+        // Custom validation for min-checked checkboxes
+        const minCheckboxes = Array.from(card.querySelectorAll('input[type="checkbox"][data-min]'));
+        minCheckboxes.forEach(checkbox => {
+          const groupName = checkbox.name;
+          const minCount = parseInt(checkbox.getAttribute('data-min'), 10);
+          const checkedCount = form.querySelectorAll(`input[name="${groupName}"]:checked`).length;
+          const isGroupValid = checkedCount >= minCount;
+
+          if (!isGroupValid) {
+            valid = false;
+            // You might want to show a custom validation message here
+            console.error(`Please select at least ${minCount} option(s) for ${groupName}`);
+          }
         });
-    }
 
-    // --- Event Handlers ---
+        return valid;
+      }
 
-    /**
-     * Handles the transition to the next step.
-     */
-    function handleNextStep() {
-        const currentFormStep = DOMElements.formSteps[currentStep];
-        const inputs = currentFormStep.querySelectorAll('input[required], select[required], textarea[required]');
-        
-        // Simple form validation: check if all required fields are filled
-        const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
-
-        if (allFilled) {
-            currentStep++;
-            if (currentStep < DOMElements.formSteps.length) {
-                showStep(currentStep);
-            }
-        } else {
-            // Display an error message if fields are not filled
-            showMessageBox('!', 'Please fill out all required fields before proceeding.');
+      window.nextStep = function () {
+        if (validateStep(cards[currentIndex])) {
+          if (currentIndex < totalSteps - 1) {
+            currentIndex++;
+            showStep(currentIndex);
+          }
         }
-    }
+      };
 
-    /**
-     * Handles the transition to the previous step.
-     */
-    function handlePrevStep() {
-        currentStep--;
-        if (currentStep >= 0) {
-            showStep(currentStep);
+      window.prevStep = function () {
+        if (currentIndex > 0) {
+          currentIndex--;
+          showStep(currentIndex);
         }
-    }
+      };
 
-    /**
-     * Handles the form submission logic.
-     * @param {Event} event The form submit event.
-     */
-    function handleFormSubmit(event) {
-        event.preventDefault();
-
-        // Object to hold all form data
-        const formData = {
-            personal: {},
-            preferences: {}
-        };
-
-        // Populate personal data
-        DOMElements.formSteps[0].querySelectorAll('input, select, textarea').forEach(field => {
-            formData.personal[field.id] = field.value.trim();
-        });
-        
-        // Populate preferences data
-        DOMElements.formSteps[1].querySelectorAll('input, select, textarea').forEach(field => {
-            if (field.type === 'checkbox') {
-                if (!formData.preferences.prefValues) {
-                    formData.preferences.prefValues = [];
-                }
-                if (field.checked) {
-                    formData.preferences.prefValues.push(field.value);
-                }
-            } else {
-                formData.preferences[field.id] = field.value.trim();
+      // Rating/Image selection
+      const ratingOptions = document.querySelectorAll('.rating-options');
+      ratingOptions.forEach(grid => {
+        grid.addEventListener('click', function (e) {
+          const item = e.target.closest('.rating-option');
+          if (item) {
+            const targetInputName = grid.getAttribute('data-target');
+            const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
+            if (targetInput) {
+              // Reset all options
+              grid.querySelectorAll('.rating-option').forEach(option => option.classList.remove('selected'));
+              // Select the clicked item
+              item.classList.add('selected');
+              // Set the value of the hidden input
+              targetInput.value = item.getAttribute('data-value');
             }
+          }
         });
+      });
 
-        // Log form data for debugging
-        console.log('Form Data:', formData);
-
-        // Placeholder for a real API call or logic
-        showMessageBox('Application Submitted', 'Your application has been submitted successfully! Our team will review your information shortly.');
-
-        // Reset the form and go back to the first step
-        DOMElements.multiStepForm.reset();
-        currentStep = 0;
-        showStep(currentStep);
-        DOMElements.registrationFormSection.style.display = 'none';
-    }
-
-    // --- Event Listeners ---
-
-    // Buttons to navigate the multi-step form
-    DOMElements.nextStepBtn.addEventListener('click', handleNextStep);
-    DOMElements.prevStepBtn.addEventListener('click', handlePrevStep);
-
-    // Form submission
-    DOMElements.multiStepForm.addEventListener('submit', handleFormSubmit);
-
-    // Handle message box close
-    DOMElements.closeMessageBtn.addEventListener('click', hideMessageBox);
-
-    // Buttons to show the registration form
-    DOMElements.registerBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            DOMElements.registrationFormSection.style.display = 'block';
-            showStep(currentStep); // Show the first step when the form is displayed
+      const imageSelectionGrids = document.querySelectorAll('.image-selection-grid');
+      imageSelectionGrids.forEach(grid => {
+        grid.addEventListener('click', function (e) {
+          const item = e.target.closest('.image-item');
+          if (item) {
+            const targetInputName = grid.getAttribute('data-target');
+            const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
+            if (targetInput) {
+              // Reset all image items
+              grid.querySelectorAll('.image-item').forEach(img => img.classList.remove('selected'));
+              // Select the clicked item
+              item.classList.add('selected');
+              // Set the value of the hidden input
+              targetInput.value = item.getAttribute('data-value');
+            }
+          }
         });
-    });
+      });
+
+      // Form submission
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (validateStep(cards[currentIndex])) {
+          // You can handle form submission here (e.g., via AJAX)
+          showMessageBox('Application Submitted!', 'Thank you for completing your profile. Our team will review your information shortly.');
+        }
+      });
+
+      // Message box logic
+      const messageBoxBackdrop = document.getElementById('messageBoxBackdrop');
+      const messageTitle = document.getElementById('messageTitle');
+      const messageText = document.getElementById('messageText');
+      const closeMessageBtn = document.getElementById('closeMessageBtn');
+
+      function showMessageBox(title, text) {
+        messageTitle.textContent = title;
+        messageText.textContent = text;
+        messageBoxBackdrop.style.display = 'flex';
+      }
+
+      closeMessageBtn.addEventListener('click', function() {
+        messageBoxBackdrop.style.display = 'none';
+      });
+
+    })();
+  
 });
