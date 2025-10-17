@@ -38,6 +38,10 @@
   </style>
 </head>
 <body>
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Registering your profile, please wait...</p>
+</div>
    <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
@@ -89,17 +93,32 @@
         <section id="registrationForm">
 
           <!-- The multi-step form -->
-          <form id="multiStepForm" class="mt-4" novalidate>
+         <form id="multiStepForm" name="multiStepForm" method="POST" enctype="multipart/form-data">
+
             <!-- STEP 1: Personal Info (Q1-7) -->
             <div class="card p-4 active" data-step="1">
               <h2 class="mb-3">Let's start.</h2>
 
               <!-- 1 -->
+
               <div class="mb-3">
                 <label class="form-label">1. Please confirm your gender:</label>
                 <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" required><label class="form-check-label" for="genderFemale">Female</label></div>
                 <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male"><label class="form-check-label" for="genderMale">Male</label></div>
               </div>
+              <div class="mb-3">
+  <label for="full_name" class="form-label">1.a. Full Name</label>
+  <input type="text" class="form-control" id="full_name" name="full_name" required>
+</div>
+
+<div class="mb-3">
+  <label for="email" class="form-label">1.b. Email Address</label>
+  <input type="email" class="form-control" id="email" name="email" required>
+</div>
+<div class="mb-3">
+  <label for="full_name" class="form-label">1.c. Phone Number</label>
+  <input type="text" class="form-control" id="phone" name="phone" required>
+</div>
 
               <!-- 2 -->
               <div class="mb-3">
@@ -171,6 +190,10 @@
                 </div>
                 <input type="hidden" name="height_importance" required>
               </div>
+<div class="mb-3">
+  <label for="profile_image">Upload Profile Picture</label>
+  <input type="file" id="profile_image" name="profile_image" accept="image/*">
+</div>
 
               <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
@@ -1231,8 +1254,18 @@
                 <div class="row g-2">
                   <div class="col"><select class="form-select" name="birth_month" required>
                     <option value="">Month</option>
-                    <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option>
-                    <option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+  <option value="1">January</option>
+  <option value="2">February</option>
+  <option value="3">March</option>
+  <option value="4">April</option>
+  <option value="5">May</option>
+  <option value="6">June</option>
+  <option value="7">July</option>
+  <option value="8">August</option>
+  <option value="9">September</option>
+  <option value="10">October</option>
+  <option value="11">November</option>
+  <option value="12">December</option>
                   </select></div>
                   <div class="col"><input class="form-control" name="birth_day" placeholder="DD" type="number" min="1" max="31" required></div>
                   <div class="col"><input class="form-control" name="birth_year" placeholder="YYYY" type="number" min="1900" max="2099" required></div>
@@ -1277,10 +1310,10 @@
                 <select class="form-select" name="income_bracket" required>
                   <option value="">Select...</option>
                   <option>Less than R40,000 annually</option>
-                  <option>Between R40,000 – R75,000</option>
-                  <option>Between R75,001 – R100,000</option>
-                  <option>Between R100,001 – R150,000</option>
-                  <option>Between R150,001 – R250,000</option>
+                  <option>Between R40,000 - R75,000</option>
+                  <option>Between R75,001 - R100,000</option>
+                  <option>Between R100,001 - R150,000</option>
+                  <option>Between R150,001 - R250,000</option>
                   <option>Between R250,001 - R400,000</option>
                   <option>More than R400,001 annually</option>
                 </select>

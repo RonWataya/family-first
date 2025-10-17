@@ -1,0 +1,103 @@
+/* assets/css/login.css */
+
+/* Define the colors used in the login card */
+:root {
+    --primary-color: #007bff;
+    --dark-bg: #2c3e50;
+    --card-bg: #ffffff;
+    --card-border: #e9ecef;
+    --text-color: #34495e;
+    --delete-color: #dc3545;
+}
+
+/* -------------------- LOGIN SCREEN OVERLAY -------------------- */
+#login-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    /* Center the card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Background and stacking */
+    z-index: 9999;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #4a6684 100%);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#login-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 380px;
+    max-width: 90%;
+}
+
+#login-logo {
+    max-height: 60px;
+    margin-bottom: 25px;
+}
+
+#login-card h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* Form Elements */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95em;
+}
+
+#login-form input[type="text"], 
+#login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.primary-btn {
+    /* Reusing .btn styles from admin.css, but adding specific login overrides */
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: white;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--delete-color);
+    border-radius: 5px;
+}

@@ -1,134 +1,212 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Multi-step logic
-   // Multi-step logic
+document.addEventListener("DOMContentLoaded", () => {
     (function () {
-      const form = document.getElementById('multiStepForm');
-      const cards = Array.from(form.querySelectorAll('.card[data-step]'));
-      const totalSteps = cards.length;
-      let currentIndex = 0;
+        const form = document.getElementById("multiStepForm");
+        const cards = Array.from(form.querySelectorAll(".card[data-step]"));
+        const totalSteps = cards.length;
+        let currentIndex = 0;
 
-      // Step indicator items
-      const stepItems = Array.from(document.querySelectorAll('.step-item'));
+        const stepItems = Array.from(document.querySelectorAll(".step-item"));
 
-      // Initialize display
-      function showStep(index) {
-        cards.forEach((c, i) => {
-          c.classList.toggle('active', i === index);
-        });
-        stepItems.forEach((si, i) => {
-          si.classList.toggle('active', i === index);
-        });
-      }
+        // === Loading Overlay References (New) ===
+        const loadingOverlay = document.getElementById("loadingOverlay");
 
-      function validateStep(card) {
-        let valid = true;
-        const inputs = Array.from(card.querySelectorAll('[required]'));
-        inputs.forEach(input => {
-          input.reportValidity();
-          if (!input.checkValidity()) {
-            valid = false;
-          }
-        });
-
-        // Custom validation for min-checked checkboxes
-        const minCheckboxes = Array.from(card.querySelectorAll('input[type="checkbox"][data-min]'));
-        minCheckboxes.forEach(checkbox => {
-          const groupName = checkbox.name;
-          const minCount = parseInt(checkbox.getAttribute('data-min'), 10);
-          const checkedCount = form.querySelectorAll(`input[name="${groupName}"]:checked`).length;
-          const isGroupValid = checkedCount >= minCount;
-
-          if (!isGroupValid) {
-            valid = false;
-            // You might want to show a custom validation message here
-            console.error(`Please select at least ${minCount} option(s) for ${groupName}`);
-          }
-        });
-
-        return valid;
-      }
-
-      window.nextStep = function () {
-        if (validateStep(cards[currentIndex])) {
-          if (currentIndex < totalSteps - 1) {
-            currentIndex++;
-            showStep(currentIndex);
-          }
-        }
-      };
-
-      window.prevStep = function () {
-        if (currentIndex > 0) {
-          currentIndex--;
-          showStep(currentIndex);
-        }
-      };
-
-      // Rating/Image selection
-      const ratingOptions = document.querySelectorAll('.rating-options');
-      ratingOptions.forEach(grid => {
-        grid.addEventListener('click', function (e) {
-          const item = e.target.closest('.rating-option');
-          if (item) {
-            const targetInputName = grid.getAttribute('data-target');
-            const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
-            if (targetInput) {
-              // Reset all options
-              grid.querySelectorAll('.rating-option').forEach(option => option.classList.remove('selected'));
-              // Select the clicked item
-              item.classList.add('selected');
-              // Set the value of the hidden input
-              targetInput.value = item.getAttribute('data-value');
+        /**
+         * Shows the full-screen loading overlay.
+         */
+        function showLoading() {
+            if (loadingOverlay) {
+                loadingOverlay.style.display = "flex";
             }
-          }
-        });
-      });
-
-      const imageSelectionGrids = document.querySelectorAll('.image-selection-grid');
-      imageSelectionGrids.forEach(grid => {
-        grid.addEventListener('click', function (e) {
-          const item = e.target.closest('.image-item');
-          if (item) {
-            const targetInputName = grid.getAttribute('data-target');
-            const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
-            if (targetInput) {
-              // Reset all image items
-              grid.querySelectorAll('.image-item').forEach(img => img.classList.remove('selected'));
-              // Select the clicked item
-              item.classList.add('selected');
-              // Set the value of the hidden input
-              targetInput.value = item.getAttribute('data-value');
-            }
-          }
-        });
-      });
-
-      // Form submission
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (validateStep(cards[currentIndex])) {
-          // You can handle form submission here (e.g., via AJAX)
-          showMessageBox('Application Submitted!', 'Thank you for completing your profile. Our team will review your information shortly.');
         }
-      });
 
-      // Message box logic
-      const messageBoxBackdrop = document.getElementById('messageBoxBackdrop');
-      const messageTitle = document.getElementById('messageTitle');
-      const messageText = document.getElementById('messageText');
-      const closeMessageBtn = document.getElementById('closeMessageBtn');
+        /**
+         * Hides the full-screen loading overlay.
+         */
+        function hideLoading() {
+            if (loadingOverlay) {
+                loadingOverlay.style.display = "none";
+            }
+        }
 
-      function showMessageBox(title, text) {
-        messageTitle.textContent = title;
-        messageText.textContent = text;
-        messageBoxBackdrop.style.display = 'flex';
-      }
+        // === Step Control ===
+        function showStep(index) {
+            cards.forEach((c, i) => c.classList.toggle("active", i === index));
+            stepItems.forEach((si, i) => si.classList.toggle("active", i === index));
+        }
 
-      closeMessageBtn.addEventListener('click', function() {
-        messageBoxBackdrop.style.display = 'none';
-      });
+        function validateStep(card) {
+            let valid = true;
+            const inputs = Array.from(card.querySelectorAll("[required]"));
+            
+            // 1. Validate standard required inputs
+            inputs.forEach((input) => {
+                if (!input.checkValidity()) {
+                    input.reportValidity();
+                    valid = false;
+                }
+            });
 
+            // 2. Custom checkbox group validation (min checked count)
+            const minCheckboxes = Array.from(card.querySelectorAll('input[type="checkbox"][data-min]'));
+            minCheckboxes.forEach((checkbox) => {
+                const groupName = checkbox.name;
+                const minCount = parseInt(checkbox.getAttribute("data-min"), 10);
+                const checkedCount = form.querySelectorAll(`input[name="${groupName}"]:checked`).length;
+                if (checkedCount < minCount) valid = false;
+            });
+
+            return valid;
+        }
+
+        window.nextStep = function () {
+            if (validateStep(cards[currentIndex])) {
+                if (currentIndex < totalSteps - 1) {
+                    currentIndex++;
+                    showStep(currentIndex);
+                }
+            }
+        };
+
+        window.prevStep = function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showStep(currentIndex);
+            }
+        };
+
+        // === Rating/Image selection (UNCHANGED) ===
+        const ratingOptions = document.querySelectorAll(".rating-options");
+        ratingOptions.forEach((grid) => {
+            grid.addEventListener("click", function (e) {
+                const item = e.target.closest(".rating-option");
+                if (item) {
+                    const targetInputName = grid.getAttribute("data-target");
+                    const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
+                    if (targetInput) {
+                        grid.querySelectorAll(".rating-option").forEach((o) => o.classList.remove("selected"));
+                        item.classList.add("selected");
+                        targetInput.value = item.getAttribute("data-value");
+                    }
+                }
+            });
+        });
+
+        const imageSelectionGrids = document.querySelectorAll(".image-selection-grid");
+        imageSelectionGrids.forEach((grid) => {
+            grid.addEventListener("click", function (e) {
+                const item = e.target.closest(".image-item");
+                if (item) {
+                    const targetInputName = grid.getAttribute("data-target");
+                    const targetInput = form.querySelector(`input[type="hidden"][name="${targetInputName}"]`);
+                    if (targetInput) {
+                        grid.querySelectorAll(".image-item").forEach((img) => img.classList.remove("selected"));
+                        item.classList.add("selected");
+                        targetInput.value = item.getAttribute("data-value");
+                    }
+                }
+            });
+        });
+
+        // === Convert File to Base64 (UNCHANGED) ===
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+            });
+        }
+
+        // === Handle Form Submission (FIXED LOGIC) ===
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            // 1. Validate the final step before proceeding
+            if (!validateStep(cards[currentIndex])) return;
+
+            // 2. SHOW LOADING NOTIFICATION
+            showLoading(); 
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Define fields that are checkboxes and need aggregation
+            const multiValueFields = [
+                'ethnic_preferences',
+                'religious_preferences',
+                'relationship_importance',
+                'interests',
+                'age_ranges'
+            ];
+
+            // Collect all checked values
+            multiValueFields.forEach(name => {
+                const checkedValues = Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(
+                    el => el.value
+                );
+                data[name] = checkedValues.join(", ");
+            });
+
+            // Handle file upload (convert to base64)
+            const profileInput = form.querySelector('input[name="profile_image"]');
+            if (profileInput && profileInput.files.length > 0) {
+                try {
+                    data.profile_image = await toBase64(profileInput.files[0]);
+                } catch (error) {
+                    console.error("File Conversion Error:", error);
+                    hideLoading();
+                    showMessageBox("Error", "Could not process image file.");
+                    return;
+                }
+            } else {
+                data.profile_image = "";
+            }
+
+            try {
+                const response = await fetch("https://miwalletmw.com:7000/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                });
+
+                // 3. HIDE LOADING NOTIFICATION (on success or failure)
+                hideLoading(); 
+
+                const result = await response.json();
+                if (response.ok && result.success) {
+                    showMessageBox("Registration Complete! 🎉", "Thank you for completing your profile.");
+                    form.reset();
+                    // Optional: return to first step
+                    currentIndex = 0; 
+                    showStep(currentIndex);
+                } else {
+                    // Display the specific database or server error message
+                    showMessageBox("Registration Failed 😔", result.message || "Server error occurred.");
+                }
+            } catch (error) {
+                // 3. HIDE LOADING NOTIFICATION (on network error)
+                hideLoading(); 
+                console.error("Submit Error:", error);
+                showMessageBox("Network Error 🌐", "Could not submit your registration. Please check your connection and try again.");
+            }
+        });
+
+        // === Message Box (UNCHANGED) ===
+        const messageBoxBackdrop = document.getElementById("messageBoxBackdrop");
+        const messageTitle = document.getElementById("messageTitle");
+        const messageText = document.getElementById("messageText");
+        const closeMessageBtn = document.getElementById("closeMessageBtn");
+
+        function showMessageBox(title, text) {
+            messageTitle.textContent = title;
+            messageText.textContent = text;
+            messageBoxBackdrop.style.display = "flex";
+        }
+
+        closeMessageBtn.addEventListener("click", function () {
+            messageBoxBackdrop.style.display = "none";
+        });
+        
+        // Initialize the first step visibility
+        showStep(currentIndex);
     })();
-  
 });
