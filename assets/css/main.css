@@ -14,36 +14,54 @@
 --------------------------------------------------------------*/
 /* Fonts */
 /* Fonts */
+/* Update the global color variables in main.css around line 17 */
 :root {
+  /* OLD: --primary-color: #4A90E2; (Blue) */
+  --primary-color: #e63946; /* A strong, consistent red/pink for the brand */
+  /* OLD: --accent-color: #1B85BC; (Darker Blue) */
+  --accent-color: #ff758c; /* Lighter shade for accents and hovers */
+  
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Raleway", sans-serif;
   --nav-font: "Ubuntu", sans-serif;
-  --primary-color: #4A90E2;
-    --default-color: #333;
-    --light-bg: #f5f8fd;
+  
+  /* Keep heading colors for contrast on light backgrounds */
+  --default-color: #394450;
+  --heading-color: #1A3E6D; 
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root {
-  --primary-color: #4A90E2; /* A vibrant blue for the main brand color */
-  --background-color: #F8FAFD; /* A very light blue for the background */
-  --default-color: #394450; /* A dark slate blue for most text */
-  --heading-color: #1A3E6D; /* A deep, rich blue for headings */
-  --accent-color: #1B85BC; /* A slightly darker blue for buttons and accents */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+/* Update the accent-background (used in CTA and Footer) for better contrast */
+/* This block is in main.css around line 49 */
+.accent-background {
+  --background-color: #1A3E6D; /* Deep blue/slate for a rich, dark background */
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --accent-color: var(--primary-color); /* Now uses the new primary red: #e63946 */
+  --surface-color: #1A3E6D;
+  --contrast-color: #ffffff;
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: rgba(255, 255, 255, 0.7);  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #394450; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #1B85BC; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+/* Add a modern hover effect to the Information Swiper (Info Swiper) to main.css */
+/* Add this new section at the end of main.css */
+/* ===== Information Swiper Enhancements ===== */
+#info-slider .swiper-slide {
+  transition: all 0.3s ease;
+  cursor: default;
+  border-radius: 12px;
+  /* Ensure the slide background is white for a lift-up effect against the light-background section */
+  background-color: var(--surface-color);
 }
-
+#info-slider .swiper-slide:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Lift effect */
+}
+#info-slider .swiper-slide i {
+    transition: color 0.3s ease;
+}
+#info-slider .swiper-slide:hover i {
+    /* Set icons to the new primary color on hover for emphasis */
+    color: var(--primary-color) !important; 
+}
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 .light-background {
   --background-color: #f5faff;
@@ -8302,4 +8320,139 @@ section,
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* -----------------------------
+   HERO SWIPER STYLING
+------------------------------ */
+#hero-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* full-screen hero */
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* Fix: Changed from 100vh to 100% of parent 90vh */
+  height: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-slide .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.6)
+  ); /* subtle overlay */
+  z-index: 1;
+}
+
+.hero-slide .container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+/* Fonts and Colors */
+.hero-slide h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.hero-slide p {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #f9f9f9;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.hero-slide .btn-primary {
+  background: linear-gradient(135deg, #e63946, #ff758c);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+}
+
+.hero-slide .btn-primary:hover {
+  background: linear-gradient(135deg, #ff758c, #e63946);
+  transform: translateY(-2px);
+}
+
+.hero-slide .btn-outline-light {
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.hero-slide .btn-outline-light:hover {
+  background: #fff;
+  color: #e63946;
+}
+
+/* Pagination dots */
+.hero-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+  margin: 0 5px !important;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: #e63946;
+  width: 12px;
+  height: 12px;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .hero-slide h1 {
+    font-size: 2.2rem;
+  }
+  .hero-slide p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-slide {
+    height: 70vh;
+  }
+  .hero-slide h1 {
+    font-size: 1.8rem;
+  }
+}
+.flashbar {
+  /* Added a drop shadow for a more impactful banner */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+/* Make the flash bar stick right below the header on scroll */
+.sticky-top-flash {
+  position: sticky;
+  /* Adjust this value based on your fixed header height (approx 70px) */
+  top: 70px; 
+  z-index: 996; /* Below the main header (z-index 997) */
 }

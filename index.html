@@ -13,7 +13,7 @@
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -21,16 +21,16 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/main.css" rel="stylesheet">
-
-  </head>
+</head>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center sticky-top shadow-sm">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
+        <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="me-2">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -53,154 +53,143 @@
 
   <main class="main">
 
-    <section id="courses-hero" class="courses-hero section light-background">
-      <div class="hero-content">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="hero-image">
-                <div class="main-image">
-                  <img src="assets/img/hero3.webp" alt="A couple smiling and looking at each other, representing love and connection" class="img-fluid">
-                </div>
+    <!-- ===== Hero Swiper ===== -->
+    <section id="hero-slider" class="swiper hero-swiper">
+      <div class="swiper-wrapper">
 
-                <div class="floating-cards">
-                  <div class="course-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-icon">
-                      <i class="bi bi-heart"></i>
-                    </div>
-                    <div class="card-content">
-                      <h6>Connected</h6>
-                      <span>450 matches</span>
-                    </div>
-                  </div>
-                   <div class="course-card" data-aos="fade-up" data-aos-delay="500" style="display: none;">
-                    <div class="card-icon">
-                      
-                    </div>
-                    <div class="card-content">
-                      <h6></h6>
-                      <span></span>
-                    </div>
-                  </div>
-                  <div class="course-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card-icon">
-                      <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="card-content">
-                      <h6>Profiles</h6>
-                      <span>3,200 Singles</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="hero-text">
-                <h2><strong> For Your Soul Mate/Life Partner? - Build Your Love Story With Us.</strong></h2>
-                <p>Dedicated to intentional dating, meaningful connections, and future families. With verified, screened singles profiles, due diligence and thorough background checks, we ensure your journey is safe, sincere and scam-free.</p>
-                <p>We only accept candidates we believe we can match. Stop swiping, wishing, or waiting and get started with South Africa’s #1 matchmaker.</p>
-
-                <div class="hero-stats">
-                  <div class="stat-item">
-                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="2"></span>
-                    <span class="label">Daily Registrations</span>
-                  </div>
-                  <div class="stat-item">
-                    <span class="number purecounter" data-purecounter-start="0" data-purecounter-end="90" data-purecounter-duration="2"></span>
-                    <span class="label">Success Rate %</span>
-                  </div>
-                </div>
-
-                <div class="hero-buttons">
-                  <a href="register.html" class="btn btn-primary">Start Your Journey Today</a>
-                  <a href="learnmore.html" class="btn btn-outline">Learn More</a>
-                </div>
-              </div>
-            </div>
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/hero1.jpg');">
+          <div class="overlay"></div>
+          <div class="container text-center text-white">
+            <h1 data-aos="fade-down">Find Your Soul Mate</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Intentional dating. Meaningful connections. Future families.</p>
+            <a href="register.html" class="btn btn-primary mt-3">Start Your Journey</a>
           </div>
         </div>
+
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/hero3.webp');">
+          <div class="overlay"></div>
+          <div class="container text-center text-white">
+            <h1 data-aos="fade-down">Safe, Sincere & Scam-Free</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Verified singles, background checks, and trusted matchmaking.</p>
+            <a href="learnmore.html" class="btn btn-outline-light mt-3">Learn More</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide hero-slide" style="background-image: url('assets/img/hero2.jpg');">
+          <div class="overlay"></div>
+          <div class="container text-center text-white">
+            <h1 data-aos="fade-down">Your Love Story Starts Here</h1>
+            <p data-aos="fade-up" data-aos-delay="200">We only accept candidates we believe we can match.</p>
+            <a href="register.html" class="btn btn-primary mt-3">Get Matched Today</a>
+          </div>
+        </div>
+
       </div>
-      <div class="hero-background">
-        <div class="bg-shapes">
-          <div class="shape shape-1"></div>
-          <div class="shape shape-2"></div>
-          <div class="shape shape-3"></div>
+      <div class="swiper-pagination"></div>
+    </section>
+<br>
+    <!-- ===== Flash Bar ===== -->
+    <div class="flashbar text-center text-white bg-primary py-2">
+      ❤️ Over <strong>450</strong> couples matched this year! 
+      <a href="register.html" class="fw-bold text-white ms-2">Join Now</a>
+    </div>
+
+    <!-- ===== Information Swiper ===== -->
+    <section id="info-slider" class="section light-background">
+      <div class="container">
+        <div class="swiper infoSwiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide text-center p-5">
+              <i class="bi bi-heart-pulse-fill display-4 text-danger mb-3"></i>
+              <h3>About Us</h3>
+              <p>We’re South Africa’s #1 Matchmaking Service — focused on creating authentic, lasting relationships built on trust and family values.</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide text-center p-5">
+              <i class="bi bi-person-hearts display-4 text-primary mb-3"></i>
+              <h3>How It Works</h3>
+              <p>We interview, verify and hand-match you with singles who meet your values, lifestyle and long-term goals.</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide text-center p-5">
+              <i class="bi bi-shield-check display-4 text-success mb-3"></i>
+              <h3>Why Choose Us</h3>
+              <p>Our private, human-guided matchmaking ensures safe, meaningful introductions with no bots, catfishes, or swiping fatigue.</p>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide text-center p-5">
+              <i class="bi bi-stars display-4 text-warning mb-3"></i>
+              <h3>Testimonials</h3>
+              <p>“We met through Family First and tied the knot within 8 months!” – Lerato & Thabo</p>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
-    
-    <section id="cta" class="cta section light-background">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="cta-content">
-              <h2>Ready to Find The One?</h2>
-              <p>Forget endless swiping. Our personalized matching, focus on marriage, and commitment to privacy & trust offer a safe, sincere, and effective path to finding your life partner.</p>
-              <div class="cta-actions" data-aos="fade-up" data-aos-delay="300">
-                <a href="register.html" class="btn btn-primary">Begin Your Love Story</a>
-                <a href="learnmore.html" class="btn btn-outline">Detailed Process & Pricing</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="cta-image">
-              <img src="assets/img/hero1.jpg" alt="A couple holding hands, representing partnership" class="img-fluid">
-            </div>
-          </div>
+
+    <!-- ===== CTA Section ===== -->
+    <section id="cta" class="cta section accent-background text-white" data-aos="fade-up">
+      <div class="container text-center">
+        <h2>Ready to Find The One?</h2>
+        <p>Stop swiping. Start connecting. Experience love the real way — intentional, verified, lasting.</p>
+        <div class="mt-4">
+          <a href="register.html" class="btn btn-light me-2">Begin Your Love Story</a>
+          <a href="learnmore.html" class="btn btn-outline-light">Explore More</a>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer id="footer" class="footer accent-background">
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center me-auto">
-            <img src="assets/img/ffmlogo.jpg" alt="Family First Matchmaking Logo" width="150" height="100" class="d-inline-block align-middle me-2">
-          </a>
+          
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="terms.html">Terms of service</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-            <li><a href="terms.html">Trust & Safety</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="faq.html">Frequent Asked Questions</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="faq.html">FAQs</a></li>
           </ul>
         </div>
-        
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+
+        <div class="col-lg-3 col-md-12 footer-contact">
           <h4>Contact Us</h4>
-          <p>Family First Matchmaking Pty</p>
-          <p>55 Richards Drive, Halfway House, Midrand</p>
-          <p>Gauteng, 1685</p>
-          <p>South Africa</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+27 73 545 4949</span></p>
-          <p><strong>Email:</strong> <span>amon@rivaindustries.com</span></p>
+          <p>55 Richards Drive, Midrand, Gauteng, 1685</p>
+          <p><strong>Phone:</strong> +27 73 545 4949</p>
+          <p><strong>Email:</strong> amon@rivaindustries.com</p>
         </div>
       </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">familyfirstmatchmaking.com</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a>
-      </div>
+    <div class="container text-center mt-4">
+      <p>© <strong>familyfirstmatchmaking.com</strong> All Rights Reserved</p>
+      <div class="credits">Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a></div>
     </div>
-
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -208,8 +197,28 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    // Hero Swiper
+    new Swiper('.hero-swiper', {
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      effect: 'fade',
+      speed: 1000,
+    });
+
+    // Info Swiper
+    new Swiper('.infoSwiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      autoplay: { delay: 4000 },
+      breakpoints: { 768: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } },
+    });
+  </script>
 
 </body>
-
 </html>
