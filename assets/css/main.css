@@ -8456,3 +8456,166 @@ section,
   top: 70px; 
   z-index: 996; /* Below the main header (z-index 997) */
 }
+/* HEADER CTA Style Adjustment */
+.header .btn-getstarted {
+  color: var(--contrast-color);
+  /* Use linear-gradient for a richer, modern button look, like the hero button below */
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border: none !important;
+  font-size: 17px;
+  padding: 8px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(230, 57, 70, 0.2);
+}
+
+.header .btn-getstarted:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(230, 57, 70, 0.3);
+}
+
+/* ===== New Static Hero Section Styling (Tawkify Style) ===== */
+#hero {
+  min-height: 90vh; /* Make it nearly full viewport height */
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0; /* Add top/bottom padding for mobile */
+}
+
+#hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Subtle dark overlay for text contrast */
+  z-index: 1;
+}
+
+#hero .container {
+  z-index: 2; /* Bring content above the overlay */
+}
+
+#hero h1 {
+  font-size: 4.5rem; /* Larger, more impactful headline */
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+#hero p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+/* Custom Primary Button Style for Hero */
+#hero .btn-primary {
+  background: linear-gradient(90deg, #ff758c, #e63946); /* Reverse gradient for visual pop */
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(230, 57, 70, 0.5);
+}
+
+#hero .btn-primary:hover {
+  background: linear-gradient(90deg, #e63946, #ff758c);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.6);
+}
+
+@media (max-width: 992px) {
+  #hero {
+    min-height: 70vh;
+  }
+  #hero h1 {
+    font-size: 3rem;
+  }
+  #hero p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Flash Bar Styling - make it a sticky alert */
+.flashbar {
+  position: sticky;
+  top: 80px; /* Adjust based on header height for stickiness */
+  z-index: 996; 
+}
+
+/* Differentiators Section Styling (Replacing Info Swiper) */
+#differentiators .info-card {
+  transition: all 0.3s ease;
+  cursor: default;
+  border-radius: 12px;
+  /* Use surface color defined by light-background: #ffffff */
+  background-color: var(--surface-color); 
+  border: 1px solid #e9ecef !important;
+}
+
+#differentiators .info-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px); /* More pronounced lift effect */
+}
+#differentiators .info-card i {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+#differentiators .info-card:hover i {
+    /* Set icons to the new primary color on hover for emphasis */
+    color: var(--primary-color) !important; 
+    transform: scale(1.1);
+}
+
+/* CTA & Footer adjustments for better Tawkify-like color contrast */
+.accent-background {
+  /* Using a dark color that pairs well with the red/pink for the CTA and Footer */
+  --background-color: #343a40; /* Darker Slate Gray/Black */
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --accent-color: var(--primary-color); /* The bright red/pink */
+  --surface-color: #343a40;
+  --contrast-color: #ffffff;
+}
+
+/* CTA Button Styling within the accent-background section */
+#cta .btn-light {
+    color: var(--primary-color);
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+#cta .btn-light:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+#cta .btn-outline-light {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+#cta .btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
