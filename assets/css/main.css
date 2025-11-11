@@ -8619,3 +8619,14 @@ section,
     color: var(--primary-color);
     transform: translateY(-2px);
 }
+/* Custom: Fix for 'Useful Links' list in footer being left-aligned on mobile */
+/* --- Footer Centering Fix for Mobile (max-width 767px) --- */
+@media (max-width: 767px) {
+  .footer .footer-links ul {
+    /* Ensures the list element only takes up the width necessary for its content */
+    width: fit-content; 
+    /* Centers the list element horizontally within its parent column */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

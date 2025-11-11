@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             try {
                 // IMPORTANT: Replace '/api/admin/login' with your actual server endpoint
-                const response = await fetch('https://miwalletmw.com:7000/login', { 
+                const response = await fetch('https://familyfirstmatchmaking.com/api/login', {
+
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
