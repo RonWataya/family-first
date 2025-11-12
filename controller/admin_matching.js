@@ -117,7 +117,7 @@ async function loadProfileForComparison(side, isFromSelectCandidate = false) {
     }
 
     try {
-        const response = await fetch(`${API_URL}/users/${inputId}`);
+        const response = await fetch(`${API_URL}/api/users/${inputId}`);
         const user = await response.json();
         
         // Store data globally.
@@ -173,7 +173,7 @@ async function suggestMatch() {
     }
     
     try {
-        const response = await fetch(`${API_URL}/matches`, {
+        const response = await fetch(`${API_URL}/api/matches`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userA: idA, userB: idB })
@@ -232,7 +232,7 @@ async function deleteMatch(matchId) {
     
     try {
         // Send the DELETE request to the backend API
-        const response = await fetch(`${API_URL}/matches/${matchId}`, {
+        const response = await fetch(`${API_URL}/api/matches/${matchId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
