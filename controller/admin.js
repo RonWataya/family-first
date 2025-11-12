@@ -1,6 +1,6 @@
 // admin.js (CORE FUNCTIONS)
 
-const API_URL = "http://127.0.0.1:7000"; 
+const API_URL = "http://127.0.0.1:7000/api"; 
 
 // Global stores (declared here, used in both files)
 let allUsers = []; 
