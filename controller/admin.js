@@ -39,7 +39,7 @@ function displayStatus(message, type = 'success') {
 
 async function fetchUsers() {
     try {
-        const response = await fetch(`${API_URL}/api/users`);
+        const response = await fetch("/api/users");
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         allUsers = await response.json();
@@ -57,7 +57,7 @@ async function fetchMatches() {
     tbody.innerHTML = '<tr><td colspan="5">Loading matches...</td></tr>';
     
     try {
-        const response = await fetch(`${API_URL}/matches`);
+        const response = await fetch("/api/matches");
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         const matches = await response.json();
@@ -311,7 +311,7 @@ async function loadUserDetail(userId) {
     showSection('user-management'); 
     
     try {
-        const response = await fetch(`${API_URL}/api/users/${userId}`);
+        const response = await fetch("/api/users/${userId}");
         const user = await response.json();
         
         const detailContent = document.getElementById('profile-detail-content');
