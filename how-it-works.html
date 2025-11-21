@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>How It Works - Family First Matchmaking</title>
+  <meta name="description" content="Discover our proven matchmaking process designed to help you find lasting love and meaningful connections.">
+  <meta name="keywords" content="matchmaking process, how it works, dating, relationships, South Africa">
+  <link href="assets/img/ffmicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Global Component Styles (Header, Buttons, Footer) --- */
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1a1a1a;
+        margin: 0;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+ 
+    
+     /* --- Header Styles (Desktop First) --- */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px; /* Space between logo and nav-wrapper */
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
+
+    /* NEW: Desktop Nav Wrapper Layout */
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1; /* Allows it to take up available space */
+      justify-content: space-between; /* Pushes <nav> to the left and .header-buttons to the right */
+      align-items: center;
+      margin-left: 70px;
+    }
+    
+    /* NEW: Mobile menu toggle button (hidden on desktop) */
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px; /* Cleaned up desktop spacing */
+    }
+
+    nav a {
+      margin: 0; /* Clear previous margins */
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 60px;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+.btn-primary {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+    .btn {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+
+    .btn-primary:hover {
+      background-color: #29b092;
+    }
+
+    .hero-right {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+    }
+    /* Header/Navigation Styles */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo-container img {
+        display: block;
+        width: 110px;
+        height: auto;
+    }
+
+    nav a {
+        margin: 0 15px;
+        color: #4a4a4a;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #a45c3d;
+    }
+    
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .header-buttons {
+        margin-left: 30px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #1a1a1a;
+        line-height: 1;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col a {
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-col strong {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+    
+    /* --- Page Specific Styles (How It Works) --- */
+    
+     .how-hero {
+      display: flex;
+      min-height: 550px;
+      align-items: center;
+      background-color: #e8dcc8;
+    }
+
+    .how-hero-left {
+      flex: 1;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .how-hero-left h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      color: #1a1a1a;
+    }
+
+    .how-hero-left p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin-bottom: 40px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .how-hero-right {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      min-height: 550px;
+    }
+
+    .process-section-hero {
+      padding: 80px 40px;
+      text-align: center;
+      background-color: #f5f1eb;
+    }
+
+    .process-section-hero h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .process-section-hero > p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 60px;
+    }
+    .timeline-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background-color: #d0c0b0;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 80px;
+      position: relative;
+      align-items: flex-start;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-number {
+        margin-left: auto;
+    }
+    
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .timeline-divider {
+      display: none; 
+    }
+
+    .timeline-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 72px;
+      font-weight: 400;
+      color: #1a1a1a;
+      width: 50%;
+      min-width: 150px;
+      text-align: right;
+      padding-right: 80px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-number {
+        text-align: left;
+        padding-right: 0;
+        padding-left: 80px;
+    }
+    
+    .timeline-number::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #a45c3d; 
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+        border: 4px solid #f5f1eb;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-number::after {
+        left: 0;
+        right: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .timeline-content {
+      width: 50%;
+      padding: 0 40px;
+      text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: right;
+    }
+
+    .timeline-content h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+    }
+
+    .timeline-content p {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .dark-cta {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .dark-cta h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .dark-cta p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Media Queries --- */
+    @media (max-width: 992px) {
+        header {
+            padding: 15px 20px;
+        }
+        nav a {
+            margin: 0 10px;
+        }
+        .header-buttons {
+            margin-left: 10px;
+            gap: 5px;
+        }
+        .how-hero-left h1 {
+            font-size: 40px;
+        }
+        .process-section-hero h2 {
+            font-size: 34px;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+      /* Header Mobile */
+      .nav-wrapper {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        padding-bottom: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .nav-wrapper.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      nav {
+        flex-direction: column;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 18px;
+      }
+      
+      .header-buttons {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 15px;
+        width: 80%;
+        max-width: 300px;
+      }
+      
+      .btn-login, .btn-signup {
+          width: 100%;
+          margin-right: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+      
+      /* How It Works Section Mobile */
+      .how-hero {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .how-hero-right {
+        min-height: 300px;
+        order: -1; 
+      }
+      
+      .how-hero-left {
+        padding: 40px 20px;
+      }
+
+      .how-hero-left h1 {
+        font-size: 32px;
+      }
+      
+      /* Timeline Mobile */
+      .timeline-wrapper::before {
+        left: 40px;
+      }
+
+      .timeline-item {
+        flex-direction: row !important; 
+        margin-bottom: 50px;
+      }
+      
+      .timeline-number {
+        width: 80px;
+        min-width: 80px;
+        text-align: left !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        font-size: 50px;
+      }
+      
+      .timeline-content {
+        width: auto;
+        padding: 0 10px 0 20px;
+        text-align: left !important;
+      }
+
+      .timeline-number::after {
+        right: auto !important;
+        left: 55px;
+        transform: translate(-50%, -50%);
+      }
+      
+      .timeline-content h3 {
+        font-size: 20px;
+      }
+      
+      /* Footer Mobile */
+      .footer-content {
+          flex-direction: column;
+      }
+      
+      .footer-col {
+          min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+   <header>
+    <a href="index.html" class="logo-container">
+      <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+    
+    <div class="nav-wrapper">
+      <nav>
+        <a href="how-it-works.html">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">Why Us</a>
+        <a href="index.html#stories">Real Stories</a>
+        <a href="events.html">Events</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+      <div class="header-buttons">
+        <button class="btn-login">Log In</button>
+        <button class="btn-signup">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="how-hero">
+      <div class="how-hero-left">
+        <h1>Our Proven Process for Lasting Connection</h1>
+        <p>Forget endless swiping, waiting, or wishing to find your person. At Family First, our process goes beyond superficial profile stats to help you find a real relationship.</p>
+        <button class="btn-primary">Apply Now</button>
+      </div>
+      <div class="how-hero-right" style="background-image: url('/assets/img/hero3.webp');"></div>
+    </section>
+
+    <section class="process-section-hero">
+      <h2>What To Expect</h2>
+      <p>A holistic approach to finding your perfect match, with dedicated support every step of the way.</p>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-item">
+          <div class="timeline-number">01</div>
+          <div class="timeline-content">
+            <h3>1-On-1 Matching</h3>
+            <p>As a client, you'll meet with a **personal matchmaker** who digs deeper than just superficial stats to find the perfect matches for you. We take time to understand your values, goals, and what you're truly looking for in a partner.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-number">02</div>
+          <div class="timeline-content">
+            <h3>Curated Matches</h3>
+            <p>We **hand-pick matches** from our network of relationship-ready singles. Every match is vetted, screened, and personally selected to ensure compatibility based on your preferences and values.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-number">03</div>
+          <div class="timeline-content">
+            <h3>Date Planning</h3>
+            <p>We **curate and plan the entire date experience** for you and your match. All you need to do is show up and enjoy getting to know each other. No awkward logistics, just meaningful connections.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-number">04</div>
+          <div class="timeline-content">
+            <h3>Continuous Refinement</h3>
+            <p>After each date, your matchmaker **gathers feedback to continually refine** your matches. We learn what works for you and adjust our approach to help you find your perfect person faster.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-number">05</div>
+          <div class="timeline-content">
+            <h3>Coaching & Community</h3>
+            <p>Gain access to **tools, private events, and coaching resources** to ensure this is your best relationship yet. You're never alone in your journey—our team supports you every step of the way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-cta">
+      <h2>Ready to Find Your Match?</h2>
+      <p>We only accept candidates we believe we can match. Stop swiping. Start connecting with intention.</p>
+      <button class="btn" style="margin-top: 20px;">Apply Now</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="social-links">
+          <a href="#">𝕏</a>
+          <a href="#">f</a>
+          <a href="#">📷</a>
+          <a href="#">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Family First Matchmaking <br>
+          55 Richards Drive, Halfway House, Midrand<br>
+          Gauteng, 1685<br>
+          South Africa<br><br>
+          <strong>Phone:</strong> +27 73 545 4949<br>
+          <strong>Email:</strong> Info@familyfirstmatchmaking.com
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #a45c3d;">Mi Wallet LTD</span></a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      menuToggle.addEventListener('click', function() {
+        // Toggle the active class for mobile menu
+        const isActive = navWrapper.classList.toggle('active');
+        menuToggle.textContent = isActive ? '✕' : '☰';
+      });
+
+      // Close menu when a link is clicked on mobile
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navWrapper.classList.remove('active');
+            menuToggle.textContent = '☰';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

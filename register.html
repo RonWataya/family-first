@@ -4,443 +4,340 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Family First Matchmaking - Register</title>
-
-   <!-- Fonts -->
+  <link href="assets/img/ffmicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/css/register.css" rel="stylesheet">
   <style>
-    /* Small safety styles when main.css missing */
-    .d-none { display: none !important; }
-    .step-indicator { gap: .5rem; }
-    .step-item { cursor: default; }
-    .rating-options, .image-selection-grid { display:flex; gap:.5rem; flex-wrap:wrap; }
-    .rating-option { padding:.5rem .6rem; border-radius:.5rem; border:1px solid #ddd; cursor:pointer; user-select:none; }
-    .rating-option.selected { border-color: var(--primary-color, #1B85BC); background: rgba(27,133,188,0.08); }
-    .image-item { border-radius:.6rem; overflow:hidden; border:2px solid transparent; cursor:pointer; }
-    .image-item.selected { border-color: var(--primary-color, #1B85BC); box-shadow: 0 0 0 4px rgba(27,133,188,0.12); transform: translateY(-3px); }
-    .step-icon { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ddd;color:#fff }
-    .step-item.active .step-icon { background: var(--primary-color, #1B85BC); transform: scale(1.05); }
-    .card[data-step] { display: none; }
-    .card[data-step].active { display: block; }
-    .message-backdrop { position: fixed; inset:0;background: rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:9999; }
-    .message-box { background: #fff; padding:1.5rem; border-radius: .75rem; max-width:420px; width:90%; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-    .image-selection-grid img { display:block; width:100%; height:auto; }
+    /* Only style for previous/next buttons */
+    .nav-buttons { font-size: 0.85rem; text-align: right; margin-top: 1rem; }
+    .nav-buttons button { background: none; border: none; color: #1B85BC; cursor: pointer; font-weight: 600; margin-left: 0.5rem; }
   </style>
 </head>
 <body>
-  <div id="loadingOverlay">
-    <div class="spinner"></div>
-    <p>Registering your profile, please wait...</p>
-</div>
-   <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-      
-            <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
-            
-          
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#featured-courses">How It Works</a></li>
-          <li><a href="index.html#testimonials">Real Stories</a></li>
-          <li><a href="index.html#cta">Why Us</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="blog.html">Blog</a></li>
-           <li><a href="register.html" class="active">Registration</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+<header>
+    <a href="index.html" class="logo-container">
+      <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+    
+    <div class="nav-wrapper">
+      <nav>
+        <a href="how-it-works.html">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">Why Us</a>
+        <a href="#stories">Real Stories</a>
+        <a href="events.html">Events</a>
+        <a href="blog.html">Blog</a>
       </nav>
-
-     
-
+      <div class="header-buttons">
+        <button class="btn-login">Log In</button>
+        <button class="btn-signup">Sign Up</button>
+      </div>
     </div>
   </header>
 
-  <main class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-
-        <!-- Step indicator: 10 steps -->
-        <div class="step-indicator mb-4">
-          <div class="step-item active" data-step="1"><div class="step-icon">1</div><div class="step-label">Personal</div></div>
-          <div class="step-item" data-step="2"><div class="step-icon">2</div><div class="step-label">Preferences</div></div>
-          <div class="step-item" data-step="3"><div class="step-icon">3</div><div class="step-label">Lifestyle</div></div>
-          <div class="step-item" data-step="4"><div class="step-icon">4</div><div class="step-label">Beliefs</div></div>
-          <div class="step-item" data-step="5"><div class="step-icon">5</div><div class="step-label">Personality 1</div></div>
-          <div class="step-item" data-step="6"><div class="step-icon">6</div><div class="step-label">Personality 2</div></div>
-          <div class="step-item" data-step="7"><div class="step-icon">7</div><div class="step-label">Traits</div></div>
-          <div class="step-item" data-step="8"><div class="step-icon">8</div><div class="step-label">Passions</div></div>
-          <div class="step-item" data-step="9"><div class="step-icon">9</div><div class="step-label">Family</div></div>
-          <div class="step-item" data-step="10"><div class="step-icon">10</div><div class="step-label">Background</div></div>
+  <main>
+    <div class="form-container">
+      <form id="multiStepForm">
+        <!-- Step 1: Gender -->
+        <div class="step-content active" data-step="1">
+          <div class="step-indicator">Step 1 of 10</div>
+          <div class="step-header">
+            <h1>What's your gender?</h1>
+            <p>This helps us match you with compatible partners in our community.</p>
+          </div>
+          <div class="form-group">
+            <div class="button-group">
+              <button type="button" class="btn-option" data-field="gender" data-value="Female">Female</button>
+              <button type="button" class="btn-option" data-field="gender" data-value="Male">Male</button>
+            </div>
+          </div>
         </div>
 
-        <!-- Container used to show/hide the form -->
-        <section id="registrationForm">
+        <!-- Step 2: Name, Email, Phone -->
+        <div class="step-content" data-step="2">
+          <div class="step-indicator">Step 2 of 10</div>
+          <div class="step-header">
+            <h1>Tell us about yourself</h1>
+            <p>We'll use this information to verify your account.</p>
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="full_name" required onchange="validateStep2()">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required onchange="validateStep2()">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" name="phone" required onchange="validateStep2()">
+          </div>
+        </div>
 
-          <!-- The multi-step form -->
-         <form id="multiStepForm" name="multiStepForm" method="POST" enctype="multipart/form-data">
-
-            <!-- STEP 1: Personal Info (Q1-7) -->
-            <div class="card p-4 active" data-step="1">
-              <h2 class="mb-3">Let's start.</h2>
-
-              <!-- 1 -->
-
-              <div class="mb-3">
-                <label class="form-label">1. Please confirm your gender:</label>
-                <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female" required><label class="form-check-label" for="genderFemale">Female</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male"><label class="form-check-label" for="genderMale">Male</label></div>
-              </div>
-              <div class="mb-3">
-  <label for="full_name" class="form-label">1.a. Full Name</label>
-  <input type="text" class="form-control" id="full_name" name="full_name" required>
-</div>
-
-<div class="mb-3">
-  <label for="email" class="form-label">1.b. Email Address</label>
-  <input type="email" class="form-control" id="email" name="email" required>
-</div>
-<div class="mb-3">
-  <label for="full_name" class="form-label">1.c. Phone Number</label>
-  <input type="text" class="form-control" id="phone" name="phone" required>
-</div>
-
-              <!-- 2 -->
-              <div class="mb-3">
-                <label class="form-label">2. Please confirm the gender of your desired partner:</label>
-                <div class="form-check"><input class="form-check-input" type="radio" name="partner_gender" id="partnerGenderFemale" value="Female" required><label class="form-check-label" for="partnerGenderFemale">Female</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="partner_gender" id="partnerGenderMale" value="Male"><label class="form-check-label" for="partnerGenderMale">Male</label></div>
-              </div>
-
-              <!-- 3 -->
-              <div class="mb-3">
-                <label class="form-label">3. What is your marital status?</label>
-                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalNeverMarried" value="I have never been married" required><label class="form-check-label" for="maritalNeverMarried">I have never been married</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalDivorced" value="I am divorced"><label class="form-check-label" for="maritalDivorced">I am divorced</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalSeparated" value="I am separated"><label class="form-check-label" for="maritalSeparated">I am separated</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="marital_status" id="maritalWidower" value="I am a widower"><label class="form-check-label" for="maritalWidower">I am a widower</label></div>
-              </div>
-
-              <!-- 4 -->
-              <div class="mb-3">
-                <label class="form-label">4. What is your level of education?</label>
-                <select class="form-select" name="education_level" required>
-                  <option value="">Select...</option>
-                  <option>No Education</option>
-                  <option>Primary Education</option>
-                  <option>High School Diploma</option>
-                  <option>Diploma</option>
-                  <option>Associate's Degree</option>
-                  <option>Bachelor's Degree</option>
-                  <option>Master's Degree</option>
-                  <option>Doctorate</option>
-                </select>
-              </div>
-
-              <!-- 5 -->
-              <div class="mb-3">
-                <label class="form-label">5. How important is intelligence and education level in a partner?</label>
-                <div class="rating-options" data-target="intelligence_importance">
-                  <div class="rating-option" data-value="Not important">Not important</div>
-                  <div class="rating-option" data-value="Less important">Less important</div>
-                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
-                  <div class="rating-option" data-value="Important">Important</div>
-                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
-                  <div class="rating-option" data-value="Very important">Very important</div>
-                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
-                </div>
-                <input type="hidden" name="intelligence_importance" required>
-              </div>
-
-              <!-- 6 -->
-              <div class="mb-3">
-                <label class="form-label">6. How tall are you?</label>
-                <div class="input-group">
-                  <input type="number" class="form-control" name="height" placeholder="Enter height in Cm" min="0" required>
-                  <span class="input-group-text">Cm</span>
-                </div>
-              </div>
-
-              <!-- 7 -->
-              <div class="mb-3">
-                <label class="form-label">7. How important is it for you to be taller than your partner?</label>
-                <div class="rating-options" data-target="height_importance">
-                  <div class="rating-option" data-value="Not important">Not important</div>
-                  <div class="rating-option" data-value="Less important">Less important</div>
-                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
-                  <div class="rating-option" data-value="Important">Important</div>
-                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
-                  <div class="rating-option" data-value="Very important">Very important</div>
-                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
-                </div>
-                <input type="hidden" name="height_importance" required>
-              </div>
-<div class="mb-3">
-  <label for="profile_image">Upload Profile Picture</label>
-  <input type="file" id="profile_image" name="profile_image" accept="image/*">
-</div>
-
-              <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-              </div>
+        <!-- Step 3: Partner Gender -->
+        <div class="step-content" data-step="3">
+          <div class="step-indicator">Step 3 of 10</div>
+          <div class="step-header">
+            <h1>What gender partner are you seeking?</h1>
+            <p>This helps us find your ideal matches.</p>
+          </div>
+          <div class="form-group">
+            <div class="button-group">
+              <button type="button" class="btn-option" data-field="partner_gender" data-value="Female">Female</button>
+              <button type="button" class="btn-option" data-field="partner_gender" data-value="Male">Male</button>
             </div>
+          </div>
+        </div>
 
-            <!-- STEP 2: Preferences (Q8-17) -->
-            <div class="card p-4" data-step="2">
-              <h2 class="mb-3">You've made it this far! Let's keep going.</h2>
-
-              <!-- 8 - image associate -->
-              <div class="mb-3">
-                <label class="form-label">8. Which picture do you most associate with?</label>
-                <div class="image-selection-grid" data-target="associate_image">
-                  <div class="image-item" data-value="image1" style="width:120px"><img src="assets/formimg/8.1.jpg" alt="Image 1"></div>
-                  <div class="image-item" data-value="image2" style="width:120px"><img src="assets/formimg/8.2.jpg" alt="Image 2"></div>
-                  <div class="image-item" data-value="image3" style="width:120px"><img src="assets/formimg/8.3.jpg" alt="Image 3"></div>
-                  <div class="image-item" data-value="image4" style="width:120px"><img src="assets/formimg/8.4.jpg" alt="Image 4"></div>
-                </div>
-                <input type="hidden" name="associate_image" required>
-              </div>
-
-              <!-- 9 - appealing image -->
-              <div class="mb-3">
-                <label class="form-label">9. Which picture is more appealing to you?</label>
-                <div class="image-selection-grid" data-target="appealing_image">
-                  <div class="image-item" data-value="image5" style="width:120px"><img src="assets/formimg/9.1.jpg" alt="Image 5"></div>
-                  <div class="image-item" data-value="image6" style="width:120px"><img src="assets/formimg/9.2.jpg" alt="Image 6"></div>
-                  <div class="image-item" data-value="image7" style="width:120px"><img src="assets/formimg/9.3.jpg" alt="Image 7"></div>
-                  <div class="image-item" data-value="image8" style="width:120px"><img src="assets/formimg/9.4.jpg" alt="Image 8"></div>
-                </div>
-                <input type="hidden" name="appealing_image" required>
-              </div>
-
-              <!-- 10 -->
-              <div class="mb-3">
-                <label class="form-label">10. Which ethnic group do you belong to?</label>
-                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="White" required><label class="form-check-label">White</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Indian"><label class="form-check-label">Indian</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Asian"><label class="form-check-label">Asian</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Black or African"><label class="form-check-label">Black or African</label></div>
-                <div class="form-check"><input class="form-check-input" type="radio" name="ethnic_group" value="Other"><label class="form-check-label">Other</label></div>
-              </div>
-
-              <!-- 11 -->
-              <div class="mb-3">
-                <label class="form-label">11. Do you have ethnic preferences? (Please choose at least 1)</label>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="I don't mind" data-min="1"><label class="form-check-label">I don't mind</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="White"><label class="form-check-label">White</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Indian"><label class="form-check-label">Indian</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Asian"><label class="form-check-label">Asian</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Black or African"><label class="form-check-label">Black or African</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="ethnic_preferences" value="Other"><label class="form-check-label">Other</label></div>
-              </div>
-
-              <!-- 12 -->
-              <div class="mb-3">
-                <label class="form-label">12. How important is the ethnicity of your potential partner?</label>
-                <div class="rating-options" data-target="ethnicity_importance">
-                  <div class="rating-option" data-value="Not important">Not important</div>
-                  <div class="rating-option" data-value="Less important">Less important</div>
-                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
-                  <div class="rating-option" data-value="Important">Important</div>
-                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
-                  <div class="rating-option" data-value="Very important">Very important</div>
-                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
-                </div>
-                <input type="hidden" name="ethnicity_importance" required>
-              </div>
-
-              <!-- 13 -->
-              <div class="mb-3">
-                <label class="form-label">13. How satisfied are you with your appearance?</label>
-                <div class="rating-options" data-target="appearance_satisfaction">
-                  <div class="rating-option" data-value="Not at all">Not at all</div>
-                  <div class="rating-option" data-value="Not really">Not really</div>
-                  <div class="rating-option" data-value="Less">Less</div>
-                  <div class="rating-option" data-value="Slightly">Slightly</div>
-                  <div class="rating-option" data-value="Somewhat">Somewhat</div>
-                  <div class="rating-option" data-value="Mostly">Mostly</div>
-                  <div class="rating-option" data-value="Very much so">Very much so</div>
-                </div>
-                <input type="hidden" name="appearance_satisfaction" required>
-              </div>
-
-              <!-- 14 -->
-              <div class="mb-3">
-                <label class="form-label">14. How important is it to you that your partner has an attractive appearance?</label>
-                <div class="rating-options" data-target="partner_appearance_importance">
-                  <div class="rating-option" data-value="Not important">Not important</div>
-                  <div class="rating-option" data-value="Less important">Less important</div>
-                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
-                  <div class="rating-option" data-value="Important">Important</div>
-                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
-                  <div class="rating-option" data-value="Very important">Very important</div>
-                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
-                </div>
-                <input type="hidden" name="partner_appearance_importance" required>
-              </div>
-
-              <!-- 15 -->
-              <div class="mb-3">
-                <label class="form-label">15. Which of the following best describes your beliefs?</label>
-                <select class="form-select" name="beliefs" required>
-                  <option value="">Select...</option>
-                  <option>Christian</option>
-                  <option>Catholic</option>
-                  <option>Muslim</option>
-                  <option>Jewish</option>
-                  <option>Buddhist</option>
-                  <option>Hindu</option>
-                  <option>Other</option>
-                  <option>Agnostic</option>
-                  <option>Atheist</option>
-                </select>
-              </div>
-
-              <!-- 16 -->
-              <div class="mb-3">
-                <label class="form-label">16. Which religious beliefs would you be open to? (Please choose at least 1)</label>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="I don't mind" data-min="1"><label class="form-check-label">I don't mind</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Christian"><label class="form-check-label">Christian</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Catholic"><label class="form-check-label">Catholic</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Muslim"><label class="form-check-label">Muslim</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Jewish"><label class="form-check-label">Jewish</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Buddhist"><label class="form-check-label">Buddhist</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Hindu"><label class="form-check-label">Hindu</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Other"><label class="form-check-label">Other</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Agnostic"><label class="form-check-label">Agnostic</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" name="religious_preferences" value="Atheist"><label class="form-check-label">Atheist</label></div>
-              </div>
-
-              <!-- 17 -->
-              <div class="mb-3">
-                <label class="form-label">17. How important is your partner’s religion or spirituality to you?</label>
-                <div class="rating-options" data-target="religion_importance">
-                  <div class="rating-option" data-value="Not important">Not important</div>
-                  <div class="rating-option" data-value="Less important">Less important</div>
-                  <div class="rating-option" data-value="Slightly important">Slightly important</div>
-                  <div class="rating-option" data-value="Important">Important</div>
-                  <div class="rating-option" data-value="Considerably important">Considerably important</div>
-                  <div class="rating-option" data-value="Very important">Very important</div>
-                  <div class="rating-option" data-value="Extremely important">Extremely important</div>
-                </div>
-                <input type="hidden" name="religion_importance" required>
-              </div>
-
-              <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-              </div>
+        <!-- Step 4: Marital Status -->
+        <div class="step-content" data-step="4">
+          <div class="step-indicator">Step 4 of 10</div>
+          <div class="step-header">
+            <h1>What's your marital status?</h1>
+          </div>
+          <div class="form-group">
+            <div class="button-group">
+              <button type="button" class="btn-option" data-field="marital_status" data-value="I have never been married">I have never been married</button>
+              <button type="button" class="btn-option" data-field="marital_status" data-value="I am divorced">I am divorced</button>
+              <button type="button" class="btn-option" data-field="marital_status" data-value="I am separated">I am separated</button>
+              <button type="button" class="btn-option" data-field="marital_status" data-value="I am a widower">I am a widower</button>
             </div>
+          </div>
+        </div>
 
-        
+        <!-- Step 5: Education -->
+        <div class="step-content" data-step="5">
+          <div class="step-indicator">Step 5 of 10</div>
+          <div class="step-header">
+            <h1>What's your education level?</h1>
+          </div>
+          <div class="form-group">
+            <select name="education_level" required onchange="validateStep5()">
+              <option value="">Select...</option>
+              <option value="No Education">No Education</option>
+              <option value="Primary Education">Primary Education</option>
+              <option value="High School Diploma">High School Diploma</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Associate's Degree">Associate's Degree</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Master's Degree">Master's Degree</option>
+              <option value="Doctorate">Doctorate</option>
+            </select>
+          </div>
+        </div>
 
-              <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-              </div>
+        <!-- Step 6: Height -->
+        <div class="step-content" data-step="6">
+          <div class="step-indicator">Step 6 of 10</div>
+          <div class="step-header">
+            <h1>How tall are you?</h1>
+          </div>
+          <div class="form-group">
+            <label>Height (in cm)</label>
+            <input type="text" name="height" placeholder="e.g., 175" required onchange="validateStep6()">
+          </div>
+        </div>
+
+        <!-- Step 7: Ethnic Group -->
+        <div class="step-content" data-step="7">
+          <div class="step-indicator">Step 7 of 10</div>
+          <div class="step-header">
+            <h1>Which ethnic group do you belong to?</h1>
+          </div>
+          <div class="form-group">
+            <div class="button-group">
+              <button type="button" class="btn-option" data-field="ethnic_group" data-value="White">White</button>
+              <button type="button" class="btn-option" data-field="ethnic_group" data-value="Indian">Indian</button>
+              <button type="button" class="btn-option" data-field="ethnic_group" data-value="Asian">Asian</button>
+              <button type="button" class="btn-option" data-field="ethnic_group" data-value="Black or African">Black or African</button>
+              <button type="button" class="btn-option" data-field="ethnic_group" data-value="Other">Other</button>
             </div>
+          </div>
+        </div>
 
+        <!-- Step 8: Religion -->
+        <div class="step-content" data-step="8">
+          <div class="step-indicator">Step 8 of 10</div>
+          <div class="step-header">
+            <h1>What are your beliefs?</h1>
+          </div>
+          <div class="form-group">
+            <select name="beliefs" required onchange="validateStep8()">
+              <option value="">Select...</option>
+              <option value="Christian">Christian</option>
+              <option value="Catholic">Catholic</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Jewish">Jewish</option>
+              <option value="Buddhist">Buddhist</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Other">Other</option>
+              <option value="Agnostic">Agnostic</option>
+              <option value="Atheist">Atheist</option>
+            </select>
+          </div>
+        </div>
 
+        <!-- Step 9: Profile Picture -->
+        <div class="step-content" data-step="9">
+          <div class="step-indicator">Step 9 of 10</div>
+          <div class="step-header">
+            <h1>Upload your profile picture</h1>
+            <p>A great photo helps potential matches get to know you better.</p>
+          </div>
+          <div class="form-group">
+            <input type="file" name="profile_image" accept="image/*" required onchange="validateStep9()">
+          </div>
+        </div>
 
-              <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                <button type="submit" class="btn btn-success">Submit Application</button>
-              </div>
-            </div>
+        <!-- Step 10: Review -->
+        <div class="step-content" data-step="10">
+          <div class="step-indicator">Step 10 of 10</div>
+          <div class="step-header">
+            <h1>Ready to find your match?</h1>
+            <p>Review your information and submit your profile.</p>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 2rem;">Submit Application</button>
+        </div>
 
-          </form>
-        </section>
+        <!-- Navigation Buttons -->
+        <div class="button-controls" id="navButtons" style="display: none;">
+          <button type="button" class="btn-secondary" onclick="prevStep()">Back</button>
+          <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+        </div>
+         <!-- Navigation Buttons -->
+      <div class="nav-buttons">
+        <button type="button" onclick="prevStep()">← Back</button>
+        <button type="button" onclick="nextStep()">Next →</button>
+      </div>
+      </form>
+
+      <!-- Success Message -->
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <h2>Application Submitted!</h2>
+        <p>Thank you for registering with Family First Matchmaking. Our team will review your profile and contact you soon.</p>
       </div>
     </div>
   </main>
 
-  <!-- Message modal/backdrop -->
-  <div id="messageBoxBackdrop" class="message-backdrop">
-    <div class="message-box" id="messageBox">
-      <h5 id="messageTitle">Message</h5>
-      <p id="messageText">Text</p>
-      <div class="text-end">
-        <button id="closeMessageBtn" class="btn btn-primary">Close</button>
-      </div>
-    </div>
-  </div>
-<footer id="footer" class="footer accent-background">
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="terms.html">Terms of service</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-            <li><a href="terms.html">Trust & Safety</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="faq.html">Frequent Asked Questions</a></li>
-          </ul>
-        </div>
-        
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>Family First Matchmaking Pty</p>
-          <p>55 Richards Drive, Halfway House, Midrand</p>
-          <p>Gauteng, 1685</p>
-          <p>South Africa</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+27 73 545 4949</span></p>
-          <p><strong>Email:</strong> <span>amon@rivaindustries.com</span></p>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+       
+        <div class="social-links">
+          <a href="#">𝕏</a>
+          <a href="#">f</a>
+          <a href="#">📷</a>
+          <a href="#">in</a>
         </div>
       </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">familyfirstmatchmaking.com</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Family First Matchmaking <br>
+          55 Richards Drive, Halfway House, Midrand<br>
+          Gauteng, 1685<br>
+          South Africa<br><br>
+          <strong>Phone:</strong> +27 73 545 4949<br>
+          <strong>Email:</strong> Info@familyfirstmatchmaking.com
+        </p>
       </div>
     </div>
-
+    <div class="footer-bottom">
+      <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
+      <p>Designed by <a href="https//miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
+    </div>
   </footer>
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
+<script>
+let currentStep = 1;
+const totalSteps = 10;
+const formData = {};
 
+function initializeFormData() {
+  const saved = localStorage.getItem('registrationFormData');
+  if(saved) Object.assign(formData, JSON.parse(saved));
+  restoreFormState();
+}
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+function saveFormData() { localStorage.setItem('registrationFormData', JSON.stringify(formData)); }
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <!-- Scripts -->
-   <!-- Main JS File -->
-  <script src="controller/app.js"></script>
-  </body>
+function restoreFormState() {
+  document.querySelectorAll('.btn-option').forEach(btn=>{
+    if(formData[btn.dataset.field] === btn.dataset.value) btn.classList.add('selected');
+  });
+  document.querySelectorAll('input[type="text"], input[type="email"]').forEach(input=>{
+    if(formData[input.name]) input.value=formData[input.name];
+  });
+  document.querySelectorAll('select').forEach(select=>{
+    if(formData[select.name]) select.value=formData[select.name];
+  });
+}
 
+function nextStep() {
+  if(currentStep<totalSteps){
+    document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+    currentStep++;
+    document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+function prevStep() {
+  if(currentStep>1){
+    document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+    currentStep--;
+    document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+    restoreFormState();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+// validations
+function validateStep2(){ const f=document.querySelector('input[name="full_name"]').value, e=document.querySelector('input[name="email"]').value, p=document.querySelector('input[name="phone"]').value; if(f&&e&&p){formData['full_name']=f; formData['email']=e; formData['phone']=p; saveFormData(); nextStep();} }
+function validateStep5(){ const v=document.querySelector('select[name="education_level"]').value; if(v){formData['education_level']=v; saveFormData(); nextStep();} }
+function validateStep6(){ const v=document.querySelector('input[name="height"]').value; if(v){formData['height']=v; saveFormData(); nextStep();} }
+function validateStep8(){ const v=document.querySelector('select[name="beliefs"]').value; if(v){formData['beliefs']=v; saveFormData(); nextStep();} }
+function validateStep9(){ const v=document.querySelector('input[name="profile_image"]').value; if(v){formData['profile_image']=v; saveFormData(); nextStep();} }
+
+// option buttons
+document.querySelectorAll('.btn-option').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.preventDefault();
+    btn.closest('.button-group').querySelectorAll('.btn-option').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    formData[btn.dataset.field]=btn.dataset.value;
+    saveFormData();
+    setTimeout(nextStep,200);
+  });
+});
+
+document.getElementById('multiStepForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  document.getElementById('successMessage').classList.add('show');
+  localStorage.removeItem('registrationFormData');
+});
+
+document.addEventListener('DOMContentLoaded', initializeFormData);
+</script>
+
+</body>
 </html>
