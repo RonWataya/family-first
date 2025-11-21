@@ -46,8 +46,36 @@
   <main>
     <div class="form-container">
       <form id="multiStepForm">
+        <!-- Step 0: Pricing Plan -->
+<div class="step-content active" data-step="0">
+  <div class="step-indicator">Step 0 of 10</div>
+
+  <div class="step-header">
+    <h1>Choose Your Plan</h1>
+    <p>Select the plan that fits your matchmaking experience.</p>
+  </div>
+
+  <div class="form-group">
+    <div class="button-group">
+
+      <button type="button" class="btn-option" 
+        data-field="pricing_plan" 
+        data-value="Member (R2,200)">
+        Member — R2,200
+      </button>
+
+      <button type="button" class="btn-option" 
+        data-field="pricing_plan" 
+        data-value="VIP (R2,990)">
+        VIP — R2,990
+      </button>
+
+    </div>
+  </div>
+</div>
+
         <!-- Step 1: Gender -->
-        <div class="step-content active" data-step="1">
+       <div class="step-content" data-step="1">
           <div class="step-indicator">Step 1 of 10</div>
           <div class="step-header">
             <h1>What's your gender?</h1>
@@ -267,7 +295,7 @@
   </footer>
 
 <script>
-let currentStep = 1;
+let currentStep = 0;
 const totalSteps = 10;
 const formData = {};
 
@@ -301,7 +329,7 @@ function nextStep() {
 }
 
 function prevStep() {
-  if(currentStep>1){
+  if(currentStep>0){
     document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
     currentStep--;
     document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
