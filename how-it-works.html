@@ -437,8 +437,162 @@
       margin-left: auto;
       margin-right: auto;
     }
+    
+    /* --- Choose Your Experience Section Styles --- */
+    .experience-section {
+        padding: 80px 40px;
+        text-align: center;
+        background-color: #ffffff;
+    }
+    
+    .experience-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+    
+    .experience-section > p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+    
+    .pricing-table-container {
+        max-width: 900px;
+        margin: 0 auto;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed; /* Ensures columns are equal width */
+    }
+
+    .pricing-table th, .pricing-table td {
+        padding: 18px 10px;
+        text-align: center;
+        border-right: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .pricing-table th {
+        background-color: #f9f9f9;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 14px;
+        color: #1a1a1a;
+    }
+
+    .pricing-table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    .pricing-table td:last-child {
+        border-right: none;
+    }
+    
+    /* Column Headers */
+    .pricing-table th:first-child {
+        background-color: #fff;
+        text-align: left;
+        padding-left: 30px;
+        font-weight: 600;
+        min-width: 250px;
+        color: #4a4a4a;
+    }
+
+    .pricing-table .col-standard th, .pricing-table .col-standard td {
+        color: #666;
+    }
+    
+    .pricing-table .col-vip th, .pricing-table .col-vip td {
+        color: #1a1a1a;
+        background-color: #fcfcfc;
+    }
+    
+    .pricing-table .col-vvip th, .pricing-table .col-vvip td {
+        background-color: #e8dcc8; /* Accent color for VVIP */
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+    
+    /* Feature Checkmark/Cross */
+    .feature-icon {
+        font-size: 20px;
+    }
+    .check {
+        color: #30c8a6; /* Green check */
+        font-weight: 700;
+    }
+    .cross {
+        color: #a45c3d; /* Reddish cross */
+        font-weight: 700;
+    }
+
+    /* Price Row Styling */
+    .price-row th {
+        border-bottom: 2px solid #e0e0e0 !important;
+    }
+    
+    .price-row td {
+        font-family: 'DM Serif Display', serif;
+        font-size: 28px;
+        font-weight: 400;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    /* CTA Row */
+    .cta-row td {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    .cta-row .btn-table-primary {
+      background-color: #a45c3d; 
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+      display: inline-block;
+    }
+    
+    .cta-row .btn-table-primary:hover {
+        background-color: #8c4c34;
+    }
+
 
     /* --- Media Queries --- */
+    @media (max-width: 1200px) {
+        .pricing-table-container {
+            overflow-x: auto;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+        }
+        
+        .pricing-table {
+            min-width: 900px; /* Ensure table stretches horizontally */
+        }
+        
+        .pricing-table th:first-child {
+            padding-left: 20px;
+        }
+    }
+
+
     @media (max-width: 992px) {
         header {
             padding: 15px 20px;
@@ -453,7 +607,7 @@
         .how-hero-left h1 {
             font-size: 40px;
         }
-        .process-section-hero h2 {
+        .process-section-hero h2, .experience-section h2 {
             font-size: 34px;
         }
     }
@@ -568,6 +722,14 @@
         font-size: 20px;
       }
       
+      /* Pricing Table Mobile */
+      .experience-section {
+          padding: 40px 0;
+      }
+      .experience-section > p {
+          padding: 0 20px;
+      }
+      
       /* Footer Mobile */
       .footer-content {
           flex-direction: column;
@@ -593,7 +755,7 @@
     
     <div class="nav-wrapper">
       <nav>
-        <a href="how-it-works.html">How it works</a>
+        <a href="how-it-works.html" class="active">How it works</a>
         <a href="faq.html">FAQ</a>
         <a href="about.html">Why Us</a>
         <a href="#stories">Real Stories</a>
@@ -616,7 +778,7 @@
         <p>Forget endless swiping, waiting, or wishing to find your person. At Family First, our process goes beyond superficial profile stats to help you find a real relationship.</p>
         <button class="btn-primary">Apply Now</button>
       </div>
-      <div class="how-hero-right" style="background-image: url('/assets/img/hero3.webp');"></div>
+      <div class="how-hero-right" style="background-image: url('assets/img/hero3.webp');"></div>
     </section>
 
     <section class="process-section-hero">
@@ -665,9 +827,109 @@
         </div>
       </div>
     </section>
+    
+    <!-- NEW SECTION: Choose Your Experience -->
+    <section class="experience-section">
+      <h2>Choose Your Experience</h2>
+      <p>At Family First, we believe relationships should be built on your terms. That’s why we offer a range of customizable packages designed to help you find your best match with confidence and ease. Choose the experience that suits you best:</p>
+
+      <div class="pricing-table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Family First Services</th>
+              <th class="col-standard">Standard Member</th>
+              <th class="col-vip">VIP Client</th>
+              <th class="col-vvip">VVIP Client</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Duration</th>
+              <td>Free membership</td>
+              <td>3 Months</td>
+              <td>6 Months</td>
+            </tr>
+            <tr>
+              <th>Background & Social Checks</th>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Dedicated Matchmaker</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Guaranteed Introductions</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td>Minimum of 4</td>
+              <td>Minimum of 6</td>
+            </tr>
+            <tr>
+              <th>Access Expert Advice / Tips</th>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Multiple Search Locations</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Criminal Record Screenings</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Custom-Planned Dates</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Relationship Coach Access</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <tr>
+              <th>Expanded Search Criteria</th>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon cross">✕</span></td>
+              <td><span class="feature-icon check">✓</span></td>
+            </tr>
+            <!-- Price Row -->
+            <tr class="price-row">
+              <th>Investment</th>
+              <td>R0</td>
+              <td>R3,999.00</td>
+              <td>R6,499.00</td>
+            </tr>
+            
+            <!-- CTA Row -->
+            <tr class="cta-row">
+              <td></td>
+              <td><a href="register.html?package=standard" class="btn-table-primary" style="background-color: #30c8a6;">Get Started</a></td>
+              <td><a href="register.html?package=vip" class="btn-table-primary">Get Started</a></td>
+              <td><a href="register.html?package=vvip" class="btn-table-primary">Get Started</a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      
+      <p style="margin-top: 40px; font-style: italic;">Whether you’re ready for a fully curated experience as a VVIP Client, seeking structured support as a VIP Client, or simply exploring connections as a Standard Member, Family First ensures you’re supported every step of the way. Choose the package that best fits your goals and preferences.</p>
+    </section>
+    <!-- END NEW SECTION -->
 
     <section class="dark-cta">
-      <h2>Ready to Find Your Match?</h2>
+      <h2>Your Best Relationship Starts Here</h2>
       <p>We only accept candidates we believe we can match. Stop swiping. Start connecting with intention.</p>
       <button class="btn" style="margin-top: 20px;">Apply Now</button>
     </section>
@@ -689,7 +951,7 @@
           <li><a href="terms.html">Terms of service</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
           <li><a href="trust.html">Trust & Safety</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Why Us</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
