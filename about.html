@@ -4,209 +4,620 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Family First Matchmaking - About</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
+  <title>Why Us - Family First Matchmaking</title>
+  <meta name="description" content="Family First is a highly filtered, secure, and private matchmaking service built on integrity and proven results.">
+  <meta name="keywords" content="why choose us, private matchmaking, dating service integrity, authenticity">
   <link href="assets/img/ffmicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Global Component Styles (Header, Buttons, Footer) --- */
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1a1a1a;
+        margin: 0;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ 
+    
+     /* --- Header Styles (Desktop First) --- */
+  /* --- Header Styles (Desktop First) --- */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px; /* Space between logo and nav-wrapper */
+    }
 
-  <link href="assets/css/main.css" rel="stylesheet">
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
 
-  </head>
-<body class="about-page">
+    /* NEW: Desktop Nav Wrapper Layout */
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1; /* Allows it to take up available space */
+      justify-content: space-between; /* Pushes <nav> to the left and .header-buttons to the right */
+      align-items: center;
+      margin-left: 70px;
+    }
+    
+    /* NEW: Mobile menu toggle button (hidden on desktop) */
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
+    }
 
-   <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    nav {
+      display: flex;
+      gap: 35px; /* Cleaned up desktop spacing */
+    }
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+    nav a {
+      margin: 0; /* Clear previous margins */
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+      text-decoration: none;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 60px;
+      text-decoration: none;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+
+    .btn-primary {
+          background-color: #a45c3d; /* Adjusted primary color for main CTA */
+          color: #ffffff;
+          border: none;
+          padding: 12px 35px;
+          border-radius: 50px;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          width: fit-content;
+    }
+    .btn {
+      background-color: #a45c3d; /* Adjusted primary color for main CTA */
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+
+    .btn-primary:hover, .btn:hover {
+      background-color: #8c4c34;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col a {
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+        color: #30c8a6; /* Theme accent color */
+    }
+
+    .footer-col strong {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #30c8a6; /* Theme accent color */
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+    
+    /* --- Page Specific Styles (Why Us) --- */
+    
+    .hero-about {
+        padding: 80px 40px;
+        text-align: center;
+        background-color: #e8dcc8; /* Light background from template */
+    }
+    
+    .hero-about h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 56px;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+    }
+    
+    .hero-about p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #4a4a4a;
+        max-width: 800px;
+        margin: 0 auto 40px;
+    }
+    
+    .content-block {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 80px auto;
+        gap: 60px;
+        padding: 0 40px;
+    }
+
+    .content-block:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .content-text {
+        flex: 1;
+    }
+
+    .content-text h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 42px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+    }
+    
+    .content-text h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+    }
+
+    .content-text p, .content-text ul {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #4a4a4a;
+        margin-bottom: 20px;
+    }
+    
+    .content-text ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .content-text li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .content-text li::before {
+        content: '✓'; 
+        color: #30c8a6; /* Accent color for list marker */
+        font-weight: 700;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .content-image {
+        flex: 1;
+        min-height: 400px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .cta-final {
+      background-color: #f5f1eb; /* Light contrast section */
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .cta-final p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* --- Media Queries --- */
+    @media (max-width: 992px) {
+        header {
+            padding: 15px 20px;
+        }
+        nav a {
+            margin: 0 10px;
+        }
+        .header-buttons {
+            margin-left: 10px;
+            gap: 5px;
+        }
+        .hero-about h1 {
+            font-size: 40px;
+        }
+        .content-block {
+            flex-direction: column;
+            gap: 30px;
+        }
+        .content-block:nth-child(even) {
+            flex-direction: column; /* Ensure reversal is removed on mobile */
+        }
+        .content-image {
+            order: -1; /* Move image above text on mobile for better flow */
+            min-height: 250px;
+            width: 100%;
+        }
+        .content-text h2 {
+            font-size: 34px;
+        }
+    }
+
+
+    @media (max-width: 768px) {
+      /* Header Mobile */
+      .nav-wrapper {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        padding-bottom: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
       
-            <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="50" height="50" class="d-inline-block align-middle me-2">
-            
-          
-      </a>
+      .nav-wrapper.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#featured-courses">How It Works</a></li>
-          <li><a href="index.html#testimonials">Real Stories</a></li>
-          <li><a href="index.html#cta">Why Us</a></li>
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      nav {
+        flex-direction: column;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 18px;
+      }
+      
+      .header-buttons {
+        flex-direction: column;
+        margin-left: 0;
+        gap: 15px;
+        width: 80%;
+        max-width: 300px;
+      }
+      
+      .btn-login, .btn-signup {
+          width: 100%;
+          margin-right: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+      
+      /* Why Us Mobile */
+      .hero-about {
+          padding: 40px 20px;
+      }
+      .content-block {
+          margin: 50px auto;
+          padding: 0 20px;
+      }
+      .content-text h2, .cta-final h2 {
+          font-size: 30px;
+      }
+      
+      /* Footer Mobile */
+      .footer-content {
+          flex-direction: column;
+      }
+      
+      .footer-col {
+          min-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+ <header>
+    <a href="index.html" class="logo-container">
+      <!-- Placeholder logo, replace with actual image asset -->
+      <img src="https://placehold.co/110x50/1a1a1a/ffffff?text=LOGO" alt="Family First Matchmaking Logo" width="110" height="50">
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+    
+    <div class="nav-wrapper">
+      <nav>
+        <a href="how-it-works.html">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="why-us.html" class="active">Why Us</a>
+        <a href="#stories">Real Stories</a>
+        <a href="#events">Events</a>
+        <a href="#blog">Blog</a>
       </nav>
+      <div class="header-buttons">
+        <a href="#" class="btn-login">Log In</a>
+        <a href="register.html" class="btn-signup">Sign Up</a>
 
-      <a class="btn-getstarted" href="register.html">Register</a>
-
+      </div>
     </div>
   </header>
 
 
-  <main class="main">
+  <main>
+    <!-- HERO/ABOUT US SECTION -->
+    <section class="hero-about">
+        <h1>Finding Love Beyond the Algorithm</h1>
+        <p>Online dating has become a frustrating maze of fake profiles, scammers, and endless swiping. Singles are left disheartened, wasting time on shallow encounters that lead nowhere. Family First changes the game.</p>
+        <button class="btn-primary">Start Your Journey</button>
+    </section>
 
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">About</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">About</li>
-          </ol>
-        </nav>
+    <!-- CONTENT BLOCK 1: Matchmakers -->
+    <section class="content-block">
+        <div class="content-text">
+            <h2>The Human Touch in Matchmaking</h2>
+            <p>We replace algorithms with **real matchmakers**—your personal dating assistants—who understand your needs and handpick matches from one of the largest, most selective networks in the country. No more swiping, no more guessing.</p>
+            <p>We focus on genuine connections, carefully curated for you. Your time is precious. Let us do the legwork so you can focus on what truly matters: finding love that lasts.</p>
+        </div>
+        <!-- Placeholder Image 1: Matchmaker / Consultation -->
+        <div class="content-image" style="background-image: url('assets/img/dating1.jpeg');"></div>
+    </section>
+
+    <!-- CONTENT BLOCK 2: WHY US - CORE VALUES -->
+    <section class="content-block">
+        <!-- Placeholder Image 2: Safety / Confidentiality -->
+        <div class="content-image" style="background-image: url('assets/img/hero1.jpg');"></div>
+        <div class="content-text">
+            <h2>What Sets Family First Apart?</h2>
+            <p>Family First isn’t another dating app—it’s a highly filtered, secure, and private matchmaking service built on integrity and results. We deliver what dating apps can’t: real love, real results, real relationships.</p>
+            <ul>
+                <li>Authenticity & Safety: Every client is screened, every match vetted face-to-face.</li>
+                <li>Personalized Matchmaking: One-on-one attention ensures introductions that fit your values and vision.</li>
+                <li>Proven Success: We focus on quality, not quantity—helping singles build lasting relationships.</li>
+                <li>Confidentiality & Integrity: Your privacy is protected at every step.</li>
+                <li>Feedback Advantage: Continuous refinement ensures better matches and better outcomes.</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section class="cta-final">
+      <h2>Ready to Experience the Family First Difference?</h2>
+      <p>With passion, professionalism, and a human touch, we are committed to helping you find your partner.</p>
+      <a href="register.html" class="btn" style="margin-top: 20px;">Apply for Membership</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <div class="social-links">
+          <!-- Placeholder Icons for Social Media -->
+          <a href="#">𝕏</a>
+          <a href="#">f</a>
+          <a href="#">📷</a>
+          <a href="#">in</a>
+        </div>
       </div>
-    </div><section id="about" class="about section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/big.jpg" alt="About Us" class="img-fluid rounded-4">
-          </div>
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="about-content">
-              <span class="subtitle">About Us</span>
-              <h2>About Us</h2>
-              <p>Singles online dating has turned into a chaotic landscape littered with fake profiles, scammers, and fraudsters. The endless swiping, left and right, has left many singles disheartened and exasperated by the time they've wasted. The struggle is real. Navigating dating apps can feel like searching for a needle in a haystack. While many dating services online promise the world, they often lead to disappointing experiences. You might end up with countless “cold” encounters that leave you feeling discouraged and desolate. Family First’s approach, with its focus on human matchmakers, seems like a refreshing change.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-5 pt-4">
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="mission-card">
-              <div class="icon-box">
-                <i class="bi bi-bullseye"></i>
-              </div>
-              <h3>Authenticity</h3>
-              <p>Our teams take pride in not only fostering authentic, lasting relationships but also building genuine connections with clients throughout the matchmaking journey.</p>
-            </div>
-          </div>
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="mission-card">
-              <div class="icon-box">
-                <i class="bi bi-eye"></i>
-              </div>
-              <h3>Passion</h3>
-              <p>We lead with passion and integrity. Our business thrives on the dedication of our team members and the heartfelt connections we create.</p>
-            </div>
-          </div>
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="mission-card">
-              <div class="icon-box">
-                <i class="bi bi-award"></i>
-              </div>
-              <h3>Professionalism</h3>
-              <p>We are a highly qualified team that believes in investing in ourselves, each other, and our clients at every step, ensuring curated, lasting introductions.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-5 pt-3 align-items-center">
-          <div class="col-lg-6 order-lg-2" data-aos="fade-up" data-aos-delay="300">
-            <div class="achievements">
-              <span class="subtitle">Why Choose Us</span>
-              <h2>Why Us</h2>
-              <p>While dating sites have come to the rescue for singles everywhere, the proliferation of unfiltered, unproductive, and unserious online dating sites has not helped much. Many have become dens of fraudsters, sex lobbyists, blesser seekers, and unapologetic abusers. Family First has launched an extraordinary, exciting, highly filtered, and much-needed singles dating and matchmaking experience. This platform aims to provide singles worldwide with a most attractive, productive, secure, and private matchmaking experience.</p>
-              <ul class="achievements-list">
-                <li><i class="bi bi-check-circle-fill"></i> Integrity and Confidentiality: We ensure that your personal information is never shared without your permission.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Research and Search: We assess values, backgrounds, integrity, hidden agendas, needs, and desires.</li>
-                <li><i class="bi bi-check-circle-fill"></i> One-on-One Matchmaking: Matchmakers work closely with each client, providing individual attention and focusing on customer service and privacy.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Proven Success: Our elite service has facilitated many successful relationships.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Vision and Strategy: We help clients by building close relationships, understanding their needs, and creating specific plans.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Feedback Loop: Feedback from every date helps us refine the process and ensure dating success.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Background Screening: Every new client undergoes a thorough background screening, ensuring you can date with peace of mind.</li>
-              </ul>
-              <a href="#" class="btn-explore">Discover More <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-6 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <div class="about-gallery">
-              <div class="row g-3">
-                <div class="col-6">
-                  <img src="assets/img/love.jpeg" alt="Campus Life" class="img-fluid rounded-3">
-                </div>
-                <div class="col-6">
-                  <img src="assets/img/love2.jpeg" alt="Student Achievement" class="img-fluid rounded-3">
-                </div>
-                <div class="col-12 mt-3">
-                  <img src="assets/img/love3.jpeg" alt="Our Campus" class="img-fluid rounded-3">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="why-us.html">Why Us</a>
+            <!-- Corrected link for the page being generated -->
+          </li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
       </div>
-
-    </section></main>
-
- <footer id="footer" class="footer accent-background">
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="terms.html">Terms of service</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-            <li><a href="terms.html">Trust & Safety</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="faq.html">Frequent Asked Questions</a></li>
-          </ul>
-        </div>
-        
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>Family First Matchmaking Pty</p>
-          <p>55 Richards Drive, Halfway House, Midrand</p>
-          <p>Gauteng, 1685</p>
-          <p>South Africa</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+27 73 545 4949</span></p>
-          <p><strong>Email:</strong> <span>amon@rivaindustries.com</span></p>
-        </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p>Family First Matchmaking <br>
+          55 Richards Drive, Halfway House, Midrand<br>
+          Gauteng, 1685<br>
+          South Africa<br><br>
+          <strong>Phone:</strong> +27 73 545 4949<br>
+          <strong>Email:</strong> Info@familyfirstmatchmaking.com
+        </p>
       </div>
     </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">familyfirstmatchmaking.com</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://miwalletmw.com">Mi Wallet LTD</a>
-      </div>
+    <div class="footer-bottom">
+      <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #30c8a6;">Mi Wallet LTD</span></a></p>
     </div>
-
   </footer>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      menuToggle.addEventListener('click', function() {
+        // Toggle the active class for mobile menu
+        const isActive = navWrapper.classList.toggle('active');
+        menuToggle.textContent = isActive ? '✕' : '☰';
+      });
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
+      // Close menu when a link is clicked on mobile
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navWrapper.classList.remove('active');
+            menuToggle.textContent = '☰';
+          }
+        });
+      });
+      
+      // Highlight the current page link in the navigation
+      const currentPath = window.location.pathname.split('/').pop();
+      document.querySelectorAll('nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 

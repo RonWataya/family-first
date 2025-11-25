@@ -88,6 +88,7 @@
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
+      text-decoration: none;
       transition: color 0.3s;
     }
 
@@ -201,9 +202,10 @@
 }
 
 .quote-text {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   max-width: 800px;
-  font-family:cursive;
+ font-family: 'Cinzel', serif;
+ font-weight: 500;
   margin: 0 auto 15px;
   line-height: 1.6;
 }

@@ -31,6 +31,7 @@
  
     
      /* --- Header Styles (Desktop First) --- */
+  /* --- Header Styles (Desktop First) --- */
     header {
       background-color: #ffffff;
       padding: 15px 30px;
@@ -107,11 +108,13 @@
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
+      text-decoration: none;
       transition: color 0.3s;
     }
 
     .btn-login:hover {
       color: #30c8a6;
+      text-decoration: none;
     }
 
     .btn-signup {
@@ -125,11 +128,13 @@
       cursor: pointer;
       transition: background-color 0.3s;
       margin-right: 60px;
+      text-decoration: none;
     }
 
     .btn-signup:hover {
       background-color: #29b092;
     }
+
 .btn-primary {
       background-color: #30c8a6;
       color: #ffffff;
@@ -164,57 +169,7 @@
       background-size: cover;
       background-position: center;
     }
-    /* Header/Navigation Styles */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 40px;
-        background-color: #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
 
-    .logo-container img {
-        display: block;
-        width: 110px;
-        height: auto;
-    }
-
-    nav a {
-        margin: 0 15px;
-        color: #4a4a4a;
-        font-weight: 500;
-        font-size: 15px;
-        transition: color 0.3s;
-    }
-
-    nav a:hover {
-        color: #a45c3d;
-    }
-    
-    .nav-wrapper {
-        display: flex;
-        align-items: center;
-    }
-
-    .header-buttons {
-        margin-left: 30px;
-        display: flex;
-        gap: 10px;
-    }
-
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: #1a1a1a;
-        line-height: 1;
-    }
 
     /* Footer Styles */
     footer {
@@ -627,7 +582,7 @@
 
 <body>
 
-   <header>
+ <header>
     <a href="index.html" class="logo-container">
       <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
     </a>
@@ -641,13 +596,14 @@
         <a href="how-it-works.html">How it works</a>
         <a href="faq.html">FAQ</a>
         <a href="about.html">Why Us</a>
-        <a href="index.html#stories">Real Stories</a>
-        <a href="events.html">Events</a>
-        <a href="blog.html">Blog</a>
+        <a href="#stories">Real Stories</a>
+        <a href="#events">Events</a>
+        <a href="#blog">Blog</a>
       </nav>
       <div class="header-buttons">
-        <button class="btn-login">Log In</button>
-        <button class="btn-signup">Sign Up</button>
+        <a href="#" class="btn-login">Log In</a>
+        <a href="register.html" class="btn-signup">Sign Up</a>
+
       </div>
     </div>
   </header>
