@@ -4,29 +4,500 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Family First Matchmaking - Blog</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Blog - Family First Matchmaking</title>
+  <meta name="description" content="Insights, tips, and stories from Family First Matchmaking on dating, relationships, and finding lasting love.">
+  <meta name="keywords" content="matchmaking blog, dating advice, relationship tips, founder story, singles community">
 
   <link href="assets/img/ffmicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
- <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    /* --- Global Component Styles (Matches Theme) --- */
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1a1a1a;
+        margin: 0;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 
-  </head>
+    /* --- Header Styles --- */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px;
+    }
 
-<body class="blog-page">
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
 
-   <header>
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 70px;
+    }
+    
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      margin: 0;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 60px;
+      text-decoration: none;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+
+    /* --- Buttons --- */
+    .btn-primary {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #29b092;
+    }
+    
+    /* --- Hero Section --- */
+    .hero-split {
+      display: flex;
+      min-height: 500px;
+      align-items: center;
+      background-color: #f7f3ed;
+    }
+
+    .hero-left {
+      flex: 1;
+      padding: 60px 80px;
+      text-align: left;
+    }
+
+    .hero-left h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .hero-left p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-right {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+    }
+
+    /* --- Blog Specific Styles --- */
+    .blog-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 40px;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 42px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: #1a1a1a;
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+    }
+
+    .blog-card {
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .blog-card-img {
+        position: relative;
+    }
+    
+    .blog-card-img img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .blog-card-content {
+        padding: 25px;
+    }
+
+    .blog-card-content .meta {
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .blog-card-content .meta strong {
+        color: #30c8a6;
+        font-weight: 600;
+        margin-right: 15px;
+    }
+
+    .blog-card-content h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 24px;
+        line-height: 1.3;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #1a1a1a;
+    }
+
+    .blog-card-content p {
+        font-size: 15px;
+        color: #4a4a4a;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .readmore {
+        color: #30c8a6;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer; /* Ensure pointer is shown for click */
+    }
+    
+    .readmore:hover {
+        text-decoration: underline;
+    }
+    
+    /* Simple Arrow Icon */
+    .readmore-icon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #30c8a6;
+        border-bottom: 2px solid #30c8a6;
+        transform: rotate(-45deg);
+        transition: margin-left 0.3s;
+    }
+    
+    .readmore:hover .readmore-icon {
+        margin-left: 5px;
+    }
+    
+    /* --- Pagination Styling --- */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .pagination ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 10px;
+    }
+
+    .pagination li a {
+        display: block;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        color: #1a1a1a;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .pagination li a.active, .pagination li a:hover {
+        background-color: #30c8a6;
+        border-color: #30c8a6;
+        color: #fff;
+    }
+
+    /* --- Modal Styles --- */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 5% from top and centered */
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 800px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        position: relative;
+    }
+
+    .modal-header h5 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 32px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+    }
+    
+    .modal-body p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #4a4a4a;
+        white-space: pre-wrap; /* Preserve formatting if any */
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: #30c8a6;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* --- Footer Styles (Matches Theme) --- */
+    footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
+        border-top: 1px solid #333;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col a {
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+        color: #a45c3d;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+
+    /* --- Mobile Media Queries --- */
+    @media (max-width: 768px) {
+        .logo-container img { margin-left: 20px; }
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 80px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            margin-left: 0;
+            z-index: 1000;
+        }
+        .nav-wrapper.active { right: 0; }
+        .menu-toggle { display: block; margin-left: auto; }
+        
+        nav { flex-direction: column; align-items: center; gap: 20px; width: 100%; }
+        .header-buttons { flex-direction: column; width: 100%; margin-top: 20px; }
+        .btn-signup { margin-right: 0; }
+
+        .hero-split { flex-direction: column; }
+        .hero-left { padding: 40px 20px; text-align: center; }
+        .hero-left h1 { font-size: 36px; }
+        .hero-right { width: 100%; min-height: 300px; }
+        
+        .blog-section { padding: 40px 20px; }
+        
+        .footer-content { flex-direction: column; gap: 30px; }
+        
+        .modal-content { margin: 20% 10px; padding: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
     <a href="index.html" class="logo-container">
       <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
     </a>
@@ -40,310 +511,136 @@
         <a href="how-it-works.html">How it works</a>
         <a href="faq.html">FAQ</a>
         <a href="about.html">Why Us</a>
-        <a href="#stories">Real Stories</a>
+        <a href="index.html#testimonials-section">Real Stories</a>
         <a href="events.html">Events</a>
-        <a href="blog.html">Blog</a>
+        <a href="blog.html" class="active">Blog</a>
       </nav>
       <div class="header-buttons">
         <a href="#" class="btn-login">Log In</a>
         <a href="register.html" class="btn-signup">Sign Up</a>
-
       </div>
     </div>
   </header>
 
-  <main class="main">
-
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Blog</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
-          </ol>
-        </nav>
+  <main>
+    <section class="hero-split">
+      <div class="hero-left">
+        <h1>Insights & Stories</h1>
+        <p>Stay informed with our latest advice on finding love, understanding modern dating, and building lasting, meaningful relationships.</p>
+        <a href="#blog-posts" class="btn-primary">Read Latest Articles</a>
       </div>
-    </div>
-    <section id="blog-hero" class="blog-hero section">
+      <div class="hero-right" style="background-image: url('assets/img/blog/blog-post-3.webp');"></div>
+    </section>
+    
+    <section id="blog-posts" class="blog-section">
+      <div class="section-header">
+        <h2>Latest from the Family First Experts</h2>
+      </div>
+      
+      <div class="blog-grid">
+        
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-1.webp" alt="Couple on a date">
+            </div>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Matchmaking</strong> / Sep. 23, 2025
+                </div>
+                <h3>Revolutionary Matchmaking</h3>
+                <p>In today's fast-paced world, finding a meaningful connection can be a challenge. Family First has taken a revolutionary approach, combining personalized service with a modern, community-focused platform...</p>
+                <a href="#" class="readmore" data-post-title="Revolutionary Matchmaking" data-post-content="In today's fast-paced world, finding a meaningful connection can be a challenge. With so many online dating apps and services, it's easy to feel lost and overwhelmed. Family First has taken a revolutionary approach to matchmaking, combining a professional, personalized service with a modern, community-focused platform. We believe that true love is not a numbers game; it's about finding the right person, not just any person. Our expert matchmakers use a holistic approach to connect you with individuals who share your values, interests, and life goals.">Read More <span class="readmore-icon"></span></a>
+            </div>
+        </article>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-2.webp" alt="Person looking contemplative">
+            </div>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Dating Advice</strong> / Sep. 23, 2025
+                </div>
+                <h3>Expert Dating Advice</h3>
+                <p>Dating can be tough, but with the right guidance, it can also be an incredibly rewarding experience. Family First offers expert coaching to help you navigate modern relationships...</p>
+                <a href="#" class="readmore" data-post-title="Expert Dating Advice" data-post-content="Dating can be tough, but with the right guidance, it can also be an incredibly rewarding experience. Family First offers expert dating advice and coaching to help you navigate the complexities of modern relationships. Our team of experienced professionals will work with you to develop a personalized strategy, build your confidence, and enhance your communication skills. We'll help you identify your dating patterns, overcome any challenges, and ultimately, find the love you deserve.">Read More <span class="readmore-icon"></span></a>
+            </div>
+        </article>
+        
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-3.webp" alt="Abstract image of connections">
+            </div>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Relationships</strong> / Sep. 23, 2025
+                </div>
+                <h3>Revolutionizing the Dating Scene</h3>
+                <p>Family First is not just a matchmaking service; it's a movement. We're on a mission to revolutionize the dating scene, one meaningful connection at a time...</p>
+                <a href="#" class="readmore" data-post-title="Revolutionizing the Dating Scene" data-post-content="Family First is not just a matchmaking service; it's a movement. We're on a mission to revolutionize the dating scene, one meaningful connection at a time. We've created a platform where singles can feel safe, supported, and empowered to find love on their own terms. We're challenging the status quo and proving that it's possible to find a genuine, lasting relationship without compromising on your values or wasting your time. Join us in this new era of dating, where authenticity and connection are at the heart of every interaction.">Read More <span class="readmore-icon"></span></a>
+            </div>
+        </article>
 
-        <div class="blog-grid">
-
-          <article class="blog-item featured" data-aos="fade-up">
-            <img src="assets/img/blog/blog-post-3.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date" style="color: white;">Sep. 23, 2025</span>
-                <span class="category" style="color: white;">Dating</span>
-              </div>
-              <h2 class="post-title">
-                <a href="#" class="blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Introduction to Family First Singles World"
-                  data-post-content="Dating has always been an adventure, filled with excitement, anticipation, and sometimes disappointment. But what if there was a way to revolutionize the dating scene, making it easier to find your perfect match, connect with like-minded individuals, and build meaningful relationships? That's where Family First Singles World comes in. Founded by Amon Maseko, this innovative platform is changing the game and elevating the dating experience to new heights."><span style="color: rgb(255, 255, 255);">Introduction to Family First Singles World</span></a>
-              </h2>
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-4.webp" alt="People gathering">
             </div>
-          </article><article class="blog-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/blog/blog-post-portrait-1.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date" style="color: white;">Sep. 23, 2025</span>
-                <span class="category" style="color: white;">Matchmaking</span>
-              </div>
-              <h3 class="post-title">
-                <a href="#" class="blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Singles Matchmaking - Our Solution"
-                  data-post-content="Combining the best of both worlds, Family First has merged the timeless approach of traditional matchmaking with the convenience of modern online dating. This premium service offers a professional singles matchmaking experience that empowers members to take control of their love lives."><span style="color: white;">Singles Matchmaking - Our Solution</span></a>
-              </h3>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Dating</strong> / Sep. 23, 2025
+                </div>
+                <h3>Embracing a New Era of Dating</h3>
+                <p>Family First is more than just a dating platform; it's a community. We've created a safe and supportive environment where singles can connect and share experiences...</p>
+                <a href="#" class="readmore" data-post-title="Embracing a New Era of Dating with Family First Singles World" data-post-content="Family First is more than just a dating platform; it's a community. We've created a safe and supportive environment where singles can connect, share experiences, and learn from one another. Our team of experts is dedicated to helping you navigate the dating world with confidence and clarity. We're committed to providing a personalized service that is tailored to your unique needs and goals. We believe that every single person deserves a chance at finding true love, and we're here to make that a reality.">Read More <span class="readmore-icon"></span></a>
             </div>
-          </article><article class="blog-item" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/blog/blog-post-9.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date" style="color: white;" >Sep. 23, 2025</span>
-                <span class="category" style="color: white;">Dating</span>
-              </div>
-              <h3 class="post-title">
-                <a href="#" class="blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Singles Matchmaking: Finding Your Perfect Match"
-                  data-post-content="Singles matchmaking is a powerful tool for those who are serious about finding their perfect match. It's an opportunity to bypass the endless swiping and superficial connections that have become synonymous with online dating. Family First's professional matchmakers get to know you on a personal level, understanding your unique preferences, values, and relationship goals. They then use this information to carefully select potential partners who are not only compatible but also share your vision for a lasting relationship."><span style="color: white;">Singles Matchmaking: Finding Your Perfect Match</span></a>
-              </h3>
+        </article>
+        
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-5.webp" alt="Amon Maseko, Founder">
             </div>
-          </article><article class="blog-item" data-aos="fade-up" data-aos-delay="300">
-            <img src="assets/img/blog/blog-post-7.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date" style="color: white;">Sep. 23, 2025</span>
-                <span class="category" style="color: white;">Community</span>
-              </div>
-              <h3 class="post-title">
-                <a href="#" class="blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Singles Group Fun Events: Building Friendships and Relationships"
-                  data-post-content="In a world where virtual connections often replace genuine human interaction, Family First believes in the power of community. Their singles group fun events are designed to bring like-minded individuals together in a relaxed and enjoyable setting. These events provide the perfect opportunity to meet new people, build friendships, and potentially find a romantic connection outside of the traditional dating scene. It's a chance to engage in shared activities, discover new passions, and create lasting memories."><span style="color: white;">Singles Group Fun Events: Building Friendships and Relationships</span></a>
-              </h3>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Relationships</strong> / Sep. 23, 2025
+                </div>
+                <h3>Founder Story</h3>
+                <p>Every great idea starts with a simple thought. For Family First, that thought was: 'There has to be a better way.' Read the journey of our founder...</p>
+                <a href="#" class="readmore" data-post-title="Founder Story" data-post-content="Every great idea starts with a simple thought. For Family First, that thought was: 'There has to be a better way.' Our founder, Amon Maseko, saw a need for a more authentic, personal, and effective approach to dating. He envisioned a platform that would combine the best of traditional matchmaking with the convenience of modern technology. His passion for helping people find love led him to create a service that is changing the lives of singles everywhere.">Read More <span class="readmore-icon"></span></a>
             </div>
-          </article><article class="blog-item" data-aos="fade-up" data-aos-delay="400">
-            <img src="assets/img/blog/blog-post-6.webp" alt="Blog Image" class="img-fluid">
-            <div class="blog-content">
-              <div class="post-meta">
-                <span class="date" style="color: white;">Sep. 23, 2025</span>
-                <span class="category" style="color: white;">Relationships</span>
-              </div>
-              <h3 class="post-title">
-                <a href="#" class="blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Building Lasting Relationships"
-                  data-post-content="Finding your perfect match is just the beginning. The real work—and joy—lies in building a lasting relationship. At Family First, we're dedicated to helping our members every step of the way. We provide resources, guidance, and support to ensure that your relationship blossoms and thrives. From communication tips to conflict resolution strategies, we equip you with the tools you need to build a strong, healthy, and happy partnership. We believe that every relationship deserves a chance to succeed, and we're here to help you make it happen."><span style="color: white;">Building Lasting Relationships</span></a>
-              </h3>
+        </article>
+        
+        <article class="blog-card">
+            <div class="blog-card-img">
+                <img src="assets/img/blog/blog-post-6.webp" alt="Group event outdoors">
             </div>
-          </article></div>
+            <div class="blog-card-content">
+                <div class="meta">
+                    <strong>Events</strong> / Sep. 23, 2025
+                </div>
+                <h3>Future Plans and Upcoming Group Fun Events</h3>
+                <p>Family First has exciting plans for the future. We're constantly working on expanding our range of group fun events to cater to the ever-evolving interests of singles...</p>
+                <a href="#" class="readmore" data-post-title="Future Plans and Upcoming Group Fun Events" data-post-content="Family First has exciting plans for the future. They are constantly working on expanding their range of group fun events to cater to the ever-evolving interests of singles. Upcoming group fun events include hiking trips to breathtaking landscapes, picnics in picturesque parks, and wine tasting events featuring the finest wines from around the world. Stay updated with the latest event announcements on the Family First website to ensure you don't miss out on any of the fun.">Read More <span class="readmore-icon"></span></a>
+            </div>
+        </article>
 
       </div>
+      
+      <nav class="pagination" aria-label="Blog Page navigation">
+        <ul>
+          <li><a href="#" aria-label="Previous page">Previous</a></li>
+          <li><a href="#" class="active">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#" aria-label="Next page">Next</a></li>
+        </ul>
+      </nav>
 
-    </section><section id="blog-posts" class="blog-posts section">
+    </section>
+  </main>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-1.webp" class="img-fluid" alt="">
-              </div>
-
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Matchmaking</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-
-                <h3 class="post-title">Revolutionary Matchmaking</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Revolutionary Matchmaking"
-                  data-post-content="In today's fast-paced world, finding a meaningful connection can be a challenge. With so many online dating apps and services, it's easy to feel lost and overwhelmed. Family First has taken a revolutionary approach to matchmaking, combining a professional, personalized service with a modern, community-focused platform. We believe that true love is not a numbers game; it's about finding the right person, not just any person. Our expert matchmakers use a holistic approach to connect you with individuals who share your values, interests, and life goals."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-              </div>
-
-            </article>
-          </div><div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-2.webp" class="img-fluid" alt="">
-              </div>
-
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Dating Advice</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-                <h3 class="post-title">Expert Dating Advice</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Expert Dating Advice"
-                  data-post-content="Dating can be tough, but with the right guidance, it can also be an incredibly rewarding experience. Family First offers expert dating advice and coaching to help you navigate the complexities of modern relationships. Our team of experienced professionals will work with you to develop a personalized strategy, build your confidence, and enhance your communication skills. We'll help you identify your dating patterns, overcome any challenges, and ultimately, find the love you deserve."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-              </div>
-
-            </article>
-          </div><div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-3.webp" class="img-fluid" alt="">
-              </div>
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Relationships</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-                <h3 class="post-title">Revolutionizing the Dating Scene</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Revolutionizing the Dating Scene"
-                  data-post-content="Family First is not just a matchmaking service; it's a movement. We're on a mission to revolutionize the dating scene, one meaningful connection at a time. We've created a platform where singles can feel safe, supported, and empowered to find love on their own terms. We're challenging the status quo and proving that it's possible to find a genuine, lasting relationship without compromising on your values or wasting your time. Join us in this new era of dating, where authenticity and connection are at the heart of every interaction."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-              </div>
-
-            </article>
-          </div><div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-4.webp" class="img-fluid" alt="">
-              </div>
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Dating</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-                <h3 class="post-title">Embracing a New Era of Dating with Family First Singles World</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Embracing a New Era of Dating with Family First Singles World"
-                  data-post-content="Family First is more than just a dating platform; it's a community. We've created a safe and supportive environment where singles can connect, share experiences, and learn from one another. Our team of experts is dedicated to helping you navigate the dating world with confidence and clarity. We're committed to providing a personalized service that is tailored to your unique needs and goals. We believe that every single person deserves a chance at finding true love, and we're here to make that a reality."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-              </div>
-
-            </article>
-          </div><div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-5.webp" class="img-fluid" alt="">
-              </div>
-
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Relationships</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-
-                <h3 class="post-title">Founder Story</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Founder Story"
-                  data-post-content="Every great idea starts with a simple thought. For Family First, that thought was: 'There has to be a better way.' Our founder, Amon Maseko, saw a need for a more authentic, personal, and effective approach to dating. He envisioned a platform that would combine the best of traditional matchmaking with the convenience of modern technology. His passion for helping people find love led him to create a service that is changing the lives of singles everywhere."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-              </div>
-
-            </article>
-          </div><div class="col-lg-4">
-            <article class="position-relative h-100">
-
-              <div class="post-img position-relative overflow-hidden">
-                <img src="assets/img/blog/blog-post-6.webp" class="img-fluid" alt="">
-              </div>
-
-              <div class="meta d-flex align-items-end">
-                <span class="post-date"><span>23</span>Sep</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">Amon Maseko</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">Events</span>
-                </div>
-              </div>
-
-              <div class="post-content d-flex flex-column">
-
-                <h3 class="post-title">Future Plans and Upcoming Group Fun Events</h3>
-                <a href="#" class="readmore stretched-link blog-post-link" data-bs-toggle="modal" data-bs-target="#blogPostModal"
-                  data-post-title="Future Plans and Upcoming Group Fun Events"
-                  data-post-content="Family First has exciting plans for the future. They are constantly working on expanding their range of group fun events to cater to the ever-evolving interests of singles. Upcoming group fun events include hiking trips to breathtaking landscapes, picnics in picturesque parks, and wine tasting events featuring the finest wines from around the world. Stay updated with the latest event announcements on the Family First website to ensure you don't miss out on any of the fun."><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-
-              </div>
-
-            </article>
-          </div></div>
-      </div>
-
-    </section><section id="pagination-2" class="pagination-2 section">
-
-      <div class="container">
-        <nav class="d-flex justify-content-center" aria-label="Page navigation">
-          <ul>
-            <li>
-              <a href="#" aria-label="Previous page">
-                <i class="bi bi-arrow-left"></i>
-                <span class="d-none d-sm-inline">Previous</span>
-              </a>
-            </li>
-
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li class="ellipsis">...</li>
-            <li><a href="#">8</a></li>
-            <li><a href="#">9</a></li>
-            <li><a href="#">10</a></li>
-
-            <li>
-              <a href="#" aria-label="Next page">
-                <span class="d-none d-sm-inline">Next</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-    </section></main>
-
-<footer>
+  <footer>
     <div class="footer-content">
       <div class="footer-col">
-       
         <div class="social-links">
           <a href="#">𝕏</a>
           <a href="#">f</a>
@@ -352,18 +649,17 @@
         </div>
       </div>
       <div class="footer-col">
-       
+        <h4>Useful Links</h4>
         <ul>
-           <h4 style="color: white;">Useful Links</h4>
           <li><a href="terms.html">Terms of service</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
           <li><a href="trust.html">Trust & Safety</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Why Us</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 style="color: white;">Contact Us</h4>
+        <h4>Contact Us</h4>
         <p>Family First Matchmaking <br>
           55 Richards Drive, Halfway House, Midrand<br>
           Gauteng, 1685<br>
@@ -375,50 +671,92 @@
     </div>
     <div class="footer-bottom">
       <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
-      <p>Designed by <a href="https//miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #a45c3d;">Mi Wallet LTD</span></a></p>
     </div>
   </footer>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
-
-  <div class="modal fade" id="blogPostModal" tabindex="-1" aria-labelledby="blogPostModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="blogPostModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p id="blogPostContent"></p>
-        </div>
+  <div id="blogPostModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="modal-header">
+        <h5 id="modalTitle"></h5>
+      </div>
+      <div class="modal-body">
+        <p id="modalContent"></p>
       </div>
     </div>
   </div>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
-
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const blogPostModal = document.getElementById('blogPostModal');
-      const modalTitle = document.getElementById('blogPostModalLabel');
-      const modalContent = document.getElementById('blogPostContent');
+      // Mobile Menu Toggle Logic
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      if(menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            const isActive = navWrapper.classList.toggle('active');
+            menuToggle.textContent = isActive ? '✕' : '☰';
+        });
 
-      blogPostModal.addEventListener('show.bs.modal', function(event) {
-        // Button that triggered the modal
-        const button = event.relatedTarget;
-        // Extract info from data-bs-* attributes
-        const postTitle = button.getAttribute('data-post-title');
-        const postContent = button.getAttribute('data-post-content');
+        // Close menu when a link is clicked on mobile
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navWrapper.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+            });
+        });
+      }
+      
+      // Modal Logic
+      const modal = document.getElementById('blogPostModal');
+      const closeBtn = document.querySelector('.close-button');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalContent = document.getElementById('modalContent');
+      const readMoreLinks = document.querySelectorAll('.readmore');
 
-        modalTitle.textContent = postTitle;
-        modalContent.textContent = postContent;
+      // Function to open the modal
+      readMoreLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          
+          // Get content from data attributes
+          const postTitle = this.getAttribute('data-post-title');
+          const postContent = this.getAttribute('data-post-content');
+
+          // Populate the modal
+          modalTitle.textContent = postTitle;
+          modalContent.textContent = postContent;
+          
+          // Display the modal
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+      });
+
+      // Function to close the modal
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
+      }
+
+      // When the user clicks on (x), close the modal
+      closeBtn.addEventListener('click', closeModal);
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      });
+      
+      // Optional: Close on Escape key press
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
       });
     });
   </script>
