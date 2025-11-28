@@ -4,26 +4,390 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Family First Matchmaking- FAQ</title>
-  <meta name="description" content="Dedicated to intentional dating, meaningful connections, and future families. With verified, screened singles profiles, due diligence and thorough background checks, we ensure your journey is safe, sincere and scam-free.">
-  <meta name="keywords" content="matchmaking, dating, relationships, South Africa, family, singles, partner, love">
-
+  <title>FAQ - Family First Matchmaking</title>
+  <meta name="description" content="Frequently Asked Questions about Family First Matchmaking. Learn about our process, safety measures, and membership benefits.">
+  <meta name="keywords" content="matchmaking faq, dating questions, relationship safety, South Africa matchmaking">
   <link href="assets/img/ffmicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Global Component Styles (Matches how-it-works.html) --- */
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1a1a1a;
+        margin: 0;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+    /* --- Header Styles --- */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px;
+    }
 
-  </head>
-<body class="index-page">
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 70px;
+    }
+    
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      margin: 0;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 60px;
+      text-decoration: none;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+
+    .btn-primary {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #29b092;
+    }
+
+    /* --- Hero Section Styles (Matches how-it-works.html) --- */
+    .hero-split {
+      display: flex;
+      min-height: 500px;
+      align-items: center;
+      background-color: #f7f3ed; /* Slightly lighter beige for FAQ */
+    }
+
+    .hero-left {
+      flex: 1;
+      padding: 60px 80px;
+      text-align: left;
+    }
+
+    .hero-left h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .hero-left p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-right {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+    }
+
+    /* --- FAQ Specific Styles --- */
+    .faq-section {
+        padding: 80px 40px;
+        background-color: #fff;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .faq-header h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 42px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+    }
+    
+    .faq-header p {
+        font-family: 'Inter', sans-serif;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 30px 0;
+    }
+
+    .faq-item:first-child {
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .faq-question {
+        font-family: 'DM Serif Display', serif;
+        font-size: 24px;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        cursor: pointer;
+        position: relative;
+        padding-right: 40px;
+    }
+
+    .faq-answer {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #4a4a4a;
+        display: block; /* Can be changed to none/block for accordion js */
+    }
+    
+    .faq-answer ul {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+    
+    .faq-answer li {
+        margin-bottom: 8px;
+    }
+
+    /* --- Dark CTA Section --- */
+    .dark-cta {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .dark-cta h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .dark-cta p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Footer Styles --- */
+    footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col a {
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-col strong {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+
+    /* --- Mobile Media Queries --- */
+    @media (max-width: 768px) {
+        .logo-container img { margin-left: 20px; }
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 80px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            margin-left: 0;
+        }
+        .nav-wrapper.active { right: 0; }
+        .menu-toggle { display: block; margin-left: auto; }
+        
+        nav { flex-direction: column; align-items: center; gap: 20px; width: 100%; }
+        .header-buttons { flex-direction: column; width: 100%; margin-top: 20px; }
+        .btn-signup { margin-right: 0; }
+
+        .hero-split { flex-direction: column; }
+        .hero-left { padding: 40px 20px; text-align: center; }
+        .hero-left h1 { font-size: 36px; }
+        .hero-right { width: 100%; min-height: 300px; }
+        
+        .faq-section { padding: 40px 20px; }
+        .faq-header h2 { font-size: 32px; }
+        .faq-question { font-size: 20px; }
+        
+        .footer-content { flex-direction: column; gap: 30px; }
+    }
+  </style>
+</head>
+
+<body>
 
   <header>
     <a href="index.html" class="logo-container">
@@ -37,7 +401,7 @@
     <div class="nav-wrapper">
       <nav>
         <a href="how-it-works.html">How it works</a>
-        <a href="faq.html">FAQ</a>
+        <a href="faq.html" class="active">FAQ</a>
         <a href="about.html">Why Us</a>
         <a href="#stories">Real Stories</a>
         <a href="events.html">Events</a>
@@ -46,115 +410,130 @@
       <div class="header-buttons">
         <a href="#" class="btn-login">Log In</a>
         <a href="register.html" class="btn-signup">Sign Up</a>
-
       </div>
     </div>
   </header>
 
-  <main class="main">
-
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Frequently Asked Questions</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">FAQs</li>
-          </ol>
-        </nav>
+  <main>
+    <section class="hero-split">
+      <div class="hero-left">
+        <h1>Frequently Asked Questions</h1>
+        <p>Dedicated to intentional dating, meaningful connections, and future families. With verified, screened singles profiles, due diligence and thorough background checks, we ensure your journey is safe, sincere and scam-free.</p>
+        <a href="register.html" class="btn-primary">Get Started</a>
       </div>
-    </div>
+      <div class="hero-right" style="background-image: url('assets/img/hero1.jpg');"></div>
+    </section>
 
-      <section id="privacy" class="privacy section">
-     <div class="container" data-aos="fade-up">
+    <section class="faq-section">
+      <div class="faq-header">
+        <h2>Common Questions</h2>
+        <p>Learn more about how Family First partners with you on your journey to relationship success.</p>
+      </div>
 
-       <div class="privacy-header" data-aos="fade-up">
-        <div class="header-content">
-            <h1>Frequently Asked Questions</h1>
-            <p class="intro-text">Learn more about how Family First partners with you on your journey to relationship success.</p>
-          </div>
-        </div>
+      <div class="faq-list">
         
-        <div class="privacy-content" data-aos="fade-up">
-          <div class="content-section">
-            <h2>What is Family First?</h2>
-            <p>Family First is the #1 matchmaker in Southern Africa. Our proven process combines the largest network of relationship-ready singles with personalized matchmaking services to help you find and build your best relationship yet.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>What Are the Benefits of Family First?</h2>
-            <p><strong>Personalized Matching by Experts:</strong> Your dedicated matchmaker gets to know you personally to understand you, your values, and what you’re looking for in a partner. Knowing what makes you tick helps us find a great match.</p>
-            <p><strong>Custom Date Planning and Curation:</strong> Every potential match is interviewed by video to ensure you’re connected with people who share your values and qualities. We then plan your entire date experience, including all coordination and scheduling for you and your match.</p>
-            <p><strong>Secure, Private Process:</strong> Safety is one of our top priorities. Profiles and contact info remain private until you and your match decide to share. Every match undergoes a criminal record screening, giving you peace of mind.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>What Makes Family First Different From Other Dating Apps and Services?</h2>
-            <p>Unlike other services, Family First gets personal to find the best matches for you based on your individual preferences and priorities. All matches are hand-selected by your dedicated matchmaker, and our service is 100% confidential.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>How Do I Become a Family First Client?</h2>
-            <p>Start by visiting our link and answering a few questions about yourself and what you’re looking for in a relationship. We only accept clients whom we believe we can match. If Family First seems like a good fit, you’ll have the chance to schedule a call with a client experience specialist who will learn more about you and your preferences, answer any questions, and recommend a client package to cover your desired search.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>Does Family First Hand Select Matches?</h2>
-            <p>Yes! Our matchmakers work one-on-one with you and ask all the right questions to learn about you, your relationship history, values, and what you’re looking for in a match. This helps us assess possible chemistry and compatibility with singles in our network. We apply the same rigorous research to all potential candidates, ensuring every match undergoes criminal record and live video screenings.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>How Does Family First Protect Client Privacy and Safety?</h2>
-            <p>Protecting the privacy and safety of our community is our top priority. We conduct criminal record screenings and thoroughly screen all candidates through personal interviews over video chat. We do not share identity or contact information without permission.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>What Should I Expect on My Journey With Family First?</h2>
-            <p>As a Family First client, you can expect:</p>
-            <ul>
-              <li>A dedicated matchmaker</li>
-              <li>In-depth, 1:1 consultation</li>
-              <li>Extensive search criteria for potential candidates</li>
-              <li>Video and criminal record screenings for all matches</li>
-              <li>Curated date planning for every match</li>
-              <li>Follow-up and feedback sessions after each date</li>
-              <li>Enhanced safety and confidentiality measures</li>
-            </ul>
-          </div>
-
-          <div class="content-section">
-            <h2>How Much Time Should I Expect to Dedicate?</h2>
-            <p>We specialize in working with busy clients, so you won’t need to dedicate much time after your initial introductions, which generally take place once a month. Your time will be spent on follow-up dates with candidates of your choosing.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>What is the Average Age of Family First Clients?</h2>
-            <p>The majority of our clients are between the ages of 30 and 65, though many outside this range also achieve relationship success.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>How Big is Your Professional Matchmaking Database?</h2>
-            <p>Our database is diverse and comprehensive. We consider all details when matches are proposed, ensuring they meet your specifications.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>Does Your Matchmaking Service Cater to All Cultural and Religious Groups?</h2>
-            <p>We facilitate matches for all single professional groups, including various cultures, races, ages, and religions.</p>
-          </div>
-
-          <div class="content-section">
-            <h2>What is Singles Matchmaking?</h2>
-            <p>Singles Matchmaking can be defined as an age-old process of connecting two people who are looking for love, romance, and friendship. Traditional Singles Matchmaking happened exclusively through middle-aged and aged women and men who made it their business to find others, wives and husbands, however Modern Singles Matchmaking is an online service that helps people find their perfect match by matching them with like-minded singles based on their personal preferences and deal breakers.With this service, singles can find their true love, create meaningful relationships, and even find lifelong friendships, including marriage</p>
-          </div>
+        <div class="faq-item">
+            <div class="faq-question">What is Family First?</div>
+            <div class="faq-answer">
+                Family First is the #1 matchmaker in Southern Africa. Our proven process combines the largest network of relationship-ready singles with personalized matchmaking services to help you find and build your best relationship yet.
+            </div>
         </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What Are the Benefits of Family First?</div>
+            <div class="faq-answer">
+                <ul>
+                    <li><strong>Personalized Matching by Experts:</strong> Your dedicated matchmaker gets to know you personally to understand you, your values, and what you’re looking for in a partner.</li>
+                    <li><strong>Custom Date Planning and Curation:</strong> Every potential match is interviewed by video. We then plan your entire date experience, including all coordination.</li>
+                    <li><strong>Secure, Private Process:</strong> Safety is one of our top priorities. Profiles remain private until you decide to share. Every match undergoes a criminal record screening.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What Makes Family First Different From Other Dating Apps?</div>
+            <div class="faq-answer">
+                Unlike other services, Family First gets personal to find the best matches for you based on your individual preferences and priorities. All matches are hand-selected by your dedicated matchmaker, and our service is 100% confidential.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How Do I Become a Family First Client?</div>
+            <div class="faq-answer">
+                Start by visiting our link and answering a few questions about yourself. We only accept clients whom we believe we can match. If Family First seems like a good fit, you’ll have the chance to schedule a call with a client experience specialist to recommend a client package.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Does Family First Hand Select Matches?</div>
+            <div class="faq-answer">
+                Yes! Our matchmakers work one-on-one with you and ask all the right questions to learn about you, your relationship history, and values. This helps us assess possible chemistry. We apply the same rigorous research to all potential candidates, ensuring every match undergoes criminal record and live video screenings.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How Does Family First Protect Client Privacy?</div>
+            <div class="faq-answer">
+                Protecting the privacy and safety of our community is our top priority. We conduct criminal record screenings and thoroughly screen all candidates through personal interviews over video chat. We do not share identity or contact information without permission.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What Should I Expect on My Journey?</div>
+            <div class="faq-answer">
+                As a Family First client, you can expect:
+                <ul>
+                    <li>A dedicated matchmaker</li>
+                    <li>In-depth, 1:1 consultation</li>
+                    <li>Extensive search criteria for potential candidates</li>
+                    <li>Video and criminal record screenings for all matches</li>
+                    <li>Curated date planning for every match</li>
+                    <li>Follow-up and feedback sessions after each date</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How Much Time Should I Expect to Dedicate?</div>
+            <div class="faq-answer">
+                We specialize in working with busy clients, so you won’t need to dedicate much time after your initial introductions, which generally take place once a month. Your time will be spent on follow-up dates with candidates of your choosing.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What is the Average Age of Clients?</div>
+            <div class="faq-answer">
+                The majority of our clients are between the ages of 30 and 65, though many outside this range also achieve relationship success.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Does Your Service Cater to All Cultural Groups?</div>
+            <div class="faq-answer">
+                We facilitate matches for all single professional groups, including various cultures, races, ages, and religions.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What is Singles Matchmaking?</div>
+            <div class="faq-answer">
+                Modern Singles Matchmaking is an online service that helps people find their perfect match by connecting them with like-minded singles based on their personal preferences and deal breakers. With this service, singles can find their true love, create meaningful relationships, and even find lifelong friendships, including marriage.
+            </div>
+        </div>
+
       </div>
+    </section>
+
+    <section class="dark-cta">
+      <h2>Still have questions?</h2>
+      <p>Our team is here to help you navigate your journey to finding love.</p>
+      <a href="contact.html" class="btn-primary" style="text-decoration: none;">Contact Us</a>
     </section>
   </main>
 
-<footer>
+  <footer>
     <div class="footer-content">
       <div class="footer-col">
-       
         <div class="social-links">
           <a href="#">𝕏</a>
           <a href="#">f</a>
@@ -163,18 +542,17 @@
         </div>
       </div>
       <div class="footer-col">
-       
+        <h4>Useful Links</h4>
         <ul>
-           <h4 style="color: white;">Useful Links</h4>
           <li><a href="terms.html">Terms of service</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
           <li><a href="trust.html">Trust & Safety</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Why Us</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 style="color: white;">Contact Us</h4>
+        <h4>Contact Us</h4>
         <p>Family First Matchmaking <br>
           55 Richards Drive, Halfway House, Midrand<br>
           Gauteng, 1685<br>
@@ -186,21 +564,45 @@
     </div>
     <div class="footer-bottom">
       <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
-      <p>Designed by <a href="https//miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #a45c3d;">Mi Wallet LTD</span></a></p>
     </div>
   </footer>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      if(menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            const isActive = navWrapper.classList.toggle('active');
+            menuToggle.textContent = isActive ? '✕' : '☰';
+        });
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        // Close menu when a link is clicked on mobile
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navWrapper.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+            });
+        });
+      }
 
-  <script src="assets/js/main.js"></script>
-  <script src="controller/app.js"></script>
+      // Optional: Simple Accordion Logic (Uncomment if you want click-to-expand)
+      /*
+      const questions = document.querySelectorAll('.faq-question');
+      questions.forEach(q => {
+          q.addEventListener('click', () => {
+              const answer = q.nextElementSibling;
+              answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+          });
+      });
+      */
+    });
+  </script>
 
 </body>
 
