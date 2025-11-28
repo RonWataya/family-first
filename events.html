@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Family First Matchmaking - Events</title>
+  <title>Events - Family First Matchmaking</title>
   <meta name="description" content="Discover engaging singles events from Family First Matchmaking, including speed dating, exclusive social events, and a variety of group fun activities.">
   <meta name="keywords" content="Family First Matchmaking, singles events, speed dating, exclusive events, group activities, dating events">
 
@@ -13,19 +13,401 @@
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    /* --- Global Component Styles --- */
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1a1a1a;
+        margin: 0;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* --- Header Styles --- */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px;
+    }
+
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 70px;
+    }
+    
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      margin: 0;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 60px;
+      text-decoration: none;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+
+    /* --- Buttons --- */
+    .btn-primary {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: fit-content;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #29b092;
+    }
+
+    /* --- Hero Section --- */
+    .hero-split {
+      display: flex;
+      min-height: 500px;
+      align-items: center;
+      background-color: #f7f3ed;
+    }
+
+    .hero-left {
+      flex: 1;
+      padding: 60px 80px;
+      text-align: left;
+    }
+
+    .hero-left h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .hero-left p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4a4a4a;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-right {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+    }
+
+    /* --- Events Section --- */
+    .events-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 40px;
+    }
+
+    .event-row {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        margin-bottom: 80px;
+    }
+
+    .event-row:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Alternating Layout */
+    .event-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .event-image-col {
+        flex: 1;
+    }
+
+    .event-image-col img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .event-content-col {
+        flex: 1;
+    }
+
+    .event-content-col h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 32px;
+        color: #1a1a1a;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .event-content-col p {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        color: #4a4a4a;
+        margin-bottom: 30px;
+    }
+    
+    .instructor {
+        font-size: 14px;
+        color: #888;
+        font-weight: 500;
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    /* --- Newsletter/Dark Section --- */
+    .newsletter-section {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .newsletter-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .newsletter-section p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+        padding: 12px 20px;
+        border-radius: 50px;
+        border: 1px solid #333;
+        flex: 1;
+        min-width: 200px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- Footer Styles --- */
+    footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
+        border-top: 1px solid #333;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .footer-col {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-col h4 {
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-col a {
+        color: #ccc;
+        transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+        color: #a45c3d;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+        color: #a45c3d;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+
+    /* --- Mobile Media Queries --- */
+    @media (max-width: 768px) {
+        .logo-container img { margin-left: 20px; }
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 80px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            margin-left: 0;
+            z-index: 1000;
+        }
+        .nav-wrapper.active { right: 0; }
+        .menu-toggle { display: block; margin-left: auto; }
+        
+        nav { flex-direction: column; align-items: center; gap: 20px; width: 100%; }
+        .header-buttons { flex-direction: column; width: 100%; margin-top: 20px; }
+        .btn-signup { margin-right: 0; }
+
+        .hero-split { flex-direction: column; }
+        .hero-left { padding: 40px 20px; text-align: center; }
+        .hero-left h1 { font-size: 36px; }
+        .hero-right { width: 100%; min-height: 300px; }
+        
+        /* Event Stack for Mobile */
+        .events-container { padding: 40px 20px; }
+        .event-row { flex-direction: column; gap: 30px; margin-bottom: 60px; }
+        .event-row:nth-child(even) { flex-direction: column; } /* Keep image on top for mobile */
+        .event-image-col img { height: 250px; }
+        .event-content-col { text-align: center; }
+        
+        .footer-content { flex-direction: column; gap: 30px; }
+    }
+  </style>
 </head>
 
-<body class="events-page">
+<body>
 
-    <header>
+  <header>
     <a href="index.html" class="logo-container">
       <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
     </a>
@@ -40,140 +422,80 @@
         <a href="faq.html">FAQ</a>
         <a href="about.html">Why Us</a>
         <a href="#stories">Real Stories</a>
-        <a href="events.html">Events</a>
+        <a href="events.html" class="active">Events</a>
         <a href="blog.html">Blog</a>
       </nav>
       <div class="header-buttons">
         <a href="#" class="btn-login">Log In</a>
         <a href="register.html" class="btn-signup">Sign Up</a>
-
       </div>
     </div>
   </header>
-  <main class="main">
 
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Events</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Events</li>
-          </ol>
-        </nav>
+  <main>
+    <section class="hero-split">
+      <div class="hero-left">
+        <h1>Connect in Real Life</h1>
+        <p>Discover engaging singles events, exclusive social gatherings, and a variety of group fun activities designed to spark genuine connections.</p>
+        <a href="#upcoming-events" class="btn-primary">View Upcoming Events</a>
       </div>
-    </div><section id="courses-events" class="courses-events section">
+      <div class="hero-right" style="background-image: url('assets/img/love6.jpeg');"></div>
+    </section>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row">
-
-          <div class="col-lg-8">
-
-            <article class="event-card" data-aos="fade-up" data-aos-delay="200">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <div class="event-image">
-                    <img src="assets/img/love5.webp" class="img-fluid" alt="Speed Dating Event">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="event-content">
-                    <h3 class="event-title">
-                      <a href="#">Speed Dating: Instant Chemistry</a>
-                    </h3>
-                    <p class="event-description">Our speed dating events offer a unique opportunity to meet people face-to-face. Unlike endless swiping, you get to experience genuine interactions in real-time. It's like a dating sampler platter with 10-20 mini-dates lasting 3-5 minutes each. It's safe, efficient, and time-saving, allowing you to meet several potential matches in one evening.</p>
-                    <div class="event-footer">
-                      <div class="instructor">
-                        <span>The Family First Matchmaking Team</span>
-                      </div>
-                    </div>
-                    <div class="event-actions">
-                      <a href="register.html" class="btn btn-primary">Register Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article><article class="event-card" data-aos="fade-up" data-aos-delay="300">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <div class="event-image">
-                    <img src="assets/img/love6.jpeg" class="img-fluid" alt="Group Events">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="event-content">
-                    <h3 class="event-title">
-                      <a href="#">Group Fun Events</a>
-                    </h3>
-                    <p class="event-description">Family First Singles World offers a variety of engaging group events designed to be fun, interactive, and inclusive. Activities cater to different interests, including: Pin Bowling Nights, Camping Trips, Wine Tasting Tours, Board Game Nights, and Live Music Concerts. These events are about creating memorable experiences, building friendships, and finding your perfect match in a relaxed environment.</p>
-                    <div class="event-footer">
-                      <div class="instructor">
-                        <span>The Family First Matchmaking Team</span>
-                      </div>
-                    </div>
-                    <div class="event-actions">
-                      <a href="register.html" class="btn btn-primary">Register Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article><article class="event-card" data-aos="fade-up" data-aos-delay="400">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <div class="event-image">
-                    <img src="assets/img/love7.webp" class="img-fluid" alt="Exclusive Events">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="event-content">
-                    <h3 class="event-title">
-                      <a href="#">Exclusive Social Events</a>
-                    </h3>
-                    <p class="event-description">For our members, we offer exclusive social events designed to provide a more intimate and personalized experience. These events, which include private dinners, VIP gatherings, and themed parties, are carefully curated to ensure a high-quality environment for building genuine connections with others who share your interests and values.</p>
-                    <div class="event-footer">
-                      <div class="instructor">
-                        <span>The Family First Matchmaking Team</span>
-                      </div>
-                    </div>
-                    <div class="event-actions">
-                      <a href="register.html" class="btn btn-primary">Register Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article></div>
-
-          <div class="col-lg-4">
-            <div class="sidebar-widget newsletter-widget" data-aos="fade-up" data-aos-delay="200">
-              <h4 class="widget-title">Stay Updated</h4>
-              <p>Subscribe to our newsletter and never miss important events and announcements.</p>
-              <form action="forms/newsletter.php" method="post" class="php-email-form newsletter-form">
-                <input type="email" name="email" placeholder="Your email address" required="">
-                <button type="submit">Subscribe</button>
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-              </form>
-            </div><div class="sidebar-widget contact-widget" data-aos="fade-up" data-aos-delay="300">
-              <h4 class="widget-title">Contact Us</h4>
-              <p>For more information about our events and services, feel free to contact us.</p>
-              <ul class="contact-info">
-                <li><i class="bi bi-geo-alt"></i> Family First Matchmaking Pty, 55 Richards Drive, Halfway House, Midrand, Gauteng, 1685, South Africa</li>
-                <li><i class="bi bi-phone"></i> +27 73 545 4949</li>
-                <li><i class="bi bi-envelope"></i> amon@rivaindustries.com</li>
-              </ul>
-            </div></div>
+    <section id="upcoming-events" class="events-container">
+      
+      <div class="event-row">
+        <div class="event-image-col">
+            <img src="assets/img/love5.webp" alt="Speed Dating Event">
         </div>
-
+        <div class="event-content-col">
+            <h3>Speed Dating: Instant Chemistry</h3>
+            <span class="instructor">Hosted by The Family First Team</span>
+            <p>Our speed dating events offer a unique opportunity to meet people face-to-face. Unlike endless swiping, you get to experience genuine interactions in real-time. It's like a dating sampler platter with 10-20 mini-dates lasting 3-5 minutes each. It's safe, efficient, and time-saving, allowing you to meet several potential matches in one evening.</p>
+            <a href="register.html" class="btn-primary">Register Now</a>
+        </div>
       </div>
 
-    </section></main>
+      <div class="event-row">
+        <div class="event-image-col">
+            <img src="assets/img/love6.jpeg" alt="Group Fun Events">
+        </div>
+        <div class="event-content-col">
+            <h3>Group Fun Events</h3>
+            <span class="instructor">Hosted by The Family First Team</span>
+            <p>Family First Singles World offers a variety of engaging group events designed to be fun, interactive, and inclusive. Activities cater to different interests, including: Pin Bowling Nights, Camping Trips, Wine Tasting Tours, Board Game Nights, and Live Music Concerts. These events are about creating memorable experiences, building friendships, and finding your perfect match in a relaxed environment.</p>
+            <a href="register.html" class="btn-primary">Register Now</a>
+        </div>
+      </div>
 
-<footer>
+      <div class="event-row">
+        <div class="event-image-col">
+            <img src="assets/img/love7.webp" alt="Exclusive Social Events">
+        </div>
+        <div class="event-content-col">
+            <h3>Exclusive Social Events</h3>
+            <span class="instructor">Hosted by The Family First Team</span>
+            <p>For our members, we offer exclusive social events designed to provide a more intimate and personalized experience. These events, which include private dinners, VIP gatherings, and themed parties, are carefully curated to ensure a high-quality environment for building genuine connections with others who share your interests and values.</p>
+            <a href="register.html" class="btn-primary">Register Now</a>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="newsletter-section">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter and never miss important events and announcements.</p>
+      
+      <form action="forms/newsletter.php" method="post" class="newsletter-form">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit" class="btn-primary" style="border: none;">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
     <div class="footer-content">
       <div class="footer-col">
-       
         <div class="social-links">
           <a href="#">𝕏</a>
           <a href="#">f</a>
@@ -182,18 +504,17 @@
         </div>
       </div>
       <div class="footer-col">
-       
+        <h4>Useful Links</h4>
         <ul>
-           <h4 style="color: white;">Useful Links</h4>
           <li><a href="terms.html">Terms of service</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
           <li><a href="trust.html">Trust & Safety</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Why Us</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4 style="color: white;">Contact Us</h4>
+        <h4>Contact Us</h4>
         <p>Family First Matchmaking <br>
           55 Richards Drive, Halfway House, Midrand<br>
           Gauteng, 1685<br>
@@ -205,20 +526,34 @@
     </div>
     <div class="footer-bottom">
       <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
-      <p>Designed by <a href="https//miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #a45c3d;">Mi Wallet LTD</span></a></p>
     </div>
   </footer>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile Menu Toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      if(menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            const isActive = navWrapper.classList.toggle('active');
+            menuToggle.textContent = isActive ? '✕' : '☰';
+        });
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
+        // Close menu when a link is clicked on mobile
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navWrapper.classList.remove('active');
+                menuToggle.textContent = '☰';
+            }
+            });
+        });
+      }
+    });
+  </script>
 
 </body>
 
