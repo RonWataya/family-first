@@ -6,15 +6,54 @@
   <title>Family First Matchmaking - Register</title>
   <link href="assets/img/ffmicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="assets/css/register.css" rel="stylesheet">
   <style>
-    /* Only style for previous/next buttons */
-    .nav-buttons { font-size: 0.85rem; text-align: right; margin-top: 1rem; }
+    /* Navigation Buttons - Hidden by default, only back is shown in script */
+    .nav-buttons { font-size: 0.85rem; text-align: center; margin-top: 1rem; }
     .nav-buttons button { background: none; border: none; color: #1B85BC; cursor: pointer; font-weight: 600; margin-left: 0.5rem; }
+    
+    /* Styles for Multi-Select Confirmation Button */
+    .btn-confirm, .btn-primary { /* Added .btn-primary style here for consistency */
+        background-color: #1B85BC;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 15px;
+        cursor: pointer;
+        width: 100%;
+        font-weight: 600;
+    }
+    .btn-confirm:hover, .btn-primary:hover { background-color: #156a96; }
+    
+    /* Scrollable grid for many options (Interests/Values) */
+    .grid-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: 'Inter', sans-serif;
+        resize: vertical;
+    }
+    /* Style for skipped text fields */
+    .skip-option {
+        text-align: center; 
+        margin-top: 10px;
+    }
+    .skip-option a {
+        color: #1B85BC;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
   </style>
 </head>
 <body>
@@ -47,42 +86,24 @@
     <div class="form-container">
         <form id="multiStepForm">
             <div class="step-content active" data-step="0">
-                <div class="step-indicator">Step 0 of 28</div>
-
+                <div class="step-indicator">Step 0 of 41</div>
                 <div class="step-header">
                     <h1>Choose Your Plan</h1>
                     <p>Select the plan that fits your matchmaking experience.</p>
                 </div>
-
                 <div class="form-group">
                     <div class="button-group">
-
-                        <button type="button" class="btn-option" 
-                            data-field="pricing_plan" 
-                            data-value="Member (R0)">
-                            Free Member — R0
-                        </button>
-
-                        <button type="button" class="btn-option" 
-                            data-field="pricing_plan" 
-                            data-value="VIP (R3,999.00)">
-                            VIP — R3,999.00
-                        </button>
-                        <button type="button" class="btn-option" 
-                            data-field="pricing_plan" 
-                            data-value="VIP (R6,499.00)">
-                            VIP — R6,499.00
-                        </button>
-
+                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="Member (R0)">Free Member — R0</button>
+                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="VIP (R3,999.00)">VIP — R3,999.00</button>
+                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="VIP (R6,499.00)">VIP — R6,499.00</button>
                     </div>
                 </div>
             </div>
 
             <div class="step-content" data-step="1">
-                <div class="step-indicator">Step 1 of 28</div>
+                <div class="step-indicator">Step 1 of 41</div>
                 <div class="step-header">
-                    <h1>What's your gender?</h1>
-                    <p>This helps us match you with compatible partners in our community.</p>
+                    <h1>Please confirm your gender</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
@@ -93,30 +114,46 @@
             </div>
 
             <div class="step-content" data-step="2">
-                <div class="step-indicator">Step 2 of 28</div>
+                <div class="step-indicator">Step 2 of 41</div>
                 <div class="step-header">
-                    <h1>Tell us about yourself</h1>
+                    <h1>Create your account</h1>
                     <p>We'll use this information to verify your account.</p>
                 </div>
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" name="full_name" required onchange="validateStep2()">
+                    <input type="text" name="full_name" required>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" name="email" required onchange="validateStep2()">
+                    <input type="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="text" name="phone" required onchange="validateStep2()">
+                    <input type="text" name="phone" required>
                 </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" name="password" required placeholder="Create a secure password">
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStep2()">Next Step</button>
             </div>
 
             <div class="step-content" data-step="3">
-                <div class="step-indicator">Step 3 of 28</div>
+                <div class="step-indicator">Step 3 of 41</div>
                 <div class="step-header">
-                    <h1>What gender partner are you seeking?</h1>
-                    <p>This helps us find your ideal matches.</p>
+                    <h1>When were you born?</h1>
+                    <p>Your date of birth will not be visible on your profile, only your age.</p>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="dob" required>
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('dob')">Next Step</button>
+            </div>
+
+            <div class="step-content" data-step="4">
+                <div class="step-indicator">Step 4 of 41</div>
+                <div class="step-header">
+                    <h1>Please confirm the gender of your desired partner</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
@@ -126,10 +163,10 @@
                 </div>
             </div>
 
-            <div class="step-content" data-step="4">
-                <div class="step-indicator">Step 4 of 28</div>
+            <div class="step-content" data-step="5">
+                <div class="step-indicator">Step 5 of 41</div>
                 <div class="step-header">
-                    <h1>What's your marital status?</h1>
+                    <h1>What is your marital status?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
@@ -141,13 +178,13 @@
                 </div>
             </div>
 
-            <div class="step-content" data-step="5">
-                <div class="step-indicator">Step 5 of 28</div>
+            <div class="step-content" data-step="6">
+                <div class="step-indicator">Step 6 of 41</div>
                 <div class="step-header">
-                    <h1>What's your education level?</h1>
+                    <h1>What is your level of education?</h1>
                 </div>
                 <div class="form-group">
-                    <select name="education_level" required onchange="validateStep5()">
+                    <select name="education_level" required>
                         <option value="">Select...</option>
                         <option value="No Education">No Education</option>
                         <option value="Primary Education">Primary Education</option>
@@ -159,374 +196,714 @@
                         <option value="Doctorate">Doctorate</option>
                     </select>
                 </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('education_level')">Next Step</button>
             </div>
 
-            <div class="step-content" data-step="6">
-                <div class="step-indicator">Step 6 of 28</div>
+            <div class="step-content" data-step="7">
+                <div class="step-indicator">Step 7 of 41</div>
                 <div class="step-header">
                     <h1>How important is intelligence and education level in a partner?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_education_importance" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_education_importance" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_education_importance" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_education_importance" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_education_importance" data-value="Extremely important">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="7">Extremely important</button>
                     </div>
-                </div>
-            </div>
-            
-            <div class="step-content" data-step="7">
-                <div class="step-indicator">Step 7 of 28</div>
-                <div class="step-header">
-                    <h1>What is your profession?</h1>
-                    <p>This information helps us understand your lifestyle.</p>
-                </div>
-                <div class="form-group">
-                    <label>Please enter your occupation</label>
-                    <input type="text" name="profession" required onchange="validateStep7()">
                 </div>
             </div>
 
             <div class="step-content" data-step="8">
-                <div class="step-indicator">Step 8 of 28</div>
+                <div class="step-indicator">Step 8 of 41</div>
                 <div class="step-header">
-                    <h1>Which income bracket do you fall into?</h1>
-                    <p>This information remains private.</p>
+                    <h1>How tall are you (cm)?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="income_bracket" data-value="Less than R40,000 annually">Less than R40,000 annually</button>
-                        <button type="button" class="btn-option" data-field="income_bracket" data-value="R40,000 – R100,000 annually">R40,000 – R100,000 annually</button>
-                        <button type="button" class="btn-option" data-field="income_bracket" data-value="R100,001 – R250,000 annually">R100,001 – R250,000 annually</button>
-                        <button type="button" class="btn-option" data-field="income_bracket" data-value="R250,001 - R400,000 annually">R250,001 - R400,000 annually</button>
-                        <button type="button" class="btn-option" data-field="income_bracket" data-value="More than R400,001 annually">More than R400,001 annually</button>
-                    </div>
+                    <input type="number" name="height" placeholder="e.g. 175" required>
                 </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('height')">Next Step</button>
             </div>
 
             <div class="step-content" data-step="9">
-                <div class="step-indicator">Step 9 of 28</div>
-                <div class="step-header">
-                    <h1>How important is your partner's financial income?</h1>
-                    <p>Do you need your partner's income level to be comparable to your own?</p>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_income_importance" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_income_importance" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_income_importance" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_income_importance" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_income_importance" data-value="Extremely important">Extremely important</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-content" data-step="10">
-                <div class="step-indicator">Step 10 of 28</div>
-                <div class="step-header">
-                  <h1>How tall are you?</h1>
-                </div>
-                <div class="form-group">
-                    <label>Height (in cm)</label>
-                    <input type="text" name="height" placeholder="e.g., 175" required onchange="validateStep10()">
-                </div>
-            </div>
-
-            <div class="step-content" data-step="11">
-                <div class="step-indicator">Step 11 of 28</div>
+                <div class="step-indicator">Step 9 of 41</div>
                 <div class="step-header">
                     <h1>How important is it for you to be taller than your partner?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_height_preference" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_height_preference" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_height_preference" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_height_preference" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_height_preference" data-value="Extremely important">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="7">Extremely important</button>
                     </div>
                 </div>
             </div>
 
-            <div class="step-content" data-step="12">
-                <div class="step-indicator">Step 12 of 28</div>
-                <div class="step-header">
-                   <h1>How important is it to you that your partner has an attractive appearance?</h1>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_appearance_importance" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_appearance_importance" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_appearance_importance" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_appearance_importance" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_appearance_importance" data-value="Extremely important">Extremely important</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="step-content" data-step="13">
-                <div class="step-indicator">Step 13 of 28</div>
+            <div class="step-content" data-step="10">
+                <div class="step-indicator">Step 10 of 41</div>
                 <div class="step-header">
                     <h1>Which ethnic group do you belong to?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="ethnic_group" data-value="White">White</button>
-                        <button type="button" class="btn-option" data-field="ethnic_group" data-value="Indian">Indian</button>
-                        <button type="button" class="btn-option" data-field="ethnic_group" data-value="Asian">Asian</button>
-                        <button type="button" class="btn-option" data-field="ethnic_group" data-value="Black or African">Black or African</button>
-                        <button type="button" class="btn-option" data-field="ethnic_group" data-value="Other">Other</button>
+                        <button type="button" class="btn-option" data-field="ethnicity" data-value="White">White</button>
+                        <button type="button" class="btn-option" data-field="ethnicity" data-value="Indian">Indian</button>
+                        <button type="button" class="btn-option" data-field="ethnicity" data-value="Asian">Asian</button>
+                        <button type="button" class="btn-option" data-field="ethnicity" data-value="Black or African">Black or African</button>
+                        <button type="button" class="btn-option" data-field="ethnicity" data-value="Other">Other</button>
                     </div>
                 </div>
             </div>
 
-            <div class="step-content" data-step="14">
-                <div class="step-indicator">Step 14 of 28</div>
+            <div class="step-content" data-step="11">
+                <div class="step-indicator">Step 11 of 41</div>
                 <div class="step-header">
-                    <h1>Are you open to dating people from all ethnic groups?</h1>
-                   <p>Do you have ethnic preferences?</p>
+                    <h1>Do you have ethnic preferences?</h1>
+                    <p>Select all that apply.</p>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="ethnic_openness" data-value="Yes, I don't mind">Yes, I don't mind</button>
-                        <button type="button" class="btn-option" data-field="ethnic_openness" data-value="I have some preferences">I have some preferences</button>
-                        <button type="button" class="btn-option" data-field="ethnic_openness" data-value="No, I prefer my own group">No, I prefer my own group</button>
+                    <div class="button-group multi-select" data-field="ethnic_preference">
+                        <button type="button" class="btn-option" data-value="I don't mind">I don't mind</button>
+                        <button type="button" class="btn-option" data-value="White">White</button>
+                        <button type="button" class="btn-option" data-value="Indian">Indian</button>
+                        <button type="button" class="btn-option" data-value="Asian">Asian</button>
+                        <button type="button" class="btn-option" data-value="Black or African">Black or African</button>
+                        <button type="button" class="btn-option" data-value="Other">Other</button>
                     </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
                 </div>
             </div>
 
-            <div class="step-content" data-step="15">
-                <div class="step-indicator">Step 15 of 28</div>
+            <div class="step-content" data-step="12">
+                <div class="step-indicator">Step 12 of 41</div>
                 <div class="step-header">
                     <h1>How important is the ethnicity of your potential partner?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_ethnicity_importance" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_ethnicity_importance" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_ethnicity_importance" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_ethnicity_importance" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_ethnicity_importance" data-value="Extremely important">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="7">Extremely important</button>
                     </div>
                 </div>
             </div>
 
-            <div class="step-content" data-step="16">
-                <div class="step-indicator">Step 16 of 28</div>
+            <div class="step-content" data-step="13">
+                <div class="step-indicator">Step 13 of 41</div>
                 <div class="step-header">
-                    <h1>What are your beliefs?</h1>
+                    <h1>How important is it to you that your partner has an attractive appearance?</h1>
                 </div>
                 <div class="form-group">
-                    <select name="beliefs" required onchange="validateStep16()">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="7">Extremely important</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="14">
+                <div class="step-indicator">Step 14 of 41</div>
+                <div class="step-header">
+                    <h1>Which of the following best describes your beliefs?</h1>
+                </div>
+                <div class="form-group">
+                    <select name="beliefs" required>
                         <option value="">Select...</option>
                         <option value="Christian">Christian</option>
                         <option value="Catholic">Catholic</option>
                         <option value="Muslim">Muslim</option>
                         <option value="Jewish">Jewish</option>
-                        <option value="Buddhist">Buddhist</option>
                         <option value="Hindu">Hindu</option>
-                        <option value="Other">Other</option>
+                        <option value="Buddhist">Buddhist</option>
                         <option value="Agnostic">Agnostic</option>
                         <option value="Atheist">Atheist</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="step-content" data-step="17">
-                <div class="step-indicator">Step 17 of 28</div>
-                <div class="step-header">
-                    <h1>Which religious beliefs would you be open to?</h1>
-                    <p>Select the one category that best represents your openness.</p>
-                </div>
-                <div class="form-group">
-                    <select name="partner_beliefs_openness" required onchange="validateStep17()">
-                        <option value="">Select...</option>
-                        <option value="I don't mind">I don't mind (Any religion is acceptable)</option>
-                        <option value="Same as mine">Same as mine</option>
-                        <option value="Christian/Catholic">Christian or Catholic</option>
-                        <option value="Muslim">Muslim</option>
-                        <option value="Jewish">Jewish</option>
-                        <option value="Buddhist/Hindu">Buddhist or Hindu</option>
-                        <option value="Agnostic/Atheist">Agnostic or Atheist</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('beliefs')">Next Step</button>
             </div>
 
-            <div class="step-content" data-step="18">
-                <div class="step-indicator">Step 18 of 28</div>
+            <div class="step-content" data-step="15">
+                <div class="step-indicator">Step 15 of 41</div>
                 <div class="step-header">
-                    <h1>How important is your partner’s religion or spirituality to you?</h1>
+                    <h1>Which religious beliefs would you be open to?</h1>
+                    <p>Please choose at least 1 term.</p>
+                </div>
+                <div class="form-group">
+                    <div class="button-group grid-options multi-select" data-field="partner_beliefs">
+                        <button type="button" class="btn-option" data-value="I don't mind">I don't mind</button>
+                        <button type="button" class="btn-option" data-value="Christian">Christian</button>
+                        <button type="button" class="btn-option" data-value="Catholic">Catholic</button>
+                        <button type="button" class="btn-option" data-value="Muslim">Muslim</button>
+                        <button type="button" class="btn-option" data-value="Jewish">Jewish</button>
+                        <button type="button" class="btn-option" data-value="Hindu">Hindu</button>
+                        <button type="button" class="btn-option" data-value="Buddhist">Buddhist</button>
+                        <button type="button" class="btn-option" data-value="Agnostic">Agnostic</button>
+                        <button type="button" class="btn-option" data-value="Atheist">Atheist</button>
+                        <button type="button" class="btn-option" data-value="Other">Other</button>
+                    </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="16">
+                <div class="step-indicator">Step 16 of 41</div>
+                <div class="step-header">
+                    <h1>Which role would you like a partner to fulfil the most?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_religion_importance" data-value="Not important">Not important</button>
-                        <button type="button" class="btn-option" data-field="partner_religion_importance" data-value="Slightly important">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="partner_religion_importance" data-value="Important">Important</button>
-                        <button type="button" class="btn-option" data-field="partner_religion_importance" data-value="Very important">Very important</button>
-                        <button type="button" class="btn-option" data-field="partner_religion_importance" data-value="Extremely important">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="partner_role" data-value="Destined soulmate">Destined soulmate</button>
+                        <button type="button" class="btn-option" data-field="partner_role" data-value="Partner to raise a family">Partner to raise a family</button>
+                        <button type="button" class="btn-option" data-field="partner_role" data-value="Dreamy lover">Dreamy lover</button>
+                        <button type="button" class="btn-option" data-field="partner_role" data-value="Partner in crime">Partner in crime</button>
+                        <button type="button" class="btn-option" data-field="partner_role" data-value="My closest confidant">My closest confidant</button>
                     </div>
                 </div>
             </div>
 
-            <div class="step-content" data-step="19">
-                <div class="step-indicator">Step 19 of 28</div>
+            <div class="step-content" data-step="17">
+                <div class="step-indicator">Step 17 of 41</div>
                 <div class="step-header">
-                    <h1>How often do you smoke?</h1>
+                    <h1>If you have an argument, how important is it to reconcile quickly?</h1>
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="smoking_self" data-value="Never">Never</button>
-                        <button type="button" class="btn-option" data-field="smoking_self" data-value="Several times a year">Several times a year</button>
-                        <button type="button" class="btn-option" data-field="smoking_self" data-value="About once a week">About once a week</button>
-                        <button type="button" class="btn-option" data-field="smoking_self" data-value="A few times a week">A few times a week</button>
-                        <button type="button" class="btn-option" data-field="smoking_self" data-value="Every day">Every day</button>
+                        <button type="button" class="btn-option" data-field="reconcile_style" data-value="Wait days">I can wait a couple of days</button>
+                        <button type="button" class="btn-option" data-field="reconcile_style" data-value="Next day">I can wait until the next day</button>
+                        <button type="button" class="btn-option" data-field="reconcile_style" data-value="Same day">I need to resolve it same day</button>
+                        <button type="button" class="btn-option" data-field="reconcile_style" data-value="Immediate">I don't like leaving arguments without resolution</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="18">
+                <div class="step-indicator">Step 18 of 41</div>
+                <div class="step-header">
+                    <h1>Things that are important to me in a relationship:</h1>
+                    <p>Choose at least 1.</p>
+                </div>
+                <div class="form-group">
+                    <div class="button-group grid-options multi-select" data-field="relationship_values">
+                        <button type="button" class="btn-option" data-value="Moral values">Moral values</button>
+                        <button type="button" class="btn-option" data-value="Reliability">Reliability</button>
+                        <button type="button" class="btn-option" data-value="Trust">Trust</button>
+                        <button type="button" class="btn-option" data-value="Respect">Respect</button>
+                        <button type="button" class="btn-option" data-value="Sex appeal">Sex appeal</button>
+                        <button type="button" class="btn-option" data-value="Physical appearance">Physical appearance</button>
+                        <button type="button" class="btn-option" data-value="Our chemistry">Our chemistry</button>
+                        <button type="button" class="btn-option" data-value="Affection">Affection</button>
+                        <button type="button" class="btn-option" data-value="Personality">Personality</button>
+                        <button type="button" class="btn-option" data-value="Kindness">Kindness</button>
+                        <button type="button" class="btn-option" data-value="Communication">Ability to communicate</button>
+                        <button type="button" class="btn-option" data-value="Honesty">Honesty</button>
+                        <button type="button" class="btn-option" data-value="Equality">Equality</button>
+                        <button type="button" class="btn-option" data-value="Support">Emotional Support</button>
+                        <button type="button" class="btn-option" data-value="Shared Future Goals">Shared Future Goals</button>
+                        <button type="button" class="btn-option" data-value="Patience">Patience</button>
+                        <button type="button" class="btn-option" data-value="Financial stability">Financial stability</button>
+                        <button type="button" class="btn-option" data-value="Adventure">Sense of Adventure</button>
+                        <button type="button" class="btn-option" data-value="Family plans">Similar family plans</button>
+                        <button type="button" class="btn-option" data-value="Humor">Sense of Humor</button>
+                        <button type="button" class="btn-option" data-value="Spirituality">Spirituality/Faith</button>
+                        <button type="button" class="btn-option" data-value="Independence">Independence</button>
+                        <button type="button" class="btn-option" data-value="Commitment">Commitment</button>
+                        <button type="button" class="btn-option" data-value="Ambition">Ambition</button>
+                    </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="19">
+                <div class="step-indicator">Step 19 of 41</div>
+                <div class="step-header">
+                    <h1>How willing are you to change for a partner?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="willingness_change" data-value="No change">I'd rather find someone who doesn't want to change me</button>
+                        <button type="button" class="btn-option" data-field="willingness_change" data-value="Mutual change">I will ask my partner to also change a habit</button>
+                        <button type="button" class="btn-option" data-field="willingness_change" data-value="Adapt for happiness">I am likely to adapt if it makes us happy</button>
+                        <button type="button" class="btn-option" data-field="willingness_change" data-value="Adapt quickly">I will adapt quickly to avoid conflict</button>
                     </div>
                 </div>
             </div>
 
             <div class="step-content" data-step="20">
-                <div class="step-indicator">Step 20 of 28</div>
+                <div class="step-indicator">Step 20 of 41</div>
                 <div class="step-header">
-                    <h1>Please indicate which smoking habits you would accept from your partner.</h1>
+                    <h1>How much does this apply to you?</h1>
                 </div>
+                
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label>18. I get upset easily</label>
+                    <select name="psycho_upset" class="psycho-select" onchange="checkPsychoGroup(20)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label>19. I consider myself to be understanding</label>
+                    <select name="psycho_understanding" class="psycho-select" onchange="checkPsychoGroup(20)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="Never">Never</button>
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="Several times a year">Several times a year</button>
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="About once a week">About once a week</button>
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="A few times a week">A few times a week</button>
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="Every day">Every day</button>
-                        <button type="button" class="btn-option" data-field="smoking_partner_acceptance" data-value="I don't mind">I don't mind</button>
-                    </div>
+                    <label>20. I have little patience</label>
+                    <select name="psycho_patience" class="psycho-select" onchange="checkPsychoGroup(20)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
                 </div>
+                <button type="button" class="btn-confirm" id="btn-step20" style="display:none;" onclick="savePsychoGroupAndNext(20)">Next</button>
             </div>
 
             <div class="step-content" data-step="21">
-                <div class="step-indicator">Step 21 of 28</div>
+                <div class="step-indicator">Step 21 of 41</div>
                 <div class="step-header">
-                    <h1>How often do you drink alcohol?</h1>
+                    <h1>Tell us more about your personality</h1>
                 </div>
+                
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>21. I get stressed easily</label>
+                    <select name="psycho_stress" class="psycho-select" onchange="checkPsychoGroup(21)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>22. I'm easily discouraged</label>
+                    <select name="psycho_discouraged" class="psycho-select" onchange="checkPsychoGroup(21)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>23. I can easily make people laugh</label>
+                    <select name="psycho_funny" class="psycho-select" onchange="checkPsychoGroup(21)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="drinking_self" data-value="Never">Never</button>
-                        <button type="button" class="btn-option" data-field="drinking_self" data-value="Several times a year">Several times a year</button>
-                        <button type="button" class="btn-option" data-field="drinking_self" data-value="About once a week">About once a week</button>
-                        <button type="button" class="btn-option" data-field="drinking_self" data-value="A few times a week">A few times a week</button>
-                        <button type="button" class="btn-option" data-field="drinking_self" data-value="Every day">Every day</button>
-                    </div>
+                    <label>24. I consider myself outgoing</label>
+                    <select name="psycho_outgoing" class="psycho-select" onchange="checkPsychoGroup(21)">
+                        <option value="">Select...</option>
+                        <option value="1">Strongly Disagree</option>
+                        <option value="2">Disagree</option>
+                        <option value="3">Slightly Disagree</option>
+                        <option value="4">Neither Agree nor Disagree</option>
+                        <option value="5">Slightly Agree</option>
+                        <option value="6">Agree</option>
+                        <option value="7">Strongly Agree</option>
+                    </select>
                 </div>
+                <button type="button" class="btn-confirm" id="btn-step21" style="display:none;" onclick="savePsychoGroupAndNext(21)">Next</button>
             </div>
 
             <div class="step-content" data-step="22">
-                <div class="step-indicator">Step 22 of 28</div>
+                <div class="step-indicator">Step 22 of 41</div>
                 <div class="step-header">
-                    <h1>Please indicate which drinking habits you would accept from your partner.</h1>
+                    <h1>Which 4 terms would your friends use to describe you?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="Never">Never</button>
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="Several times a year">Several times a year</button>
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="About once a week">About once a week</button>
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="A few times a week">A few times a week</button>
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="Every day">Every day</button>
-                        <button type="button" class="btn-option" data-field="drinking_partner_acceptance" data-value="I don't mind">I don't mind</button>
+                    <div class="button-group grid-options multi-select" data-field="friend_desc" data-max="4">
+                        <button type="button" class="btn-option" data-value="Good Listener">Good Listener</button>
+                        <button type="button" class="btn-option" data-value="Spontaneous">Spontaneous</button>
+                        <button type="button" class="btn-option" data-value="Optimistic">Optimistic</button>
+                        <button type="button" class="btn-option" data-value="Loyal">Loyal</button>
+                        <button type="button" class="btn-option" data-value="Happy">Happy</button>
+                        <button type="button" class="btn-option" data-value="Hard working">Hard working</button>
+                        <button type="button" class="btn-option" data-value="Energetic">Energetic</button>
+                        <button type="button" class="btn-option" data-value="Reliable">Reliable</button>
+                        <button type="button" class="btn-option" data-value="Caring">Caring</button>
+                        <button type="button" class="btn-option" data-value="Funny">Funny</button>
+                        <button type="button" class="btn-option" data-value="Kind">Kind</button>
+                        <button type="button" class="btn-option" data-value="Ambitious">Ambitious</button>
+                        <button type="button" class="btn-option" data-value="Intelligent">Intelligent</button>
+                        <button type="button" class="btn-option" data-value="Open-minded">Open-minded</button>
+                        <button type="button" class="btn-option" data-value="Creative">Creative</button>
+                        <button type="button" class="btn-option" data-value="Thoughtful">Thoughtful</button>
+                        <button type="button" class="btn-option" data-value="Adventurous">Adventurous</button>
+                        <button type="button" class="btn-option" data-value="Witty">Witty</button>
+                        <button type="button" class="btn-option" data-value="Passionate">Passionate</button>
+                        <button type="button" class="btn-option" data-value="Generous">Generous</button>
                     </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div id="max-selection-message" style="color: red; text-align: center; margin-top: 10px; display: none;">Please select a maximum of 4 options.</div>
                 </div>
             </div>
 
             <div class="step-content" data-step="23">
-                <div class="step-indicator">Step 23 of 28</div>
+                <div class="step-indicator">Step 23 of 41</div>
                 <div class="step-header">
-                   <h1>How many children under the age of 18 currently live in your household?</h1>
+                    <h1>What two to three things are you most thankful for?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="children_in_household" data-value="No children">No children</button>
-                        <button type="button" class="btn-option" data-field="children_in_household" data-value="One child">One child</button>
-                        <button type="button" class="btn-option" data-field="children_in_household" data-value="Two children">Two children</button>
-                        <button type="button" class="btn-option" data-field="children_in_household" data-value="Three or more children">Three or more children</button>
-                    </div>
+                    <textarea name="thankful_for" rows="4" placeholder="Write here..."></textarea>
+                    <button type="button" class="btn-confirm" onclick="saveTextAndNext('thankful_for')">Next</button>
+                    <div class="skip-option"><a href="#" onclick="nextStep(); return false;">I'll answer later</a></div>
                 </div>
             </div>
 
             <div class="step-content" data-step="24">
-                <div class="step-indicator">Step 24 of 28</div>
+                <div class="step-indicator">Step 24 of 41</div>
                 <div class="step-header">
-                  <h1>Would you accept a partner who has children under the age of 18 in their household?</h1>
+                    <h1>Which of these interests do you have?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_children_acceptance" data-value="Yes">Yes</button>
-                        <button type="button" class="btn-option" data-field="partner_children_acceptance" data-value="Maybe">Maybe</button>
-                        <button type="button" class="btn-option" data-field="partner_children_acceptance" data-value="No">No</button>
+                    <div class="button-group grid-options multi-select" data-field="interests">
+                        <button type="button" class="btn-option" data-value="Music">Music</button>
+                        <button type="button" class="btn-option" data-value="Adventure Sports">Adventure Sports</button>
+                        <button type="button" class="btn-option" data-value="Fine Food">Fine Food</button>
+                        <button type="button" class="btn-option" data-value="Arts">Arts and Crafts</button>
+                        <button type="button" class="btn-option" data-value="Nature">Nature / Gardening</button>
+                        <button type="button" class="btn-option" data-value="Dining out">Dining out</button>
+                        <button type="button" class="btn-option" data-value="Movies">Movies / Cinema</button>
+                        <button type="button" class="btn-option" data-value="Travelling">Travelling</button>
+                        <button type="button" class="btn-option" data-value="Reading">Reading</button>
+                        <button type="button" class="btn-option" data-value="Fitness">Health and Fitness</button>
+                        <button type="button" class="btn-option" data-value="Cooking">Cookery</button>
+                        <button type="button" class="btn-option" data-value="Hiking">Hiking</button>
+                        <button type="button" class="btn-option" data-value="Charity">Charity / Volunteering</button>
+                        <button type="button" class="btn-option" data-value="Gaming">Gaming</button>
+                        <button type="button" data-value="Technology">Technology</button>
+                        <button type="button" class="btn-option" data-value="Photography">Photography</button>
+                        <button type="button" class="btn-option" data-value="DIY">DIY / Home Improvement</button>
+                        <button type="button" class="btn-option" data-value="History">History</button>
+                        <button type="button" class="btn-option" data-value="Collecting">Collecting</button>
+                        <button type="button" class="btn-option" data-value="Theatre">Theatre</button>
+                        <button type="button" class="btn-option" data-value="Meditation">Meditation / Yoga</button>
+                        <button type="button" class="btn-option" data-value="Writing">Writing</button>
+                        <button type="button" class="btn-option" data-value="Dancing">Dancing</button>
                     </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
                 </div>
             </div>
 
             <div class="step-content" data-step="25">
-                <div class="step-indicator">Step 25 of 28</div>
+                <div class="step-indicator">Step 25 of 41</div>
                 <div class="step-header">
-                  <h1>Could you imagine having children or adopting with your partner and raising a family?</h1>
+                    <h1>What are you passionate about?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="future_children" data-value="Yes, definitely">Yes, definitely</button>
-                        <button type="button" class="btn-option" data-field="future_children" data-value="Maybe">Maybe</button>
-                        <button type="button" class="btn-option" data-field="future_children" data-value="No, not for me">No, not for me</button>
-                    </div>
+                    <textarea name="passions" rows="4" placeholder="Art, sports, faith, etc..."></textarea>
+                    <button type="button" class="btn-confirm" onclick="saveTextAndNext('passions')">Next</button>
+                    <div class="skip-option"><a href="#" onclick="nextStep(); return false;">I'll answer later</a></div>
                 </div>
             </div>
 
-            <div class="step-content" data-step="26">
-                <div class="step-indicator">Step 26 of 28</div>
+             <div class="step-content" data-step="26">
+                <div class="step-indicator">Step 26 of 41</div>
                 <div class="step-header">
-                    <h1>What distance are you willing to travel in your search for a partner?</h1>
-                    <p>Your city will be visible, but not your exact location.</p>
+                    <h1>Describe 3 activities you enjoy in your free time.</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="distance_preference" data-value="50 Kms">50 Kms</button>
-                        <button type="button" class="btn-option" data-field="distance_preference" data-value="100 Kms">100 Kms</button>
-                        <button type="button" class="btn-option" data-field="distance_preference" data-value="200 Kms">200 Kms</button>
-                        <button type="button" class="btn-option" data-field="distance_preference" data-value="300 Kms">300 Kms</button>
-                        <button type="button" class="btn-option" data-field="distance_preference" data-value="I don't mind">I don't mind</button>
-                    </div>
+                    <textarea name="activities" rows="4"></textarea>
+                    <button type="button" class="btn-confirm" onclick="saveTextAndNext('activities')">Next</button>
+                    <div class="skip-option"><a href="#" onclick="nextStep(); return false;">I'll answer later</a></div>
                 </div>
             </div>
 
             <div class="step-content" data-step="27">
-                <div class="step-indicator">Step 27 of 28</div>
+                <div class="step-indicator">Step 27 of 41</div>
+                <div class="step-header">
+                    <h1>How often do you smoke?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="smoking" data-value="Never">Never</button>
+                        <button type="button" class="btn-option" data-field="smoking" data-value="Rarely">Rarely</button>
+                        <button type="button" class="btn-option" data-field="smoking" data-value="Socially">Socially</button>
+                        <button type="button" class="btn-option" data-field="smoking" data-value="Regularly">Regularly</button>
+                        <button type="button" class="btn-option" data-field="smoking" data-value="Every day">Every day</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="28">
+                <div class="step-indicator">Step 28 of 41</div>
+                <div class="step-header">
+                    <h1>Which smoking habits would you accept from your partner?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="partner_smoking" data-value="Never">Never</button>
+                        <button type="button" class="btn-option" data-field="partner_smoking" data-value="Rarely">Rarely</button>
+                        <button type="button" class="btn-option" data-field="partner_smoking" data-value="Socially">Socially</button>
+                        <button type="button" class="btn-option" data-field="partner_smoking" data-value="Regularly">Regularly</button>
+                        <button type="button" class="btn-option" data-field="partner_smoking" data-value="Every day">Every day</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="29">
+                <div class="step-indicator">Step 29 of 41</div>
+                <div class="step-header">
+                    <h1>How often do you drink?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="drinking" data-value="Never">Never</button>
+                        <button type="button" class="btn-option" data-field="drinking" data-value="Rarely">Rarely</button>
+                        <button type="button" class="btn-option" data-field="drinking" data-value="Socially">Socially</button>
+                        <button type="button" class="btn-option" data-field="drinking" data-value="Weekly">About once a week</button>
+                        <button type="button" class="btn-option" data-field="drinking" data-value="Daily">Every day</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="step-content" data-step="30">
+                <div class="step-indicator">Step 30 of 41</div>
+                <div class="step-header">
+                    <h1>Which drinking habits would you accept from your partner?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Never">Never</button>
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Rarely">Rarely</button>
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Socially">Socially</button>
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Weekly">About once a week</button>
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Daily">Every day</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="31">
+                <div class="step-indicator">Step 31 of 41</div>
+                <div class="step-header">
+                    <h1>How many children under 18 live in your household?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="children" data-value="No children">No children</button>
+                        <button type="button" class="btn-option" data-field="children" data-value="One child">One child</button>
+                        <button type="button" class="btn-option" data-field="children" data-value="Two children">Two children</button>
+                        <button type="button" class="btn-option" data-field="children" data-value="Three+">Three or more children</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="32">
+                <div class="step-indicator">Step 32 of 41</div>
+                <div class="step-header">
+                    <h1>Would you accept a partner with children under 18?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="partner_children" data-value="Yes">Yes</button>
+                        <button type="button" class="btn-option" data-field="partner_children" data-value="Maybe">Maybe</button>
+                        <button type="button" class="btn-option" data-field="partner_children" data-value="No">No</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="33">
+                <div class="step-indicator">Step 33 of 41</div>
+                <div class="step-header">
+                    <h1>Where do you live?</h1>
+                    <p>Only the name of your city will be visible.</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="city" placeholder="City, Country">
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('city')">Next Step</button>
+            </div>
+
+            <div class="step-content" data-step="34">
+                <div class="step-indicator">Step 34 of 41</div>
+                <div class="step-header">
+                    <h1>What distance are you willing to travel?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="distance" data-value="50km">50 Kms</button>
+                        <button type="button" class="btn-option" data-field="distance" data-value="100km">100 Kms</button>
+                        <button type="button" class="btn-option" data-field="distance" data-value="200km">200 Kms</button>
+                        <button type="button" class="btn-option" data-field="distance" data-value="300km">300 Kms</button>
+                        <button type="button" class="btn-option" data-field="distance" data-value="Any">I don't mind</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="35">
+                <div class="step-indicator">Step 35 of 41</div>
+                <div class="step-header">
+                    <h1>How important is the distance?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="7">Extremely important</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="36">
+                <div class="step-indicator">Step 36 of 41</div>
+                <div class="step-header">
+                    <h1>What age(s) are you open to dating?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group multi-select" data-field="age_pref">
+                        <button type="button" class="btn-option" data-value="18-24">18-24</button>
+                        <button type="button" class="btn-option" data-value="25-34">25-34</button>
+                        <button type="button" class="btn-option" data-value="35-44">35-44</button>
+                        <button type="button" class="btn-option" data-value="45-54">45-54</button>
+                        <button type="button" class="btn-option" data-value="55-64">55-64</button>
+                    </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="37">
+                <div class="step-indicator">Step 37 of 41</div>
+                <div class="step-header">
+                    <h1>What is your profession?</h1>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="profession" required>
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('profession')">Next Step</button>
+            </div>
+
+            <div class="step-content" data-step="38">
+                <div class="step-indicator">Step 38 of 41</div>
+                <div class="step-header">
+                    <h1>Which income bracket do you fall into?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="income" data-value="<R40k">Less than R40,000 annually</button>
+                        <button type="button" class="btn-option" data-field="income" data-value="R40k-75k">Between R40,000 – R75,000</button>
+                        <button type="button" class="btn-option" data-field="income" data-value="R75k-100k">Between R75,001 – R100,000</button>
+                        <button type="button" class="btn-option" data-field="income" data-value="R100k-150k">Between R100,001 – R150,000</button>
+                        <button type="button" class="btn-option" data-field="income" data-value="R150k-250k">Between R150,001 – R250,000</button>
+                        <button type="button" class="btn-option" data-field="income" data-value="R250k-400k">Between R250,001 – R400,000</button>
+                        <button type="button" class="btn-option" data-field="income" data-value=">R400k">More than R400,001 annually</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="39">
+                <div class="step-indicator">Step 39 of 41</div>
+                <div class="step-header">
+                    <h1>How important is it that your partner has a comparable income?</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="1">Not important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="2">Less important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="3">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="4">Important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="5">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="6">Very important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="7">Extremely important</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="40">
+                <div class="step-indicator">Step 40 of 41</div>
+                <div class="step-header">
+                    <h1>How did you hear about us?</h1>
+                </div>
+                <div class="form-group">
+                    <select name="marketing_source" required>
+                        <option value="">Select...</option>
+                        <option value="Social Media">Facebook/Instagram/X</option>
+                        <option value="Google">Google Search</option>
+                        <option value="Friend">Friend or Relative</option>
+                        <option value="Ad">Advertisement (Radio/TV)</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('marketing_source')">Next Step</button>
+            </div>
+
+            <div class="step-content" data-step="41">
+                <div class="step-indicator">Step 41 of 41</div>
                 <div class="step-header">
                     <h1>Upload your profile picture</h1>
                     <p>A great photo helps potential matches get to know you better.</p>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="profile_image" accept="image/*" required onchange="validateStep27()">
+                    <input type="file" name="profile_image" accept="image/*" required>
                 </div>
-            </div>
-
-            <div class="step-content" data-step="28">
-                <div class="step-indicator">Step 28 of 28</div>
-                <div class="step-header">
-                    <h1>Ready to find your match?</h1>
-                    <p>Review your information and submit your profile.</p>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 2rem;">Submit Application</button>
+                <button type="button" class="btn-confirm" onclick="validateStepInput('profile_image', true)">Submit Application</button>
             </div>
 
             <div class="nav-buttons">
                 <button type="button" onclick="prevStep()">← Back</button>
-                <button type="button" onclick="nextStep()">Next →</button>
             </div>
         </form>
-
         <div class="success-message" id="successMessage">
             <div class="success-icon">✓</div>
             <h2>Application Submitted!</h2>
-            <p>Thank you for registering with Family First Matchmaking. Our team will review your profile and contact you soon.</p>
+            <p>Thank you for registering. Our team will review your profile and contact you soon.</p>
         </div>
     </div>
 </main>
@@ -534,7 +911,6 @@
 <footer>
     <div class="footer-content">
         <div class="footer-col">
-            
             <div class="social-links">
                 <a href="#">𝕏</a>
                 <a href="#">f</a>
@@ -565,95 +941,230 @@
     </div>
     <div class="footer-bottom">
         <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
-        <p>Designed by <a href="https//miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
+        <p>Designed by <a href="https://miwalletmw.com"><span style="color: #1B85BC; ">Mi Wallet LTD</span></a></p>
     </div>
 </footer>
 
 <script>
 let currentStep = 0;
-// UPDATED: Total steps is now 28 (from step 0 to step 28)
-const totalSteps = 28;
+const totalSteps = 41; // last step index is 40 (0–40 = 41 steps total)
 const formData = {};
 
 function initializeFormData() {
     const saved = localStorage.getItem('registrationFormData');
-    if(saved) Object.assign(formData, JSON.parse(saved));
-    restoreFormState();
+    const savedStep = localStorage.getItem('currentStep');
+
+    if(saved) {
+        Object.assign(formData, JSON.parse(saved));
+
+        // Restore Step 2 fields (these are safe)
+        if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
+        if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
+        if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
+
+        // Restore ONLY safe input types
+        document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
+            if (formData[el.name]) el.value = formData[el.name];
+        });
+
+        // Restore multi-select button selections
+        document.querySelectorAll('.button-group.multi-select').forEach(parent => {
+            const field = parent.dataset.field;
+            if (Array.isArray(formData[field])) {
+                parent.querySelectorAll('.btn-option').forEach(btn => {
+                    if (formData[field].includes(btn.dataset.value)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            }
+        });
+
+        // Re-check psycho groups
+        checkPsychoGroup(20);
+        checkPsychoGroup(21);
+    }
+
+    // Restore step
+    if(savedStep !== null && !isNaN(savedStep)) {
+        const step = parseInt(savedStep);
+        if(step >= 0 && step <= totalSteps) {
+            document.querySelector('[data-step="0"]').classList.remove('active');
+            currentStep = step;
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        }
+    }
 }
 
-function saveFormData() { localStorage.setItem('registrationFormData', JSON.stringify(formData)); }
-
-function restoreFormState() {
-    document.querySelectorAll('.btn-option').forEach(btn=>{
-        if(formData[btn.dataset.field] === btn.dataset.value) btn.classList.add('selected');
-    });
-    document.querySelectorAll('input[type="text"], input[type="email"]').forEach(input=>{
-        if(formData[input.name]) input.value=formData[input.name];
-    });
-    document.querySelectorAll('select').forEach(select=>{
-        if(formData[select.name]) select.value=formData[select.name];
-    });
+function saveFormData() {
+    localStorage.setItem('registrationFormData', JSON.stringify(formData));
+    localStorage.setItem('currentStep', currentStep);
 }
 
 function nextStep() {
-    if(currentStep<totalSteps){
+    if(currentStep < totalSteps){
         document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
         currentStep++;
         document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        saveFormData();
         window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
     }
 }
 
 function prevStep() {
-    if(currentStep>0){
+    if(currentStep > 0){
         document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
         currentStep--;
         document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        restoreFormState();
+        saveFormData();
         window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
     }
 }
 
-// UPDATED VALIDATIONS TO MATCH NEW STEP NUMBERS AND ADDED NEW ONES
+function validateStep2(){ 
+    const f=document.querySelector('input[name="full_name"]').value.trim();
+    const e=document.querySelector('input[name="email"]').value.trim();
+    const p=document.querySelector('input[name="phone"]').value.trim();
+    const pw=document.querySelector('input[name="password"]').value.trim();
 
-// Step 2: Full Name, Email, Phone
-function validateStep2(){ const f=document.querySelector('input[name="full_name"]').value, e=document.querySelector('input[name="email"]').value, p=document.querySelector('input[name="phone"]').value; if(f&&e&&p){formData['full_name']=f; formData['email']=e; formData['phone']=p; saveFormData(); nextStep();} }
-
-// Step 5: Education Level (Self)
-function validateStep5(){ const v=document.querySelector('select[name="education_level"]').value; if(v){formData['education_level']=v; saveFormData(); nextStep();} }
-
-// Step 7: Profession
-function validateStep7(){ const v=document.querySelector('input[name="profession"]').value; if(v){formData['profession']=v; saveFormData(); nextStep();} }
-
-// Step 10: Height
-function validateStep10(){ const v=document.querySelector('input[name="height"]').value; if(v){formData['height']=v; saveFormData(); nextStep();} }
-
-// Step 16: Religion (Self)
-function validateStep16(){ const v=document.querySelector('select[name="beliefs"]').value; if(v){formData['beliefs']=v; saveFormData(); nextStep();} }
-
-// Step 17: Partner Religious Preferences
-function validateStep17(){ const v=document.querySelector('select[name="partner_beliefs_openness"]').value; if(v){formData['partner_beliefs_openness']=v; saveFormData(); nextStep();} }
-
-// Step 27: Profile Picture
-function validateStep27(){ const v=document.querySelector('input[name="profile_image"]').value; if(v){formData['profile_image']=v; saveFormData(); nextStep();} }
-
-// option buttons
-document.querySelectorAll('.btn-option').forEach(btn=>{
-    btn.addEventListener('click', e=>{
-        e.preventDefault();
-        btn.closest('.button-group').querySelectorAll('.btn-option').forEach(b=>b.classList.remove('selected'));
-        btn.classList.add('selected');
-        formData[btn.dataset.field]=btn.dataset.value;
+    if(f && e && p && pw){
+        formData.full_name=f;
+        formData.email=e;
+        formData.phone=p;
+        formData.password=pw;
         saveFormData();
-        setTimeout(nextStep,200);
+        nextStep();
+    } else {
+        alert("Please fill in all fields.");
+    }
+}
+
+function validateStepInput(fieldName, isFinalStep=false){ 
+    const el = document.querySelector(`[name="${fieldName}"]`);
+
+    let value = el.value;
+
+    if(el.type === 'file') {
+        if(el.files.length === 0){
+            alert("Please upload a file.");
+            return;
+        }
+        value = el.files[0].name;
+    }
+
+    if(!value){
+        alert("Please enter/select a value.");
+        return;
+    }
+
+    formData[fieldName] = value;
+    saveFormData();
+
+    if(isFinalStep){
+        document.getElementById('multiStepForm').dispatchEvent(new Event('submit'));
+    } else {
+        nextStep();
+    }
+}
+
+function saveTextAndNext(fieldName){
+    const val=document.querySelector(`[name="${fieldName}"]`).value;
+    formData[fieldName]=val;
+    saveFormData();
+    nextStep();
+}
+
+function savePsychoGroupAndNext(stepNum){
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    const selects=stepDiv.querySelectorAll('select');
+
+    let allSelected=true;
+    selects.forEach(s=>{
+        if(!s.value) allSelected=false;
+        formData[s.name]=s.value;
+    });
+
+    if(allSelected){
+        saveFormData();
+        nextStep();
+    }
+}
+
+function checkPsychoGroup(stepNum){
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    if(!stepDiv) return;
+
+    const selects=stepDiv.querySelectorAll('select');
+    const btn=document.getElementById(`btn-step${stepNum}`);
+
+    if(!btn) return;
+
+    let allSelected=true;
+    selects.forEach(s => { if(!s.value) allSelected=false; });
+
+    btn.style.display = allSelected ? 'block' : 'none';
+}
+
+// MULTI / SINGLE SELECT BUTTON LOGIC
+document.querySelectorAll('.btn-option').forEach(btn => {
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const parent = btn.closest('.button-group');
+        const isMulti = parent.classList.contains('multi-select');
+        const field = parent.dataset.field;
+
+        if(isMulti){
+            const value = btn.dataset.value;
+            const max = parent.dataset.max;
+            const isNoMind = (value === "I don't mind");
+
+            btn.classList.toggle('selected');
+
+            let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
+                                .map(b => b.dataset.value);
+
+            // Exclusive logic for "I don't mind"
+            if(isNoMind && btn.classList.contains('selected')){
+                parent.querySelectorAll('.btn-option:not([data-value="I don’t mind"])')
+                      .forEach(b => b.classList.remove('selected'));
+                selected = ["I don't mind"];
+            } else if(!isNoMind && selected.includes("I don't mind")){
+                parent.querySelector('.btn-option[data-value="I don\'t mind"]').classList.remove('selected');
+                selected = selected.filter(v => v !== "I don't mind");
+            }
+
+            // Max selection limit (Step 22)
+            if(max && selected.length > max){
+                btn.classList.remove('selected');
+                return;
+            }
+
+            formData[field] = selected;
+            saveFormData();
+
+        } else {
+            parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            formData[field] = btn.dataset.value;
+            saveFormData();
+
+            setTimeout(nextStep, 200);
+        }
     });
 });
 
-document.getElementById('multiStepForm').addEventListener('submit', e=>{
+document.getElementById('multiStepForm').addEventListener('submit', e => {
     e.preventDefault();
+
+    console.log("Form Submitted", formData);
+
     document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
     document.getElementById('successMessage').classList.add('show');
+
     localStorage.removeItem('registrationFormData');
+    localStorage.removeItem('currentStep');
 });
 
 document.addEventListener('DOMContentLoaded', initializeFormData);
