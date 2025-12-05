@@ -16,7 +16,7 @@
     .nav-buttons button { background: none; border: none; color: #1B85BC; cursor: pointer; font-weight: 600; margin-left: 0.5rem; }
     
     /* Styles for Multi-Select Confirmation Button */
-    .btn-confirm, .btn-primary { /* Added .btn-primary style here for consistency */
+    .btn-confirm, .btn-primary { 
         background-color: #1B85BC;
         color: white;
         border: none;
@@ -116,6 +116,19 @@
             <div class="step-content" data-step="2">
                 <div class="step-indicator">Step 2 of 41</div>
                 <div class="step-header">
+                    <h1>Please confirm the gender of your desired partner</h1>
+                </div>
+                <div class="form-group">
+                    <div class="button-group">
+                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Female">Female</button>
+                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Male">Male</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content" data-step="3">
+                <div class="step-indicator">Step 3 of 41</div>
+                <div class="step-header">
                     <h1>Create your account</h1>
                     <p>We'll use this information to verify your account.</p>
                 </div>
@@ -135,11 +148,15 @@
                     <label>Password</label>
                     <input type="text" name="password" required placeholder="Create a secure password">
                 </div>
-                <button type="button" class="btn-confirm" onclick="validateStep2()">Next Step</button>
+                 <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="text" name="confirm_password" required placeholder="Create a secure password">
+                </div>
+                <button type="button" class="btn-confirm" onclick="validateStepAccount()">Next Step</button>
             </div>
 
-            <div class="step-content" data-step="3">
-                <div class="step-indicator">Step 3 of 41</div>
+            <div class="step-content" data-step="4">
+                <div class="step-indicator">Step 4 of 41</div>
                 <div class="step-header">
                     <h1>When were you born?</h1>
                     <p>Your date of birth will not be visible on your profile, only your age.</p>
@@ -148,19 +165,6 @@
                     <input type="date" name="dob" required>
                 </div>
                 <button type="button" class="btn-confirm" onclick="validateStepInput('dob')">Next Step</button>
-            </div>
-
-            <div class="step-content" data-step="4">
-                <div class="step-indicator">Step 4 of 41</div>
-                <div class="step-header">
-                    <h1>Please confirm the gender of your desired partner</h1>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Female">Female</button>
-                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Male">Male</button>
-                    </div>
-                </div>
             </div>
 
             <div class="step-content" data-step="5">
@@ -270,7 +274,7 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group multi-select" data-field="ethnic_preference">
-                        <button type="button" class="btn-option" data-value="I don't mind">I don't mind</button>
+                        <button type="button" class="btn-option" data-value="Any">I don't mind</button>
                         <button type="button" class="btn-option" data-value="White">White</button>
                         <button type="button" class="btn-option" data-value="Indian">Indian</button>
                         <button type="button" class="btn-option" data-value="Asian">Asian</button>
@@ -347,7 +351,7 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group grid-options multi-select" data-field="partner_beliefs">
-                        <button type="button" class="btn-option" data-value="I don't mind">I don't mind</button>
+                        <button type="button" class="btn-option" data-value="Any">I don't mind</button>
                         <button type="button" class="btn-option" data-value="Christian">Christian</button>
                         <button type="button" class="btn-option" data-value="Catholic">Catholic</button>
                         <button type="button" class="btn-option" data-value="Muslim">Muslim</button>
@@ -625,7 +629,7 @@
                         <button type="button" class="btn-option" data-value="Hiking">Hiking</button>
                         <button type="button" class="btn-option" data-value="Charity">Charity / Volunteering</button>
                         <button type="button" class="btn-option" data-value="Gaming">Gaming</button>
-                        <button type="button" data-value="Technology">Technology</button>
+                        <button type="button" class="btn-option" data-value="Technology">Technology</button>
                         <button type="button" class="btn-option" data-value="Photography">Photography</button>
                         <button type="button" class="btn-option" data-value="DIY">DIY / Home Improvement</button>
                         <button type="button" class="btn-option" data-value="History">History</button>
@@ -947,9 +951,12 @@
 
 <script>
 let currentStep = 0;
-const totalSteps = 41; // last step index is 40 (0–40 = 41 steps total)
+const totalSteps = 41; 
 const formData = {};
 
+// -------------------------------
+// INITIALIZATION
+// -------------------------------
 function initializeFormData() {
     const saved = localStorage.getItem('registrationFormData');
     const savedStep = localStorage.getItem('currentStep');
@@ -957,21 +964,19 @@ function initializeFormData() {
     if(saved) {
         Object.assign(formData, JSON.parse(saved));
 
-        // Restore Step 2 fields (these are safe)
         if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
         if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
         if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
 
-        // Restore ONLY safe input types
         document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
             if (formData[el.name]) el.value = formData[el.name];
         });
 
-        // Restore multi-select button selections
         document.querySelectorAll('.button-group.multi-select').forEach(parent => {
             const field = parent.dataset.field;
             if (Array.isArray(formData[field])) {
                 parent.querySelectorAll('.btn-option').forEach(btn => {
+                    // Adjusted for "Any" change
                     if (formData[field].includes(btn.dataset.value)) {
                         btn.classList.add('selected');
                     }
@@ -979,12 +984,10 @@ function initializeFormData() {
             }
         });
 
-        // Re-check psycho groups
         checkPsychoGroup(20);
         checkPsychoGroup(21);
     }
 
-    // Restore step
     if(savedStep !== null && !isNaN(savedStep)) {
         const step = parseInt(savedStep);
         if(step >= 0 && step <= totalSteps) {
@@ -993,6 +996,8 @@ function initializeFormData() {
             document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
         }
     }
+
+    setupPasswordValidation();
 }
 
 function saveFormData() {
@@ -1000,6 +1005,9 @@ function saveFormData() {
     localStorage.setItem('currentStep', currentStep);
 }
 
+// -------------------------------
+// STEP NAVIGATION
+// -------------------------------
 function nextStep() {
     if(currentStep < totalSteps){
         document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
@@ -1022,24 +1030,75 @@ function prevStep() {
     }
 }
 
-function validateStep2(){ 
-    const f=document.querySelector('input[name="full_name"]').value.trim();
-    const e=document.querySelector('input[name="email"]').value.trim();
-    const p=document.querySelector('input[name="phone"]').value.trim();
-    const pw=document.querySelector('input[name="password"]').value.trim();
+// -------------------------------
+// ACCOUNT VALIDATION (Previously Step 2, now Step 3)
+// -------------------------------
+function validateStepAccount(){ 
+    const f = document.querySelector('input[name="full_name"]').value.trim();
+    const e = document.querySelector('input[name="email"]').value.trim();
+    const p = document.querySelector('input[name="phone"]').value.trim();
+    const pw = document.querySelector('input[name="password"]').value.trim();
+    const cpw = document.querySelector('input[name="confirm_password"]').value.trim();
 
-    if(f && e && p && pw){
-        formData.full_name=f;
-        formData.email=e;
-        formData.phone=p;
-        formData.password=pw;
-        saveFormData();
-        nextStep();
-    } else {
+    if(!f || !e || !p || !pw || !cpw){
         alert("Please fill in all fields.");
+        return;
+    }
+
+    const strongPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+
+    if(!strongPassword.test(pw)){
+        alert("Password must be at least 8 characters long, include uppercase, lowercase, and a number.");
+        return;
+    }
+
+    if(pw !== cpw){
+        alert("Passwords do not match.");
+        return;
+    }
+
+    formData.full_name = f;
+    formData.email = e;
+    formData.phone = p;
+    formData.password = pw;
+
+    saveFormData();
+    nextStep();
+}
+
+// -------------------------------
+// LIVE PASSWORD & CONFIRM CHECK
+// -------------------------------
+function setupPasswordValidation() {
+    const pwField = document.querySelector('input[name="password"]');
+    const cpwField = document.querySelector('input[name="confirm_password"]');
+
+    if(!pwField || !cpwField) return;
+
+    pwField.addEventListener('input', () => checkPasswordMatch());
+    cpwField.addEventListener('input', () => checkPasswordMatch());
+}
+
+function checkPasswordMatch() {
+    const pw = document.querySelector('input[name="password"]').value;
+    const cpw = document.querySelector('input[name="confirm_password"]').value;
+    const cpwField = document.querySelector('input[name="confirm_password"]');
+
+    if(!cpw){
+        cpwField.style.border = "1px solid #ccc";
+        return;
+    }
+
+    if(pw === cpw){
+        cpwField.style.border = "2px solid #28a745"; 
+    } else {
+        cpwField.style.border = "2px solid #dc3545"; 
     }
 }
 
+// -------------------------------
+// GENERIC VALIDATION
+// -------------------------------
 function validateStepInput(fieldName, isFinalStep=false){ 
     const el = document.querySelector(`[name="${fieldName}"]`);
 
@@ -1068,6 +1127,9 @@ function validateStepInput(fieldName, isFinalStep=false){
     }
 }
 
+// -------------------------------
+// TEXT SAVE
+// -------------------------------
 function saveTextAndNext(fieldName){
     const val=document.querySelector(`[name="${fieldName}"]`).value;
     formData[fieldName]=val;
@@ -1075,6 +1137,9 @@ function saveTextAndNext(fieldName){
     nextStep();
 }
 
+// -------------------------------
+// PSYCHO GROUP LOGIC
+// -------------------------------
 function savePsychoGroupAndNext(stepNum){
     const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
     const selects=stepDiv.querySelectorAll('select');
@@ -1106,7 +1171,9 @@ function checkPsychoGroup(stepNum){
     btn.style.display = allSelected ? 'block' : 'none';
 }
 
-// MULTI / SINGLE SELECT BUTTON LOGIC
+// -------------------------------
+// OPTION BUTTON LOGIC (FIXED)
+// -------------------------------
 document.querySelectorAll('.btn-option').forEach(btn => {
     btn.addEventListener('click', e => {
         e.preventDefault();
@@ -1117,24 +1184,30 @@ document.querySelectorAll('.btn-option').forEach(btn => {
         if(isMulti){
             const value = btn.dataset.value;
             const max = parent.dataset.max;
-            const isNoMind = (value === "I don't mind");
+            
+            // CHANGED: Use "Any" to avoid quote conflicts
+            const isNoMind = (value === "Any");
 
             btn.classList.toggle('selected');
 
             let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
                                 .map(b => b.dataset.value);
 
-            // Exclusive logic for "I don't mind"
             if(isNoMind && btn.classList.contains('selected')){
-                parent.querySelectorAll('.btn-option:not([data-value="I don’t mind"])')
-                      .forEach(b => b.classList.remove('selected'));
-                selected = ["I don't mind"];
-            } else if(!isNoMind && selected.includes("I don't mind")){
-                parent.querySelector('.btn-option[data-value="I don\'t mind"]').classList.remove('selected');
-                selected = selected.filter(v => v !== "I don't mind");
+                // Unselect everything else if "Any" is clicked
+                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selected = ["Any"];
+            } 
+            else if(!isNoMind && selected.includes("Any")){
+                // Unselect "Any" if something else is clicked
+                // Updated selector to find "Any"
+                const noMindBtn = parent.querySelector('.btn-option[data-value="Any"]');
+                if(noMindBtn) noMindBtn.classList.remove('selected');
+                
+                selected = selected.filter(v => v !== "Any");
             }
 
-            // Max selection limit (Step 22)
             if(max && selected.length > max){
                 btn.classList.remove('selected');
                 return;
@@ -1155,6 +1228,9 @@ document.querySelectorAll('.btn-option').forEach(btn => {
     });
 });
 
+// -------------------------------
+// SUBMISSION
+// -------------------------------
 document.getElementById('multiStepForm').addEventListener('submit', e => {
     e.preventDefault();
 
