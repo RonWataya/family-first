@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="assets/css/register.css" rel="stylesheet">
   <style>
-    /* Navigation Buttons - Hidden by default, only back is shown in script */
+    /* Navigation Buttons */
     .nav-buttons { font-size: 0.85rem; text-align: center; margin-top: 1rem; }
     .nav-buttons button { background: none; border: none; color: #1B85BC; cursor: pointer; font-weight: 600; margin-left: 0.5rem; }
     
@@ -54,6 +54,14 @@
         font-weight: 500;
     }
     
+    /* Error message style */
+    .max-selection-message {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        display: none;
+    }
   </style>
 </head>
 <body>
@@ -273,7 +281,7 @@
                     <p>Select all that apply.</p>
                 </div>
                 <div class="form-group">
-                    <div class="button-group multi-select" data-field="ethnic_preference">
+                    <div class="button-group multi-select" data-field="ethnic_preference" data-max="5">
                         <button type="button" class="btn-option" data-value="Any">I don't mind</button>
                         <button type="button" class="btn-option" data-value="White">White</button>
                         <button type="button" class="btn-option" data-value="Indian">Indian</button>
@@ -282,6 +290,7 @@
                         <button type="button" class="btn-option" data-value="Other">Other</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -350,7 +359,7 @@
                     <p>Please choose at least 1 term.</p>
                 </div>
                 <div class="form-group">
-                    <div class="button-group grid-options multi-select" data-field="partner_beliefs">
+                    <div class="button-group grid-options multi-select" data-field="partner_beliefs" data-max="5">
                         <button type="button" class="btn-option" data-value="Any">I don't mind</button>
                         <button type="button" class="btn-option" data-value="Christian">Christian</button>
                         <button type="button" class="btn-option" data-value="Catholic">Catholic</button>
@@ -363,6 +372,7 @@
                         <button type="button" class="btn-option" data-value="Other">Other</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -404,7 +414,7 @@
                     <p>Choose at least 1.</p>
                 </div>
                 <div class="form-group">
-                    <div class="button-group grid-options multi-select" data-field="relationship_values">
+                    <div class="button-group grid-options multi-select" data-field="relationship_values" data-max="5">
                         <button type="button" class="btn-option" data-value="Moral values">Moral values</button>
                         <button type="button" class="btn-option" data-value="Reliability">Reliability</button>
                         <button type="button" class="btn-option" data-value="Trust">Trust</button>
@@ -431,6 +441,7 @@
                         <button type="button" class="btn-option" data-value="Ambition">Ambition</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -566,10 +577,10 @@
             <div class="step-content" data-step="22">
                 <div class="step-indicator">Step 22 of 41</div>
                 <div class="step-header">
-                    <h1>Which 4 terms would your friends use to describe you?</h1>
+                    <h1>Which 5 terms would your friends use to describe you?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group grid-options multi-select" data-field="friend_desc" data-max="4">
+                    <div class="button-group grid-options multi-select" data-field="friend_desc" data-max="5">
                         <button type="button" class="btn-option" data-value="Good Listener">Good Listener</button>
                         <button type="button" class="btn-option" data-value="Spontaneous">Spontaneous</button>
                         <button type="button" class="btn-option" data-value="Optimistic">Optimistic</button>
@@ -592,7 +603,7 @@
                         <button type="button" class="btn-option" data-value="Generous">Generous</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
-                    <div id="max-selection-message" style="color: red; text-align: center; margin-top: 10px; display: none;">Please select a maximum of 4 options.</div>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -614,7 +625,7 @@
                     <h1>Which of these interests do you have?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group grid-options multi-select" data-field="interests">
+                    <div class="button-group grid-options multi-select" data-field="interests" data-max="5">
                         <button type="button" class="btn-option" data-value="Music">Music</button>
                         <button type="button" class="btn-option" data-value="Adventure Sports">Adventure Sports</button>
                         <button type="button" class="btn-option" data-value="Fine Food">Fine Food</button>
@@ -640,6 +651,7 @@
                         <button type="button" class="btn-option" data-value="Dancing">Dancing</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -649,9 +661,26 @@
                     <h1>What are you passionate about?</h1>
                 </div>
                 <div class="form-group">
-                    <textarea name="passions" rows="4" placeholder="Art, sports, faith, etc..."></textarea>
-                    <button type="button" class="btn-confirm" onclick="saveTextAndNext('passions')">Next</button>
-                    <div class="skip-option"><a href="#" onclick="nextStep(); return false;">I'll answer later</a></div>
+                    <div class="button-group grid-options multi-select" data-field="passions" data-max="5">
+                         <button type="button" class="btn-option" data-value="Animal Welfare">Animal Welfare</button>
+                         <button type="button" class="btn-option" data-value="Arts & Culture">Arts & Culture</button>
+                         <button type="button" class="btn-option" data-value="Career/Business">Career/Business</button>
+                         <button type="button" class="btn-option" data-value="Community Service">Community Service</button>
+                         <button type="button" class="btn-option" data-value="Environment">Environment</button>
+                         <button type="button" class="btn-option" data-value="Faith/Spirituality">Faith/Spirituality</button>
+                         <button type="button" class="btn-option" data-value="Family">Family</button>
+                         <button type="button" class="btn-option" data-value="Fitness/Health">Fitness/Health</button>
+                         <button type="button" class="btn-option" data-value="Food & Cooking">Food & Cooking</button>
+                         <button type="button" class="btn-option" data-value="Gaming">Gaming</button>
+                         <button type="button" class="btn-option" data-value="Music">Music</button>
+                         <button type="button" class="btn-option" data-value="Politics">Politics</button>
+                         <button type="button" class="btn-option" data-value="Reading/Writing">Reading/Writing</button>
+                         <button type="button" class="btn-option" data-value="Sports">Sports</button>
+                         <button type="button" class="btn-option" data-value="Technology">Technology</button>
+                         <button type="button" class="btn-option" data-value="Travel">Travel</button>
+                    </div>
+                    <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -812,7 +841,7 @@
                     <h1>What age(s) are you open to dating?</h1>
                 </div>
                 <div class="form-group">
-                    <div class="button-group multi-select" data-field="age_pref">
+                    <div class="button-group multi-select" data-field="age_pref" data-max="5">
                         <button type="button" class="btn-option" data-value="18-24">18-24</button>
                         <button type="button" class="btn-option" data-value="25-34">25-34</button>
                         <button type="button" class="btn-option" data-value="35-44">35-44</button>
@@ -820,6 +849,7 @@
                         <button type="button" class="btn-option" data-value="55-64">55-64</button>
                     </div>
                     <button type="button" class="btn-confirm" onclick="nextStep()">Confirm Selection</button>
+                    <div class="max-selection-message">Please select a maximum of 5 options.</div>
                 </div>
             </div>
 
@@ -1208,9 +1238,16 @@ document.querySelectorAll('.btn-option').forEach(btn => {
                 selected = selected.filter(v => v !== "Any");
             }
 
+            // --- ERROR MESSAGE HANDLING ---
+            // Find the error message element (inside the form-group of this button group)
+            const errorMsg = parent.closest('.form-group').querySelector('.max-selection-message');
+
             if(max && selected.length > max){
-                btn.classList.remove('selected');
+                btn.classList.remove('selected'); // undo
+                if(errorMsg) errorMsg.style.display = 'block'; // Show error
                 return;
+            } else {
+                if(errorMsg) errorMsg.style.display = 'none'; // Hide error if valid
             }
 
             formData[field] = selected;
