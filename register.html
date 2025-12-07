@@ -93,46 +93,78 @@
 <main>
     <div class="form-container">
         <form id="multiStepForm">
-            <div class="step-content active" data-step="0">
-                <div class="step-indicator">Step 0 of 41</div>
-                <div class="step-header">
-                    <h1>Choose Your Plan</h1>
-                    <p>Select the plan that fits your matchmaking experience.</p>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="Member (R0)">Free Member — R0</button>
-                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="VIP (R3,999.00)">VIP — R3,999.00</button>
-                        <button type="button" class="btn-option" data-field="pricing_plan" data-value="VIP (R6,499.00)">VIP — R6,499.00</button>
-                    </div>
-                </div>
-            </div>
+           <div class="step-content active" data-step="0">
+    <div class="step-indicator">Step 0 of 41</div>
 
-            <div class="step-content" data-step="1">
-                <div class="step-indicator">Step 1 of 41</div>
-                <div class="step-header">
-                    <h1>Please confirm your gender</h1>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="gender" data-value="Female">Female</button>
-                        <button type="button" class="btn-option" data-field="gender" data-value="Male">Male</button>
-                    </div>
-                </div>
-            </div>
+    <div class="step-header">
+        <h1>Choose Your Plan</h1>
+        <p>Select the plan that fits your matchmaking experience.</p>
+    </div>
 
-            <div class="step-content" data-step="2">
-                <div class="step-indicator">Step 2 of 41</div>
-                <div class="step-header">
-                    <h1>Please confirm the gender of your desired partner</h1>
-                </div>
-                <div class="form-group">
-                    <div class="button-group">
-                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Female">Female</button>
-                        <button type="button" class="btn-option" data-field="partner_gender" data-value="Male">Male</button>
-                    </div>
-                </div>
-            </div>
+    <div class="form-group">
+
+        <!-- FIX: button-group now contains data-field="pricing_plan" -->
+        <div class="button-group" data-field="pricing_plan">
+
+            <!-- FIX: Buttons now only use data-value -->
+            <button type="button" class="btn-option" data-value="Standard">
+                Free Member — R0
+            </button>
+
+            <button type="button" class="btn-option" data-value="VIP">
+                VIP — R3,999.00
+            </button>
+
+            <button type="button" class="btn-option" data-value="VVIP">
+                VIP — R6,499.00
+            </button>
+
+        </div>
+    </div>
+</div>
+
+
+           <div class="step-content" data-step="1">
+    <div class="step-indicator">Step 1 of 41</div>
+
+    <div class="step-header">
+        <h1>Please confirm your gender</h1>
+    </div>
+
+    <div class="form-group">
+        <div class="button-group" data-field="gender">
+            <button type="button" class="btn-option" data-value="Female">
+                Female
+            </button>
+
+            <button type="button" class="btn-option" data-value="Male">
+                Male
+            </button>
+        </div>
+    </div>
+</div>
+
+
+           <div class="step-content" data-step="2">
+    <div class="step-indicator">Step 2 of 41</div>
+
+    <div class="step-header">
+        <h1>Please confirm the gender of your desired partner</h1>
+    </div>
+
+    <div class="form-group">
+        <div class="button-group" data-field="partner_gender">
+            <button type="button" class="btn-option" data-value="Female">
+                Female
+            </button>
+
+            <button type="button" class="btn-option" data-value="Male">
+                Male
+            </button>
+        </div>
+    </div>
+</div>
+
 
             <div class="step-content" data-step="3">
                 <div class="step-indicator">Step 3 of 41</div>
@@ -218,13 +250,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="edu_importance" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="edu_importance" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -247,13 +279,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="height_importance" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="height_importance" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -301,13 +333,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="ethnicity_importance" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -319,13 +351,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="appearance_importance" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -470,13 +502,13 @@
                     <label>18. I get upset easily</label>
                     <select name="psycho_upset" class="psycho-select" onchange="checkPsychoGroup(20)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
                 
@@ -484,13 +516,13 @@
                     <label>19. I consider myself to be understanding</label>
                     <select name="psycho_understanding" class="psycho-select" onchange="checkPsychoGroup(20)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
 
@@ -498,13 +530,13 @@
                     <label>20. I have little patience</label>
                     <select name="psycho_patience" class="psycho-select" onchange="checkPsychoGroup(20)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
                 <button type="button" class="btn-confirm" id="btn-step20" style="display:none;" onclick="savePsychoGroupAndNext(20)">Next</button>
@@ -520,13 +552,13 @@
                     <label>21. I get stressed easily</label>
                     <select name="psycho_stress" class="psycho-select" onchange="checkPsychoGroup(21)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
 
@@ -534,13 +566,13 @@
                     <label>22. I'm easily discouraged</label>
                     <select name="psycho_discouraged" class="psycho-select" onchange="checkPsychoGroup(21)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
 
@@ -548,13 +580,13 @@
                     <label>23. I can easily make people laugh</label>
                     <select name="psycho_funny" class="psycho-select" onchange="checkPsychoGroup(21)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
 
@@ -562,13 +594,13 @@
                     <label>24. I consider myself outgoing</label>
                     <select name="psycho_outgoing" class="psycho-select" onchange="checkPsychoGroup(21)">
                         <option value="">Select...</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Slightly Disagree</option>
-                        <option value="4">Neither Agree nor Disagree</option>
-                        <option value="5">Slightly Agree</option>
-                        <option value="6">Agree</option>
-                        <option value="7">Strongly Agree</option>
+                        <option value="Strongly Disagree">Strongly Disagree</option>
+                        <option value="Disagree">Disagree</option>
+                        <option value="Slightly Disagree">Slightly Disagree</option>
+                        <option value="Neither Agree nor Disagree">Neither Agree nor Disagree</option>
+                        <option value="Slightly Agree">Slightly Agree</option>
+                        <option value="Agree">Agree</option>
+                        <option value="Strongly Agree">Strongly Agree</option>
                     </select>
                 </div>
                 <button type="button" class="btn-confirm" id="btn-step21" style="display:none;" onclick="savePsychoGroupAndNext(21)">Next</button>
@@ -738,7 +770,7 @@
                         <button type="button" class="btn-option" data-field="drinking" data-value="Never">Never</button>
                         <button type="button" class="btn-option" data-field="drinking" data-value="Rarely">Rarely</button>
                         <button type="button" class="btn-option" data-field="drinking" data-value="Socially">Socially</button>
-                        <button type="button" class="btn-option" data-field="drinking" data-value="Weekly">About once a week</button>
+                        <button type="button" class="btn-option" data-field="drinking" data-value="About once a week">About once a week</button>
                         <button type="button" class="btn-option" data-field="drinking" data-value="Daily">Every day</button>
                     </div>
                 </div>
@@ -754,7 +786,7 @@
                         <button type="button" class="btn-option" data-field="partner_drinking" data-value="Never">Never</button>
                         <button type="button" class="btn-option" data-field="partner_drinking" data-value="Rarely">Rarely</button>
                         <button type="button" class="btn-option" data-field="partner_drinking" data-value="Socially">Socially</button>
-                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="Weekly">About once a week</button>
+                        <button type="button" class="btn-option" data-field="partner_drinking" data-value="About once a week">About once a week</button>
                         <button type="button" class="btn-option" data-field="partner_drinking" data-value="Daily">Every day</button>
                     </div>
                 </div>
@@ -824,13 +856,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="distance_imp" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="distance_imp" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -889,13 +921,13 @@
                 </div>
                 <div class="form-group">
                     <div class="button-group">
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="1">Not important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="2">Less important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="3">Slightly important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="4">Important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="5">Considerably important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="6">Very important</button>
-                        <button type="button" class="btn-option" data-field="income_imp" data-value="7">Extremely important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Not important">Not important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Less important">Less important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Slightly important">Slightly important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Important">Important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Considerably important">Considerably important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Very important">Very important</button>
+                        <button type="button" class="btn-option" data-field="income_imp" data-value="Extremely important">Extremely important</button>
                     </div>
                 </div>
             </div>
@@ -988,300 +1020,377 @@ const formData = {};
 // INITIALIZATION
 // -------------------------------
 function initializeFormData() {
-    const saved = localStorage.getItem('registrationFormData');
-    const savedStep = localStorage.getItem('currentStep');
+    const saved = localStorage.getItem('registrationFormData');
+    const savedStep = localStorage.getItem('currentStep');
 
-    if(saved) {
-        Object.assign(formData, JSON.parse(saved));
+    if(saved) {
+        // Load all non-image data from storage
+        Object.assign(formData, JSON.parse(saved));
 
-        if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
-        if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
-        if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
+        if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
+        if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
+        if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
 
-        document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
-            if (formData[el.name]) el.value = formData[el.name];
-        });
+        document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
+            if (formData[el.name]) el.value = formData[el.name];
+        });
 
-        document.querySelectorAll('.button-group.multi-select').forEach(parent => {
-            const field = parent.dataset.field;
-            if (Array.isArray(formData[field])) {
-                parent.querySelectorAll('.btn-option').forEach(btn => {
-                    // Adjusted for "Any" change
-                    if (formData[field].includes(btn.dataset.value)) {
-                        btn.classList.add('selected');
-                    }
-                });
-            }
-        });
+        document.querySelectorAll('.button-group.multi-select').forEach(parent => {
+            const field = parent.dataset.field;
+            if (Array.isArray(formData[field])) {
+                parent.querySelectorAll('.btn-option').forEach(btn => {
+                    // Adjusted for "Any" change
+                    if (formData[field].includes(btn.dataset.value)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            }
+        });
 
-        checkPsychoGroup(20);
-        checkPsychoGroup(21);
-    }
+        checkPsychoGroup(20);
+        checkPsychoGroup(21);
+    }
+    
+    // CRITICAL FIX: Ensure the profile_image is always null on load, 
+    // as it should not be saved in localStorage.
+    formData.profile_image = null; 
 
-    if(savedStep !== null && !isNaN(savedStep)) {
-        const step = parseInt(savedStep);
-        if(step >= 0 && step <= totalSteps) {
-            document.querySelector('[data-step="0"]').classList.remove('active');
-            currentStep = step;
-            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        }
-    }
+    if(savedStep !== null && !isNaN(savedStep)) {
+        const step = parseInt(savedStep);
+        if(step >= 0 && step <= totalSteps) {
+            document.querySelector('[data-step="0"]').classList.remove('active');
+            currentStep = step;
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        }
+    }
 
-    setupPasswordValidation();
+    setupPasswordValidation();
 }
 
 function saveFormData() {
-    localStorage.setItem('registrationFormData', JSON.stringify(formData));
-    localStorage.setItem('currentStep', currentStep);
+    // FIX: Create a copy of formData to remove the large image data
+    const dataToSave = { ...formData }; 
+
+    if (dataToSave.profile_image) {
+        delete dataToSave.profile_image; // <-- This prevents QuotaExceededError
+        console.log("Profile image excluded from local storage save.");
+    }
+
+    localStorage.setItem('registrationFormData', JSON.stringify(dataToSave));
+    localStorage.setItem('currentStep', currentStep);
 }
 
 // -------------------------------
 // STEP NAVIGATION
 // -------------------------------
 function nextStep() {
-    if(currentStep < totalSteps){
-        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-        currentStep++;
-        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        saveFormData();
-        window.scrollTo({top:0,behavior:'smooth'});
-        checkPsychoGroup(currentStep);
-    }
+    if(currentStep < totalSteps){
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep++;
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        saveFormData();
+        window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
+    }
 }
 
 function prevStep() {
-    if(currentStep > 0){
-        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-        currentStep--;
-        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        saveFormData();
-        window.scrollTo({top:0,behavior:'smooth'});
-        checkPsychoGroup(currentStep);
-    }
+    if(currentStep > 0){
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep--;
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        saveFormData();
+        window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
+    }
 }
 
 // -------------------------------
 // ACCOUNT VALIDATION (Previously Step 2, now Step 3)
 // -------------------------------
 function validateStepAccount(){ 
-    const f = document.querySelector('input[name="full_name"]').value.trim();
-    const e = document.querySelector('input[name="email"]').value.trim();
-    const p = document.querySelector('input[name="phone"]').value.trim();
-    const pw = document.querySelector('input[name="password"]').value.trim();
-    const cpw = document.querySelector('input[name="confirm_password"]').value.trim();
+    const f = document.querySelector('input[name="full_name"]').value.trim();
+    const e = document.querySelector('input[name="email"]').value.trim();
+    const p = document.querySelector('input[name="phone"]').value.trim();
+    const pw = document.querySelector('input[name="password"]').value.trim();
+    const cpw = document.querySelector('input[name="confirm_password"]').value.trim();
 
-    if(!f || !e || !p || !pw || !cpw){
-        alert("Please fill in all fields.");
-        return;
-    }
+    if(!f || !e || !p || !pw || !cpw){
+        alert("Please fill in all fields.");
+        return;
+    }
 
-    const strongPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+    const strongPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
 
-    if(!strongPassword.test(pw)){
-        alert("Password must be at least 8 characters long, include uppercase, lowercase, and a number.");
-        return;
-    }
+    if(!strongPassword.test(pw)){
+        alert("Password must be at least 8 characters long, include uppercase, lowercase, and a number.");
+        return;
+    }
 
-    if(pw !== cpw){
-        alert("Passwords do not match.");
-        return;
-    }
+    if(pw !== cpw){
+        alert("Passwords do not match.");
+        return;
+    }
 
-    formData.full_name = f;
-    formData.email = e;
-    formData.phone = p;
-    formData.password = pw;
+    formData.full_name = f;
+    formData.email = e;
+    formData.phone = p;
+    formData.password = pw;
 
-    saveFormData();
-    nextStep();
+    saveFormData();
+    nextStep();
 }
 
 // -------------------------------
 // LIVE PASSWORD & CONFIRM CHECK
 // -------------------------------
 function setupPasswordValidation() {
-    const pwField = document.querySelector('input[name="password"]');
-    const cpwField = document.querySelector('input[name="confirm_password"]');
+    const pwField = document.querySelector('input[name="password"]');
+    const cpwField = document.querySelector('input[name="confirm_password"]');
 
-    if(!pwField || !cpwField) return;
+    if(!pwField || !cpwField) return;
 
-    pwField.addEventListener('input', () => checkPasswordMatch());
-    cpwField.addEventListener('input', () => checkPasswordMatch());
+    pwField.addEventListener('input', () => checkPasswordMatch());
+    cpwField.addEventListener('input', () => checkPasswordMatch());
 }
 
 function checkPasswordMatch() {
-    const pw = document.querySelector('input[name="password"]').value;
-    const cpw = document.querySelector('input[name="confirm_password"]').value;
-    const cpwField = document.querySelector('input[name="confirm_password"]');
+    const pw = document.querySelector('input[name="password"]').value;
+    const cpw = document.querySelector('input[name="confirm_password"]').value;
+    const cpwField = document.querySelector('input[name="confirm_password"]');
 
-    if(!cpw){
-        cpwField.style.border = "1px solid #ccc";
-        return;
-    }
+    if(!cpw){
+        cpwField.style.border = "1px solid #ccc";
+        return;
+    }
 
-    if(pw === cpw){
-        cpwField.style.border = "2px solid #28a745"; 
-    } else {
-        cpwField.style.border = "2px solid #dc3545"; 
-    }
+    if(pw === cpw){
+        cpwField.style.border = "2px solid #28a745"; 
+    } else {
+        cpwField.style.border = "2px solid #dc3545"; 
+    }
 }
 
 // -------------------------------
 // GENERIC VALIDATION
 // -------------------------------
 function validateStepInput(fieldName, isFinalStep=false){ 
-    const el = document.querySelector(`[name="${fieldName}"]`);
+    const el = document.querySelector(`[name="${fieldName}"]`);
 
-    let value = el.value;
+    let value = el.value;
 
-    if(el.type === 'file') {
-        if(el.files.length === 0){
-            alert("Please upload a file.");
-            return;
-        }
-        value = el.files[0].name;
-    }
+    if(el.type === 'file') {
+        if(el.files.length === 0){
+            alert("Please upload a file.");
+            return;
+        }
+        // Handle file upload/Base64 conversion here
+        const file = el.files[0];
+        const reader = new FileReader();
+        
+        reader.onloadend = function() {
+            // Save the Base64 string to in-memory formData
+            formData[fieldName] = reader.result; 
+            // saveFormData() will be called, but the image is excluded from localStorage
+            saveFormData(); 
+            
+            if(isFinalStep){
+                 // Use a slight delay to ensure formData update is complete
+                setTimeout(() => document.getElementById('multiStepForm').dispatchEvent(new Event('submit')), 100);
+            } else {
+                nextStep();
+            }
+        };
+        reader.readAsDataURL(file); // Reads file and converts it to Base64
+        
+        // Return early to wait for file reader
+        return; 
+    }
 
-    if(!value){
-        alert("Please enter/select a value.");
-        return;
-    }
+    if(!value){
+        alert("Please enter/select a value.");
+        return;
+    }
 
-    formData[fieldName] = value;
-    saveFormData();
+    formData[fieldName] = value;
+    saveFormData();
 
-    if(isFinalStep){
-        document.getElementById('multiStepForm').dispatchEvent(new Event('submit'));
-    } else {
-        nextStep();
-    }
+    if(isFinalStep){
+         // If it's the final step, dispatch the submit event
+        document.getElementById('multiStepForm').dispatchEvent(new Event('submit'));
+    } else {
+        nextStep();
+    }
 }
 
 // -------------------------------
 // TEXT SAVE
 // -------------------------------
 function saveTextAndNext(fieldName){
-    const val=document.querySelector(`[name="${fieldName}"]`).value;
-    formData[fieldName]=val;
-    saveFormData();
-    nextStep();
+    const val=document.querySelector(`[name="${fieldName}"]`).value;
+    formData[fieldName]=val;
+    saveFormData();
+    nextStep();
 }
 
 // -------------------------------
 // PSYCHO GROUP LOGIC
 // -------------------------------
 function savePsychoGroupAndNext(stepNum){
-    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
-    const selects=stepDiv.querySelectorAll('select');
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    const selects=stepDiv.querySelectorAll('select');
 
-    let allSelected=true;
-    selects.forEach(s=>{
-        if(!s.value) allSelected=false;
-        formData[s.name]=s.value;
-    });
+    let allSelected=true;
+    selects.forEach(s=>{
+        if(!s.value) allSelected=false;
+        formData[s.name]=s.value;
+    });
 
-    if(allSelected){
-        saveFormData();
-        nextStep();
-    }
+    if(allSelected){
+        saveFormData();
+        nextStep();
+    }
 }
 
 function checkPsychoGroup(stepNum){
-    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
-    if(!stepDiv) return;
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    if(!stepDiv) return;
 
-    const selects=stepDiv.querySelectorAll('select');
-    const btn=document.getElementById(`btn-step${stepNum}`);
+    const selects=stepDiv.querySelectorAll('select');
+    const btn=document.getElementById(`btn-step${stepNum}`);
 
-    if(!btn) return;
+    if(!btn) return;
 
-    let allSelected=true;
-    selects.forEach(s => { if(!s.value) allSelected=false; });
+    let allSelected=true;
+    selects.forEach(s => { if(!s.value) allSelected=false; });
 
-    btn.style.display = allSelected ? 'block' : 'none';
+    btn.style.display = allSelected ? 'block' : 'none';
 }
 
 // -------------------------------
 // OPTION BUTTON LOGIC (FIXED)
 // -------------------------------
 document.querySelectorAll('.btn-option').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.preventDefault();
-        const parent = btn.closest('.button-group');
-        const isMulti = parent.classList.contains('multi-select');
-        const field = parent.dataset.field;
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const parent = btn.closest('.button-group');
+        const isMulti = parent.classList.contains('multi-select');
+        const field = parent.dataset.field;
 
-        if(isMulti){
-            const value = btn.dataset.value;
-            const max = parent.dataset.max;
-            
-            // CHANGED: Use "Any" to avoid quote conflicts
-            const isNoMind = (value === "Any");
+        if(isMulti){
+            const value = btn.dataset.value;
+            const max = parent.dataset.max;
+            
+            // CHANGED: Use "Any" to avoid quote conflicts
+            const isNoMind = (value === "Any");
 
-            btn.classList.toggle('selected');
+            btn.classList.toggle('selected');
 
-            let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
-                                .map(b => b.dataset.value);
+            let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
+                                 .map(b => b.dataset.value);
 
-            if(isNoMind && btn.classList.contains('selected')){
-                // Unselect everything else if "Any" is clicked
-                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                selected = ["Any"];
-            } 
-            else if(!isNoMind && selected.includes("Any")){
-                // Unselect "Any" if something else is clicked
-                // Updated selector to find "Any"
-                const noMindBtn = parent.querySelector('.btn-option[data-value="Any"]');
-                if(noMindBtn) noMindBtn.classList.remove('selected');
-                
-                selected = selected.filter(v => v !== "Any");
-            }
+            if(isNoMind && btn.classList.contains('selected')){
+                // Unselect everything else if "Any" is clicked
+                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selected = ["Any"];
+            } 
+            else if(!isNoMind && selected.includes("Any")){
+                // Unselect "Any" if something else is clicked
+                // Updated selector to find "Any"
+                const noMindBtn = parent.querySelector('.btn-option[data-value="Any"]');
+                if(noMindBtn) noMindBtn.classList.remove('selected');
+                
+                selected = selected.filter(v => v !== "Any");
+            }
 
-            // --- ERROR MESSAGE HANDLING ---
-            // Find the error message element (inside the form-group of this button group)
-            const errorMsg = parent.closest('.form-group').querySelector('.max-selection-message');
+            // --- ERROR MESSAGE HANDLING ---
+            // Find the error message element (inside the form-group of this button group)
+            const errorMsg = parent.closest('.form-group').querySelector('.max-selection-message');
 
-            if(max && selected.length > max){
-                btn.classList.remove('selected'); // undo
-                if(errorMsg) errorMsg.style.display = 'block'; // Show error
-                return;
-            } else {
-                if(errorMsg) errorMsg.style.display = 'none'; // Hide error if valid
-            }
+            if(max && selected.length > max){
+                btn.classList.remove('selected'); // undo
+                if(errorMsg) errorMsg.style.display = 'block'; // Show error
+                return;
+            } else {
+                if(errorMsg) errorMsg.style.display = 'none'; // Hide error if valid
+            }
 
-            formData[field] = selected;
-            saveFormData();
+            formData[field] = selected;
+            saveFormData();
 
-        } else {
-            parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
+        } else {
+            parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
 
-            formData[field] = btn.dataset.value;
-            saveFormData();
+            formData[field] = btn.dataset.value;
+            saveFormData();
 
-            setTimeout(nextStep, 200);
-        }
-    });
+            setTimeout(nextStep, 200);
+        }
+    });
 });
 
 // -------------------------------
-// SUBMISSION
+// SUBMISSION HANDLER (Sends data to Node.js)
 // -------------------------------
-document.getElementById('multiStepForm').addEventListener('submit', e => {
-    e.preventDefault();
+async function submitForm(e) {
+    e.preventDefault();
 
-    console.log("Form Submitted", formData);
+    console.log("Submitting Form Data:", formData);
+    
+    // Simple validation: Check if required account details exist
+    if (!formData.email || !formData.password) {
+        alert("Required account fields (Email/Password) are missing.");
+        return;
+    }
 
-    document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-    document.getElementById('successMessage').classList.add('show');
+    try {
+        // Send the complete formData object as JSON to the Node.js server
+        const response = await fetch('http://localhost:7000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
 
-    localStorage.removeItem('registrationFormData');
-    localStorage.removeItem('currentStep');
-});
+        const result = await response.json();
+
+        if (response.ok) {
+            // Success: Remove active step, show success message, clear storage
+            document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Clean up local storage
+            localStorage.removeItem('registrationFormData');
+            localStorage.removeItem('currentStep');
+            
+            // Optional: Redirect to a success page after a delay
+            // setTimeout(() => { window.location.href = '/success.html'; }, 3000);
+
+        } else {
+            // Error: Show specific error from server (e.g., 'Email already exists')
+            alert('Registration Failed: ' + result.message);
+            console.error('Registration Error:', result);
+            
+            // Re-show the last step for correction
+            document.getElementById('successMessage').classList.remove('show');
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active'); 
+        }
+
+    } catch (error) {
+        console.error('Network or Server Error:', error);
+        alert('An unexpected error occurred. Please check your connection and try again.');
+    }
+}
+
+// -------------------------------
+// BIND SUBMISSION EVENT
+// -------------------------------
+document.getElementById('multiStepForm').addEventListener('submit', submitForm);
 
 document.addEventListener('DOMContentLoaded', initializeFormData);
 </script>
-
 </body>
 </html>

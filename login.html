@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Login - Family First Matchmaking</title>
+  <meta name="description" content="Sign in to your Family First Matchmaking account.">
+  <link href="assets/img/ffmicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background-color: #fff;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 30px;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 70px;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #30c8a6;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-right: 60px;
+    }
+
+    .btn-signup {
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-signup:hover {
+      background-color: #29b092;
+    }
+
+    /* Login Container */
+    .login-container {
+      display: flex;
+      min-height: calc(100vh - 60px);
+      background-color: #e8dcc8;
+    }
+
+    .login-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+
+    .login-form-wrapper {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .login-form-wrapper h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+      text-align: center;
+    }
+
+    .login-form-wrapper p {
+      font-size: 15px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #d0c0b0;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #30c8a6;
+    }
+
+    .login-error {
+      color: #d9534f;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    .btn-login-submit {
+      width: 100%;
+      background-color: #30c8a6;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-login-submit:hover {
+      background-color: #29b092;
+    }
+
+    .login-right {
+      flex: 1;
+      background: linear-gradient(135deg, #a45c3d 0%, #c97a56 100%);
+      display: none;
+    }
+
+    /* Profile View */
+    .profile-container {
+      display: none;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: flex-start;
+    }
+
+    .profile-picture {
+      width: 220px;
+      height: 220px;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-picture-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #e8dcc8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-info h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+    }
+
+    .profile-info p {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .btn-logout {
+      background-color: #a45c3d;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-logout:hover {
+      background-color: #8c4c34;
+    }
+
+    .profile-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .profile-section {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .profile-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 15px;
+    }
+
+    .profile-field {
+      margin-bottom: 15px;
+    }
+
+    .profile-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 5px;
+    }
+
+    .profile-field value {
+      display: block;
+      font-size: 15px;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .profile-field.list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .profile-field.list span {
+      background-color: #e8dcc8;
+      color: #1a1a1a;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: #ccc;
+      padding: 60px 40px 20px;
+      font-size: 14px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #30c8a6;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+      }
+
+      .login-left {
+        padding: 40px 20px;
+      }
+
+      .profile-header {
+        flex-direction: column;
+      }
+
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+      }
+
+      .profile-sections {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-wrapper">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="why-us.html">Why Us</a>
+      </nav>
+      <div class="header-buttons">
+        <a href="register.html" class="btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login View -->
+  <div class="login-container">
+    <div class="login-left">
+      <div class="login-form-wrapper">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account and start finding your perfect match</p>
+        
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+
+          <div class="login-error" id="loginError"></div>
+
+          <button type="submit" class="btn-login-submit">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <div class="login-right"></div>
+  </div>
+
+  <!-- Profile View -->
+  <div class="profile-container" id="profileContainer">
+    <div class="profile-header">
+      <div class="profile-picture" id="profilePicture">
+        <div class="profile-picture-placeholder">No Photo</div>
+      </div>
+
+      <div class="profile-info">
+        <h1 id="profileName">User Name</h1>
+        <p><strong>Email:</strong> <span id="profileEmail">email@example.com</span></p>
+        <p><strong>Phone:</strong> <span id="profilePhone">-</span></p>
+        <p><strong>Plan:</strong> <span id="profilePlan">-</span></p>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="profile-sections" id="profileSections"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="why-us.html">Why Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Success Stories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><strong>Email:</strong> info@familyfirst.co.za</p>
+        <p><strong>Phone:</strong> +27 (0) 21 123 4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Family First Matchmaking. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    //const API_URL = 'http://localhost:7000'
+
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const email = document.getElementById('email').value
+      const password = document.getElementById('password').value
+      const loginError = document.getElementById('loginError')
+
+      try {
+        const response = await fetch('http://localhost:7000/api/sign-in', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        })
+
+        const data = await response.json()
+
+        if (data.success) {
+          // Store user data and show profile
+          localStorage.setItem('currentUser', JSON.stringify(data.user))
+          showProfileView(data.user)
+        } else {
+          loginError.textContent = data.message
+          loginError.style.display = 'block'
+        }
+      } catch (error) {
+        console.error('[v0] Login Error:', error)
+        loginError.textContent = 'Connection error. Please try again.'
+        loginError.style.display = 'block'
+      }
+    })
+
+    function showProfileView(user) {
+      document.querySelector('.login-container').style.display = 'none'
+      document.getElementById('profileContainer').style.display = 'block'
+
+      // Populate profile header
+      document.getElementById('profileName').textContent = user.full_name || 'User'
+      document.getElementById('profileEmail').textContent = user.email
+      document.getElementById('profilePhone').textContent = user.phone || '-'
+      document.getElementById('profilePlan').textContent = user.pricing_plan || '-'
+
+      if (user.profile_photo_base64) {
+        const img = document.createElement('img')
+        img.src = `${user.profile_photo_base64}`
+        document.getElementById('profilePicture').innerHTML = ''
+        document.getElementById('profilePicture').appendChild(img)
+      }
+
+      // Build profile sections
+      const profileSections = document.getElementById('profileSections')
+      profileSections.innerHTML = ''
+
+      // Personal Info Section
+      let personalHTML = `<div class="profile-section">
+        <h2>Personal Information</h2>`
+
+      if (user.profile?.gender) personalHTML += `<div class="profile-field"><label>Gender</label><value>${user.profile.gender}</value></div>`
+      if (user.profile?.dob) personalHTML += `<div class="profile-field"><label>Date of Birth</label><value>${user.profile.dob}</value></div>`
+      if (user.profile?.height) personalHTML += `<div class="profile-field"><label>Height (cm)</label><value>${user.profile.height}</value></div>`
+      if (user.profile?.ethnicity) personalHTML += `<div class="profile-field"><label>Ethnicity</label><value>${user.profile.ethnicity}</value></div>`
+
+      personalHTML += '</div>'
+      profileSections.innerHTML += personalHTML
+
+      // Lifestyle Section
+      let lifestyleHTML = `<div class="profile-section">
+        <h2>Lifestyle</h2>`
+
+      if (user.profile?.education_level) lifestyleHTML += `<div class="profile-field"><label>Education</label><value>${user.profile.education_level}</value></div>`
+      if (user.profile?.profession) lifestyleHTML += `<div class="profile-field"><label>Profession</label><value>${user.profile.profession}</value></div>`
+      if (user.profile?.income_bracket) lifestyleHTML += `<div class="profile-field"><label>Income Bracket</label><value>${user.profile.income_bracket}</value></div>`
+      if (user.profile?.smoking_habit) lifestyleHTML += `<div class="profile-field"><label>Smoking</label><value>${user.profile.smoking_habit}</value></div>`
+      if (user.profile?.drinking_habit) lifestyleHTML += `<div class="profile-field"><label>Drinking</label><value>${user.profile.drinking_habit}</value></div>`
+
+      lifestyleHTML += '</div>'
+      profileSections.innerHTML += lifestyleHTML
+
+      // Values & Preferences Section
+      let valuesHTML = `<div class="profile-section">
+        <h2>Values & Preferences</h2>`
+
+      if (user.profile?.beliefs) valuesHTML += `<div class="profile-field"><label>Beliefs</label><value>${user.profile.beliefs}</value></div>`
+      if (user.profile?.children_in_household) valuesHTML += `<div class="profile-field"><label>Children</label><value>${user.profile.children_in_household}</value></div>`
+      if (user.profile?.city) valuesHTML += `<div class="profile-field"><label>City</label><value>${user.profile.city}</value></div>`
+
+      if (user.multiSelectData?.interests && user.multiSelectData.interests.length > 0) {
+        valuesHTML += `<div class="profile-field list"><label style="width:100%">Interests</label>`
+        user.multiSelectData.interests.forEach(interest => {
+          valuesHTML += `<span>${interest}</span>`
+        })
+        valuesHTML += '</div>'
+      }
+
+      valuesHTML += '</div>'
+      profileSections.innerHTML += valuesHTML
+
+      // Partner Preferences Section
+      let partnerHTML = `<div class="profile-section">
+        <h2>Partner Preferences</h2>`
+
+      if (user.partnerPrefs?.partner_gender) partnerHTML += `<div class="profile-field"><label>Partner Gender</label><value>${user.partnerPrefs.partner_gender}</value></div>`
+      if (user.partnerPrefs?.partner_smoking) partnerHTML += `<div class="profile-field"><label>Partner Smoking</label><value>${user.partnerPrefs.partner_smoking}</value></div>`
+      if (user.partnerPrefs?.partner_drinking) partnerHTML += `<div class="profile-field"><label>Partner Drinking</label><value>${user.partnerPrefs.partner_drinking}</value></div>`
+      if (user.partnerPrefs?.max_distance) partnerHTML += `<div class="profile-field"><label>Max Distance</label><value>${user.partnerPrefs.max_distance}</value></div>`
+
+      partnerHTML += '</div>'
+      profileSections.innerHTML += partnerHTML
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser')
+      document.querySelector('.login-container').style.display = 'flex'
+      document.getElementById('profileContainer').style.display = 'none'
+      document.getElementById('loginForm').reset()
+      document.getElementById('loginError').style.display = 'none'
+    }
+
+    // Check if user is already logged in
+    window.addEventListener('load', () => {
+      const user = localStorage.getItem('currentUser')
+      if (user) {
+        showProfileView(JSON.parse(user))
+      }
+    })
+  </script>
+</body>
+
+</html>
