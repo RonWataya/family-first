@@ -1347,7 +1347,7 @@ async function submitForm(e) {
 
     try {
         // Send the complete formData object as JSON to the Node.js server
-        const response = await fetch('http://localhost:7000/api/register', {
+        const response = await fetch('/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

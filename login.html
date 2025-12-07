@@ -24,7 +24,7 @@
       background-color: #fff;
     }
 
-    /* Header */
+     /* --- Header Styles (Desktop First) --- */
     header {
       background-color: #ffffff;
       padding: 15px 30px;
@@ -34,23 +34,48 @@
       top: 0;
       z-index: 100;
       border-bottom: 1px solid #f0f0f0;
-      gap: 30px;
+      gap: 30px; /* Space between logo and nav-wrapper */
     }
 
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    
+    .logo-container img {
+      display: block; 
+      margin-left: 70px;
+    }
+
+    /* NEW: Desktop Nav Wrapper Layout */
     .nav-wrapper {
       display: flex;
-      flex-grow: 1;
-      justify-content: space-between;
+      flex-grow: 1; /* Allows it to take up available space */
+      justify-content: space-between; /* Pushes <nav> to the left and .header-buttons to the right */
       align-items: center;
       margin-left: 70px;
+    }
+    
+    /* NEW: Mobile menu toggle button (hidden on desktop) */
+    .menu-toggle {
+      display: none; 
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101; 
+      color: #1a1a1a;
+      padding: 5px;
     }
 
     nav {
       display: flex;
-      gap: 35px;
+      gap: 35px; /* Cleaned up desktop spacing */
     }
 
     nav a {
+      margin: 0; /* Clear previous margins */
       text-decoration: none;
       color: #1a1a1a;
       font-size: 15px;
@@ -66,7 +91,23 @@
       display: flex;
       gap: 20px;
       align-items: center;
-      margin-right: 60px;
+    }
+
+    .btn-login {
+      background: transparent;
+      color: #1a1a1a;
+      border: none;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .btn-login:hover {
+      color: #30c8a6;
+      text-decoration: none;
     }
 
     .btn-signup {
@@ -79,12 +120,14 @@
       font-weight: 600;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-right: 60px;
       text-decoration: none;
     }
 
     .btn-signup:hover {
       background-color: #29b092;
     }
+
 
     /* Login Container */
     .login-container {
@@ -319,61 +362,193 @@
 
     /* Footer */
     footer {
-      background-color: #1a1a1a;
-      color: #ccc;
-      padding: 60px 40px 20px;
-      font-size: 14px;
-      margin-top: 60px;
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 60px 40px 20px;
+        font-size: 14px;
     }
 
     .footer-content {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto 40px;
-      flex-wrap: wrap;
-      gap: 40px;
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        flex-wrap: wrap;
+        gap: 40px;
     }
 
     .footer-col {
-      flex: 1;
-      min-width: 250px;
+        flex: 1;
+        min-width: 250px;
     }
 
     .footer-col h4 {
-      color: #fff;
-      font-size: 16px;
-      margin-bottom: 20px;
-      font-weight: 700;
-      text-transform: uppercase;
+        color: #fff;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
     }
 
     .footer-col ul {
-      list-style: none;
-      padding: 0;
+        list-style: none;
+        padding: 0;
     }
 
     .footer-col ul li {
-      margin-bottom: 10px;
+        margin-bottom: 10px;
     }
 
     .footer-col a {
-      color: #ccc;
-      transition: color 0.3s;
+        color: #ccc;
+        transition: color 0.3s;
     }
 
     .footer-col a:hover {
-      color: #30c8a6;
+        color: #a45c3d;
+    }
+
+    .footer-col strong {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 20px;
+        color: #fff;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: #a45c3d;
     }
 
     .footer-bottom {
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      max-width: 1200px;
-      margin: 0 auto;
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
+    .footer-bottom p {
+        margin: 5px 0;
+    }
+       /* --- Responsive Styles (Mobile Overrides) --- */
+    @media (max-width: 768px) {
+      /* Mobile Header - Logo on the left, Menu Toggle on the right */
+      header {
+        flex-direction: row; /* Keep content in a row */
+        justify-content: space-between; /* Space logo and menu toggle */
+        padding: 15px 20px;
+        gap: 0; /* Clear desktop gap */
+      }
+   .logo-container img {
+      display: block; 
+      margin-left: 0;
+    }
+      /* Show the Hamburger Icon */
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Full-screen overlay for navigation on mobile */
+      .nav-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff; /* White overlay */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 99; /* Below the header, above content */
+        
+        /* Mobile specific positioning */
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out;
+      }
+      
+      /* Class added by JavaScript to show the menu */
+      .nav-wrapper.active {
+        transform: translateX(0); 
+      }
+
+      /* Navigation Links - Stacked */
+      nav {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0;
+        gap: 0; /* Clear desktop gap */
+      }
+
+      nav a {
+        margin: 15px 0; /* Vertical spacing */
+        font-size: 18px; /* Larger font size for touch */
+      }
+
+      /* Header Buttons - Stacked if needed, otherwise centered */
+      .header-buttons {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .btn-signup, .btn-login {
+        width: 200px; /* Make buttons wider and easier to tap */
+        text-align: center;
+        padding: 12px 25px;
+      }
+      
+      /* General mobile adjustments for other sections */
+      .hero {
+        flex-direction: column;
+        background: #ffffff;
+      }
+
+      .hero-left {
+        padding: 40px 20px;
+        background-color: #f5ede5;
+      }
+
+      .hero-left h1 {
+        font-size: 2rem;
+      }
+
+      .hero-left p {
+        max-width: 100%;
+      }
+
+      .hero-right {
+        min-height: 400px;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .quote-text {
+        font-size: 1.3rem;
+      }
+
+      .dark-section h2 {
+        font-size: 2rem;
+      }
+
+      .team-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  
     @media (max-width: 768px) {
       .login-container {
         flex-direction: column;
@@ -401,18 +576,32 @@
 
 <body>
   <!-- Header -->
-  <header>
+<header>
+    <a href="index.html" class="logo-container">
+      <img src="assets/img/ffmlogo.png" alt="Family First Matchmaking Logo" width="110" height="50">
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+    
     <div class="nav-wrapper">
       <nav>
-        <a href="index.html">Home</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="why-us.html">Why Us</a>
+        <a href="how-it-works.html" class="active">How it works</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">Why Us</a>
+        <a href="index.html#testimonials-section">Real Stories</a>
+        <a href="events.html">Events</a>
+        <a href="blog.html">Blog</a>
       </nav>
       <div class="header-buttons">
+        <a href="login.html" class="btn-login">Log In</a>
         <a href="register.html" class="btn-signup">Sign Up</a>
+
       </div>
     </div>
   </header>
+
 
   <!-- Login View -->
   <div class="login-container">
@@ -461,32 +650,40 @@
   </div>
 
   <!-- Footer -->
-  <footer>
+ <footer>
     <div class="footer-content">
       <div class="footer-col">
-        <h4>About</h4>
+        <div class="social-links">
+          <a href="#">𝕏</a>
+          <a href="#">f</a>
+          <a href="#">📷</a>
+          <a href="#">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
         <ul>
-          <li><a href="why-us.html">Why Us</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Success Stories</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="about.html">Why Us</a></li>
+          <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p><strong>Email:</strong> info@familyfirst.co.za</p>
-        <p><strong>Phone:</strong> +27 (0) 21 123 4567</p>
+        <h4>Contact Us</h4>
+        <p>Family First Matchmaking <br>
+          55 Richards Drive, Halfway House, Midrand<br>
+          Gauteng, 1685<br>
+          South Africa<br><br>
+          <strong>Phone:</strong> +27 73 545 4949<br>
+          <strong>Email:</strong> Info@familyfirstmatchmaking.com
+        </p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Family First Matchmaking. All rights reserved.</p>
+      <p>© Copyright 2025 Family First Matchmaking. All Rights Reserved</p>
+      <p>Designed by <a href="https://miwalletmw.com"><span style="color: #a45c3d;">Mi Wallet LTD</span></a></p>
     </div>
   </footer>
 
@@ -502,7 +699,7 @@
       const loginError = document.getElementById('loginError')
 
       try {
-        const response = await fetch('http://localhost:7000/api/sign-in', {
+        const response = await fetch('/api/sign-in', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -618,6 +815,28 @@
         showProfileView(JSON.parse(user))
       }
     })
+  </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navWrapper = document.querySelector('.nav-wrapper');
+      
+      menuToggle.addEventListener('click', function() {
+        // Toggle the active class for mobile menu
+        const isActive = navWrapper.classList.toggle('active');
+        menuToggle.textContent = isActive ? '✕' : '☰';
+      });
+
+      // Close menu when a link is clicked on mobile
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navWrapper.classList.remove('active');
+            menuToggle.textContent = '☰';
+          }
+        });
+      });
+    });
   </script>
 </body>
 

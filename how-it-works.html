@@ -684,6 +684,119 @@
         
         /* Footer Mobile styles remain unchanged */
     }
+       /* --- Responsive Styles (Mobile Overrides) --- */
+    @media (max-width: 768px) {
+      /* Mobile Header - Logo on the left, Menu Toggle on the right */
+      header {
+        flex-direction: row; /* Keep content in a row */
+        justify-content: space-between; /* Space logo and menu toggle */
+        padding: 15px 20px;
+        gap: 0; /* Clear desktop gap */
+      }
+   .logo-container img {
+      display: block; 
+      margin-left: 0;
+    }
+      /* Show the Hamburger Icon */
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Full-screen overlay for navigation on mobile */
+      .nav-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff; /* White overlay */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 99; /* Below the header, above content */
+        
+        /* Mobile specific positioning */
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out;
+      }
+      
+      /* Class added by JavaScript to show the menu */
+      .nav-wrapper.active {
+        transform: translateX(0); 
+      }
+
+      /* Navigation Links - Stacked */
+      nav {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0;
+        gap: 0; /* Clear desktop gap */
+      }
+
+      nav a {
+        margin: 15px 0; /* Vertical spacing */
+        font-size: 18px; /* Larger font size for touch */
+      }
+
+      /* Header Buttons - Stacked if needed, otherwise centered */
+      .header-buttons {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .btn-signup, .btn-login {
+        width: 200px; /* Make buttons wider and easier to tap */
+        text-align: center;
+        padding: 12px 25px;
+      }
+      
+      /* General mobile adjustments for other sections */
+      .hero {
+        flex-direction: column;
+        background: #ffffff;
+      }
+
+      .hero-left {
+        padding: 40px 20px;
+        background-color: #f5ede5;
+      }
+
+      .hero-left h1 {
+        font-size: 2rem;
+      }
+
+      .hero-left p {
+        max-width: 100%;
+      }
+
+      .hero-right {
+        min-height: 400px;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .quote-text {
+        font-size: 1.3rem;
+      }
+
+      .dark-section h2 {
+        font-size: 2rem;
+      }
+
+      .team-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  
   </style>
 </head>
 
@@ -708,7 +821,7 @@
         <a href="blog.html">Blog</a>
       </nav>
       <div class="header-buttons">
-        <a href="#" class="btn-login">Log In</a>
+        <a href="login.html" class="btn-login">Log In</a>
         <a href="register.html" class="btn-signup">Sign Up</a>
 
       </div>
