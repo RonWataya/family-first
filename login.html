@@ -720,37 +720,55 @@
     //const API_URL = 'http://localhost:7000'
 
     // Handle login form submission
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault()
+// Handle login form submission
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      const email = document.getElementById('email').value
-      const password = document.getElementById('password').value
-      const loginError = document.getElementById('loginError')
+    const formWrapper = document.getElementById('loginFormWrapper');
+    const loadingMsg = document.getElementById('loginLoadingMessage');
+    const loginError = document.getElementById('loginError');
 
-      try {
+    // 1. CLEAR ERRORS, HIDE FORM, SHOW LOADING
+    loginError.style.display = 'none';
+    formWrapper.style.display = 'none';
+    loadingMsg.style.display = 'block';
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
         const response = await fetch('/api/sign-in', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-        })
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
 
-        const data = await response.json()
+        const data = await response.json();
+
+        // 2. HIDE LOADING MESSAGE
+        loadingMsg.style.display = 'none';
 
         if (data.success) {
-          // Store user data and show profile
-          localStorage.setItem('currentUser', JSON.stringify(data.user))
-          showProfileView(data.user)
+            // Success: Store user data and show profile
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            showProfileView(data.user);
         } else {
-          loginError.textContent = data.message
-          loginError.style.display = 'block'
+            // Failure: Show form, show error
+            formWrapper.style.display = 'block';
+            loginError.textContent = data.message;
+            loginError.style.display = 'block';
         }
-      } catch (error) {
-        console.error('[v0] Login Error:', error)
-        loginError.textContent = 'Connection error. Please try again.'
-        loginError.style.display = 'block'
-      }
-    })
+    } catch (error) {
+        console.error('[v0] Login Error:', error);
 
+        // 3. HIDE LOADING, SHOW FORM ON NETWORK ERROR
+        loadingMsg.style.display = 'none';
+        formWrapper.style.display = 'block'; 
+        
+        loginError.textContent = 'Connection error. Please try again.';
+        loginError.style.display = 'block';
+    }
+});
     function showProfileView(user) {
       document.querySelector('.login-container').style.display = 'none'
       document.getElementById('profileContainer').style.display = 'block'
