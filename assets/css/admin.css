@@ -460,6 +460,41 @@ body.sidebar-open {
     overflow: hidden;
 }
 
+/* Sidebar Default State (Hidden) */
+#profile-sidebar {
+    position: fixed;
+    top: 0;
+    right: -500px; /* Start off-screen */
+    width: 450px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.4s ease-in-out; /* This makes it slide */
+    z-index: 1000;
+    overflow-y: auto;
+    padding-bottom: 50px;
+}
+
+/* Sidebar Open State (Visible) */
+#profile-sidebar.open {
+    right: 0; /* Slide in to right edge */
+}
+
+/* Close Button Styling */
+#close-sidebar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+#close-sidebar:hover {
+    background-color: #c82333;
+}
 /* -------------------- RESPONSIVE ADJUSTMENTS -------------------- */
 @media (max-width: 1024px) {
     #profile-comparison-container {

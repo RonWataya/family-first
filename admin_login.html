@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Family First Matching</title>
+    <link rel="stylesheet" href="assets/css/login.css"> 
+</head>
+<body>
+
+<div id="login-container">
+    <div id="login-card">
+        <img src="assets/img/ffmlogo.png" alt="Family First Logo" id="login-logo">
+        <h2>Admin Login</h2>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn primary-btn">LOG IN</button>
+            
+            <p id="login-error-message" class="error-message" style="display: none;"></p>
+        </form>
+    </div>
+</div>
+
+<script src="controller/login.js"></script>
+
+</body>
+</html>

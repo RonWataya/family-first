@@ -62,6 +62,29 @@
         font-size: 0.9rem;
         display: none;
     }
+    /* Minimal CSS for the new loading elements */
+.loading-message {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #007bff; /* Blue color for the spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
   </style>
 </head>
 <body>
@@ -117,7 +140,7 @@
             </button>
 
             <button type="button" class="btn-option" data-value="VVIP">
-                VIP — R6,499.00
+                VVIP — R6,499.00
             </button>
 
         </div>
@@ -822,17 +845,20 @@
                 </div>
             </div>
 
-            <div class="step-content" data-step="33">
-                <div class="step-indicator">Step 33 of 41</div>
-                <div class="step-header">
-                    <h1>Where do you live?</h1>
-                    <p>Only the name of your city will be visible.</p>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="city" placeholder="City, Country">
-                </div>
-                <button type="button" class="btn-confirm" onclick="validateStepInput('city')">Next Step</button>
-            </div>
+          <div class="step-content" data-step="33">
+    <div class="step-indicator">Step 33 of 41</div>
+    <div class="step-header">
+        <h1>Where do you live?</h1>
+        <p>Only the name of your city will be visible. Select from the list or type your city's name.</p>
+    </div>
+    <div class="form-group">
+        <input type="text" name="city" id="cityInput" placeholder="City, Country" list="southernAfricanCities" required>
+
+        <datalist id="southernAfricanCities">
+            </datalist>
+    </div>
+    <button type="button" class="btn-confirm" onclick="validateStepInput('city')">Next Step</button>
+</div>
 
             <div class="step-content" data-step="34">
                 <div class="step-indicator">Step 34 of 41</div>
@@ -967,6 +993,10 @@
                 <button type="button" onclick="prevStep()">← Back</button>
             </div>
         </form>
+        <div class="loading-message" id="loadingMessage" style="display: none;">
+        <div class="spinner"></div> <h2>Submitting Application...</h2>
+        <p>Please wait while we process your profile data.</p>
+    </div>
         <div class="success-message" id="successMessage">
             <div class="success-icon">✓</div>
             <h2>Application Submitted!</h2>
@@ -1021,51 +1051,52 @@ const formData = {};
 // INITIALIZATION
 // -------------------------------
 function initializeFormData() {
-    const saved = localStorage.getItem('registrationFormData');
-    const savedStep = localStorage.getItem('currentStep');
+    const saved = localStorage.getItem('registrationFormData');
+    const savedStep = localStorage.getItem('currentStep');
 
-    if(saved) {
-        // Load all non-image data from storage
-        Object.assign(formData, JSON.parse(saved));
+    if(saved) {
+        // Load all non-image data from storage
+        Object.assign(formData, JSON.parse(saved));
 
-        if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
-        if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
-        if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
+        if(formData.full_name) document.querySelector('input[name="full_name"]').value = formData.full_name;
+        if(formData.email) document.querySelector('input[name="email"]').value = formData.email;
+        if(formData.phone) document.querySelector('input[name="phone"]').value = formData.phone;
 
-        document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
-            if (formData[el.name]) el.value = formData[el.name];
-        });
+        document.querySelectorAll('select, textarea, input[type="date"], input[type="number"]').forEach(el => {
+            if (formData[el.name]) el.value = formData[el.name];
+        });
 
-        document.querySelectorAll('.button-group.multi-select').forEach(parent => {
-            const field = parent.dataset.field;
-            if (Array.isArray(formData[field])) {
-                parent.querySelectorAll('.btn-option').forEach(btn => {
-                    // Adjusted for "Any" change
-                    if (formData[field].includes(btn.dataset.value)) {
-                        btn.classList.add('selected');
-                    }
-                });
-            }
-        });
+        document.querySelectorAll('.button-group.multi-select').forEach(parent => {
+            const field = parent.dataset.field;
+            if (Array.isArray(formData[field])) {
+                parent.querySelectorAll('.btn-option').forEach(btn => {
+                    // Adjusted for "Any" change
+                    if (formData[field].includes(btn.dataset.value)) {
+                        btn.classList.add('selected');
+                    }
+                });
+            }
+        });
 
-        checkPsychoGroup(20);
-        checkPsychoGroup(21);
-    }
+        checkPsychoGroup(20);
+        checkPsychoGroup(21);
+    }
     
     // CRITICAL FIX: Ensure the profile_image is always null on load, 
     // as it should not be saved in localStorage.
     formData.profile_image = null; 
 
-    if(savedStep !== null && !isNaN(savedStep)) {
-        const step = parseInt(savedStep);
-        if(step >= 0 && step <= totalSteps) {
-            document.querySelector('[data-step="0"]').classList.remove('active');
-            currentStep = step;
-            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        }
-    }
+    if(savedStep !== null && !isNaN(savedStep)) {
+        const step = parseInt(savedStep);
+        if(step >= 0 && step <= totalSteps) {
+            document.querySelector('[data-step="0"]').classList.remove('active');
+            currentStep = step;
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        }
+    }
 
-    setupPasswordValidation();
+    setupPasswordValidation();
+    populateCityDatalist();
 }
 
 function saveFormData() {
@@ -1078,312 +1109,370 @@ function saveFormData() {
     }
 
     localStorage.setItem('registrationFormData', JSON.stringify(dataToSave));
-    localStorage.setItem('currentStep', currentStep);
+    localStorage.setItem('currentStep', currentStep);
 }
 
 // -------------------------------
 // STEP NAVIGATION
 // -------------------------------
 function nextStep() {
-    if(currentStep < totalSteps){
-        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-        currentStep++;
-        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        saveFormData();
-        window.scrollTo({top:0,behavior:'smooth'});
-        checkPsychoGroup(currentStep);
-    }
+    if(currentStep < totalSteps){
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep++;
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        saveFormData();
+        window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
+    }
 }
 
 function prevStep() {
-    if(currentStep > 0){
-        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-        currentStep--;
-        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
-        saveFormData();
-        window.scrollTo({top:0,behavior:'smooth'});
-        checkPsychoGroup(currentStep);
-    }
+    if(currentStep > 0){
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep--;
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        saveFormData();
+        window.scrollTo({top:0,behavior:'smooth'});
+        checkPsychoGroup(currentStep);
+    }
 }
 
 // -------------------------------
 // ACCOUNT VALIDATION (Previously Step 2, now Step 3)
 // -------------------------------
 function validateStepAccount(){ 
-    const f = document.querySelector('input[name="full_name"]').value.trim();
-    const e = document.querySelector('input[name="email"]').value.trim();
-    const p = document.querySelector('input[name="phone"]').value.trim();
-    const pw = document.querySelector('input[name="password"]').value.trim();
-    const cpw = document.querySelector('input[name="confirm_password"]').value.trim();
+    const f = document.querySelector('input[name="full_name"]').value.trim();
+    const e = document.querySelector('input[name="email"]').value.trim();
+    const p = document.querySelector('input[name="phone"]').value.trim();
+    const pw = document.querySelector('input[name="password"]').value.trim();
+    const cpw = document.querySelector('input[name="confirm_password"]').value.trim();
 
-    if(!f || !e || !p || !pw || !cpw){
-        alert("Please fill in all fields.");
-        return;
-    }
+    if(!f || !e || !p || !pw || !cpw){
+        alert("Please fill in all fields.");
+        return;
+    }
 
-    const strongPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
+    const strongPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/;
 
-    if(!strongPassword.test(pw)){
-        alert("Password must be at least 8 characters long, include uppercase, lowercase, and a number.");
-        return;
-    }
+    if(!strongPassword.test(pw)){
+        alert("Password must be at least 8 characters long, include uppercase, lowercase, and a number.");
+        return;
+    }
 
-    if(pw !== cpw){
-        alert("Passwords do not match.");
-        return;
-    }
+    if(pw !== cpw){
+        alert("Passwords do not match.");
+        return;
+    }
 
-    formData.full_name = f;
-    formData.email = e;
-    formData.phone = p;
-    formData.password = pw;
+    formData.full_name = f;
+    formData.email = e;
+    formData.phone = p;
+    formData.password = pw;
 
-    saveFormData();
-    nextStep();
+    saveFormData();
+    nextStep();
 }
 
 // -------------------------------
 // LIVE PASSWORD & CONFIRM CHECK
 // -------------------------------
 function setupPasswordValidation() {
-    const pwField = document.querySelector('input[name="password"]');
-    const cpwField = document.querySelector('input[name="confirm_password"]');
+    const pwField = document.querySelector('input[name="password"]');
+    const cpwField = document.querySelector('input[name="confirm_password"]');
 
-    if(!pwField || !cpwField) return;
+    if(!pwField || !cpwField) return;
 
-    pwField.addEventListener('input', () => checkPasswordMatch());
-    cpwField.addEventListener('input', () => checkPasswordMatch());
+    pwField.addEventListener('input', () => checkPasswordMatch());
+    cpwField.addEventListener('input', () => checkPasswordMatch());
 }
 
 function checkPasswordMatch() {
-    const pw = document.querySelector('input[name="password"]').value;
-    const cpw = document.querySelector('input[name="confirm_password"]').value;
-    const cpwField = document.querySelector('input[name="confirm_password"]');
+    const pw = document.querySelector('input[name="password"]').value;
+    const cpw = document.querySelector('input[name="confirm_password"]').value;
+    const cpwField = document.querySelector('input[name="confirm_password"]');
 
-    if(!cpw){
-        cpwField.style.border = "1px solid #ccc";
-        return;
-    }
+    if(!cpw){
+        cpwField.style.border = "1px solid #ccc";
+        return;
+    }
 
-    if(pw === cpw){
-        cpwField.style.border = "2px solid #28a745"; 
-    } else {
-        cpwField.style.border = "2px solid #dc3545"; 
-    }
+    if(pw === cpw){
+        cpwField.style.border = "2px solid #28a745"; 
+    } else {
+        cpwField.style.border = "2px solid #dc3545"; 
+    }
 }
 
 // -------------------------------
 // GENERIC VALIDATION
 // -------------------------------
 function validateStepInput(fieldName, isFinalStep=false){ 
-    const el = document.querySelector(`[name="${fieldName}"]`);
+    const el = document.querySelector(`[name="${fieldName}"]`);
 
-    let value = el.value;
+    let value = el.value;
 
-    if(el.type === 'file') {
-        if(el.files.length === 0){
-            alert("Please upload a file.");
-            return;
-        }
-        // Handle file upload/Base64 conversion here
-        const file = el.files[0];
-        const reader = new FileReader();
-        
-        reader.onloadend = function() {
-            // Save the Base64 string to in-memory formData
-            formData[fieldName] = reader.result; 
-            // saveFormData() will be called, but the image is excluded from localStorage
-            saveFormData(); 
-            
-            if(isFinalStep){
-                 // Use a slight delay to ensure formData update is complete
-                setTimeout(() => document.getElementById('multiStepForm').dispatchEvent(new Event('submit')), 100);
-            } else {
-                nextStep();
-            }
-        };
-        reader.readAsDataURL(file); // Reads file and converts it to Base64
-        
-        // Return early to wait for file reader
-        return; 
-    }
+    if(el.type === 'file') {
+        if(el.files.length === 0){
+            alert("Please upload a file.");
+            return;
+        }
+        // Handle file upload/Base64 conversion here
+        const file = el.files[0];
+        const reader = new FileReader();
+        
+        reader.onloadend = function() {
+            // Save the Base64 string to in-memory formData
+            formData[fieldName] = reader.result; 
+            // saveFormData() will be called, but the image is excluded from localStorage
+            saveFormData(); 
+            
+            if(isFinalStep){
+                 // Use a slight delay to ensure formData update is complete
+                setTimeout(() => document.getElementById('multiStepForm').dispatchEvent(new Event('submit')), 100);
+            } else {
+                nextStep();
+            }
+        };
+        reader.readAsDataURL(file); // Reads file and converts it to Base64
+        
+        // Return early to wait for file reader
+        return; 
+    }
 
-    if(!value){
-        alert("Please enter/select a value.");
-        return;
-    }
+    if(!value){
+        alert("Please enter/select a value.");
+        return;
+    }
 
-    formData[fieldName] = value;
-    saveFormData();
+    formData[fieldName] = value;
+    saveFormData();
 
-    if(isFinalStep){
-         // If it's the final step, dispatch the submit event
-        document.getElementById('multiStepForm').dispatchEvent(new Event('submit'));
-    } else {
-        nextStep();
-    }
+    if(isFinalStep){
+         // If it's the final step, dispatch the submit event
+        document.getElementById('multiStepForm').dispatchEvent(new Event('submit'));
+    } else {
+        nextStep();
+    }
 }
 
 // -------------------------------
 // TEXT SAVE
 // -------------------------------
 function saveTextAndNext(fieldName){
-    const val=document.querySelector(`[name="${fieldName}"]`).value;
-    formData[fieldName]=val;
-    saveFormData();
-    nextStep();
+    const val=document.querySelector(`[name="${fieldName}"]`).value;
+    formData[fieldName]=val;
+    saveFormData();
+    nextStep();
 }
 
 // -------------------------------
 // PSYCHO GROUP LOGIC
 // -------------------------------
 function savePsychoGroupAndNext(stepNum){
-    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
-    const selects=stepDiv.querySelectorAll('select');
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    const selects=stepDiv.querySelectorAll('select');
 
-    let allSelected=true;
-    selects.forEach(s=>{
-        if(!s.value) allSelected=false;
-        formData[s.name]=s.value;
-    });
+    let allSelected=true;
+    selects.forEach(s=>{
+        if(!s.value) allSelected=false;
+        formData[s.name]=s.value;
+    });
 
-    if(allSelected){
-        saveFormData();
-        nextStep();
-    }
+    if(allSelected){
+        saveFormData();
+        nextStep();
+    }
 }
 
 function checkPsychoGroup(stepNum){
-    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
-    if(!stepDiv) return;
+    const stepDiv=document.querySelector(`[data-step="${stepNum}"]`);
+    if(!stepDiv) return;
 
-    const selects=stepDiv.querySelectorAll('select');
-    const btn=document.getElementById(`btn-step${stepNum}`);
+    const selects=stepDiv.querySelectorAll('select');
+    const btn=document.getElementById(`btn-step${stepNum}`);
 
-    if(!btn) return;
+    if(!btn) return;
 
-    let allSelected=true;
-    selects.forEach(s => { if(!s.value) allSelected=false; });
+    let allSelected=true;
+    selects.forEach(s => { if(!s.value) allSelected=false; });
 
-    btn.style.display = allSelected ? 'block' : 'none';
+    btn.style.display = allSelected ? 'block' : 'none';
 }
 
 // -------------------------------
 // OPTION BUTTON LOGIC (FIXED)
 // -------------------------------
 document.querySelectorAll('.btn-option').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.preventDefault();
-        const parent = btn.closest('.button-group');
-        const isMulti = parent.classList.contains('multi-select');
-        const field = parent.dataset.field;
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const parent = btn.closest('.button-group');
+        const isMulti = parent.classList.contains('multi-select');
+        const field = parent.dataset.field;
 
-        if(isMulti){
-            const value = btn.dataset.value;
-            const max = parent.dataset.max;
-            
-            // CHANGED: Use "Any" to avoid quote conflicts
-            const isNoMind = (value === "Any");
+        if(isMulti){
+            const value = btn.dataset.value;
+            const max = parent.dataset.max;
+            
+            // CHANGED: Use "Any" to avoid quote conflicts
+            const isNoMind = (value === "Any");
 
-            btn.classList.toggle('selected');
+            btn.classList.toggle('selected');
 
-            let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
-                                 .map(b => b.dataset.value);
+            let selected = Array.from(parent.querySelectorAll('.btn-option.selected'))
+                                .map(b => b.dataset.value);
 
-            if(isNoMind && btn.classList.contains('selected')){
-                // Unselect everything else if "Any" is clicked
-                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
-                btn.classList.add('selected');
-                selected = ["Any"];
-            } 
-            else if(!isNoMind && selected.includes("Any")){
-                // Unselect "Any" if something else is clicked
-                // Updated selector to find "Any"
-                const noMindBtn = parent.querySelector('.btn-option[data-value="Any"]');
-                if(noMindBtn) noMindBtn.classList.remove('selected');
-                
-                selected = selected.filter(v => v !== "Any");
-            }
+            if(isNoMind && btn.classList.contains('selected')){
+                // Unselect everything else if "Any" is clicked
+                parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selected = ["Any"];
+            } 
+            else if(!isNoMind && selected.includes("Any")){
+                // Unselect "Any" if something else is clicked
+                // Updated selector to find "Any"
+                const noMindBtn = parent.querySelector('.btn-option[data-value="Any"]');
+                if(noMindBtn) noMindBtn.classList.remove('selected');
+                
+                selected = selected.filter(v => v !== "Any");
+            }
 
-            // --- ERROR MESSAGE HANDLING ---
-            // Find the error message element (inside the form-group of this button group)
-            const errorMsg = parent.closest('.form-group').querySelector('.max-selection-message');
+            // --- ERROR MESSAGE HANDLING ---
+            // Find the error message element (inside the form-group of this button group)
+            const errorMsg = parent.closest('.form-group').querySelector('.max-selection-message');
 
-            if(max && selected.length > max){
-                btn.classList.remove('selected'); // undo
-                if(errorMsg) errorMsg.style.display = 'block'; // Show error
-                return;
-            } else {
-                if(errorMsg) errorMsg.style.display = 'none'; // Hide error if valid
-            }
+            if(max && selected.length > max){
+                btn.classList.remove('selected'); // undo
+                if(errorMsg) errorMsg.style.display = 'block'; // Show error
+                return;
+            } else {
+                if(errorMsg) errorMsg.style.display = 'none'; // Hide error if valid
+            }
 
-            formData[field] = selected;
-            saveFormData();
+            formData[field] = selected;
+            saveFormData();
 
-        } else {
-            parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
+        } else {
+            parent.querySelectorAll('.btn-option').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
 
-            formData[field] = btn.dataset.value;
-            saveFormData();
+            formData[field] = btn.dataset.value;
+            saveFormData();
 
-            setTimeout(nextStep, 200);
-        }
-    });
+            setTimeout(nextStep, 200);
+        }
+    });
 });
+
+// --- CITIES DATA & SETUP ---
+const southernAfricanCities = [
+    // South Africa
+    "Johannesburg, South Africa", "Cape Town, South Africa", "Durban, South Africa", "Pretoria, South Africa",
+    "Port Elizabeth, South Africa", "Bloemfontein, South Africa",
+    // Botswana
+    "Gaborone, Botswana", "Francistown, Botswana",
+    // Namibia
+    "Windhoek, Namibia", "Swakopmund, Namibia",
+    // Lesotho
+    "Maseru, Lesotho",
+    // Eswatini (Swaziland)
+    "Mbabane, Eswatini", "Manzini, Eswatini",
+    // Mozambique
+    "Maputo, Mozambique", "Beira, Mozambique",
+    // Zimbabwe
+    "Harare, Zimbabwe", "Bulawayo, Zimbabwe",
+    // Zambia
+    "Lusaka, Zambia", "Kitwe, Zambia",
+    // Malawi
+    "Lilongwe, Malawi", "Blantyre, Malawi",
+    // Angola
+    "Luanda, Angola",
+];
+
+function populateCityDatalist() {
+    const datalist = document.getElementById('southernAfricanCities');
+    if (datalist) {
+        southernAfricanCities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            datalist.appendChild(option);
+        });
+        
+        // Ensure the input field value is restored if available in formData
+        const cityInput = document.getElementById('cityInput');
+        if (cityInput && formData.city) {
+            cityInput.value = formData.city;
+        }
+    }
+}
 
 // -------------------------------
 // SUBMISSION HANDLER (Sends data to Node.js)
 // -------------------------------
 async function submitForm(e) {
-    e.preventDefault();
+    e.preventDefault();
 
-    console.log("Submitting Form Data:", formData);
-    
-    // Simple validation: Check if required account details exist
-    if (!formData.email || !formData.password) {
-        alert("Required account fields (Email/Password) are missing.");
-        return;
-    }
+    const loadingMsg = document.getElementById('loadingMessage');
+    const formDiv = document.getElementById('multiStepForm');
+    const successMsg = document.getElementById('successMessage');
 
-    try {
-        // Send the complete formData object as JSON to the Node.js server
-        const response = await fetch('/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
+    // 1. SHOW LOADING MESSAGE AND HIDE THE FORM
+    formDiv.style.display = 'none';
+    loadingMsg.style.display = 'block';
+    successMsg.classList.remove('show'); // Ensure success message is hidden
 
-        const result = await response.json();
+    console.log("Submitting Form Data:", formData);
+    
+    // Simple validation: Check if required account details exist
+    if (!formData.email || !formData.password) {
+        // Handle error: Revert view and show alert
+        loadingMsg.style.display = 'none';
+        formDiv.style.display = 'block'; 
+        alert("Required account fields (Email/Password) are missing.");
+        return;
+    }
 
-        if (response.ok) {
-            // Success: Remove active step, show success message, clear storage
-            document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
-            document.getElementById('successMessage').classList.add('show');
-            
-            // Clean up local storage
-            localStorage.removeItem('registrationFormData');
-            localStorage.removeItem('currentStep');
-            
-            // Optional: Redirect to a success page after a delay
-            // setTimeout(() => { window.location.href = '/success.html'; }, 3000);
+    try {
+        // Send the complete formData object as JSON to the Node.js server
+        const response = await fetch('/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
 
-        } else {
-            // Error: Show specific error from server (e.g., 'Email already exists')
-            alert('Registration Failed: ' + result.message);
-            console.error('Registration Error:', result);
-            
-            // Re-show the last step for correction
-            document.getElementById('successMessage').classList.remove('show');
-            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active'); 
-        }
+        const result = await response.json();
 
-    } catch (error) {
-        console.error('Network or Server Error:', error);
-        alert('An unexpected error occurred. Please check your connection and try again.');
-    }
+        // 2. HIDE LOADING MESSAGE AFTER RESPONSE
+        loadingMsg.style.display = 'none';
+
+        if (response.ok) {
+            // Success: Show success message, clear storage
+            document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+            successMsg.classList.add('show');
+            
+            // Clean up local storage
+            localStorage.removeItem('registrationFormData');
+            localStorage.removeItem('currentStep');
+
+        } else {
+            // Error: Re-show the form/last step and alert the user
+            formDiv.style.display = 'block'; 
+            document.querySelector(`[data-step="${currentStep}"]`).classList.add('active'); 
+            alert('Registration Failed: ' + result.message);
+            console.error('Registration Error:', result);
+        }
+
+    } catch (error) {
+        console.error('Network or Server Error:', error);
+        
+        // 3. HIDE LOADING AND REVERT ON NETWORK ERROR
+        loadingMsg.style.display = 'none';
+        formDiv.style.display = 'block'; 
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active'); 
+
+        alert('An unexpected error occurred. Please check your connection and try again.');
+    }
 }
 
 // -------------------------------
@@ -1393,5 +1482,6 @@ document.getElementById('multiStepForm').addEventListener('submit', submitForm);
 
 document.addEventListener('DOMContentLoaded', initializeFormData);
 </script>
+
 </body>
 </html>

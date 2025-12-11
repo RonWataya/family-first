@@ -1,8 +1,7 @@
 // controller/login.js
 
-// IMPORTANT: Updated references to target the wrapper instead of individual flex items
-const loginContainer = document.getElementById('login-container');
-const dashboardWrapper = document.getElementById('admin-dashboard-wrapper');
+const ADMIN_PAGE = 'admin.html';
+const LOGIN_PAGE = 'admin_login.html';
 
 /**
  * Checks if the admin is logged in by looking for a flag in localStorage.
@@ -13,70 +12,27 @@ function checkAdminSession() {
 }
 
 /**
- * Hides the login screen and shows the main dashboard wrapper.
- */
-function showDashboard() {
-    if (dashboardWrapper) {
-        // Set display to 'flex' to activate the sidebar/main-content layout
-        dashboardWrapper.style.display = 'flex'; 
-    }
-    if (loginContainer) {
-        // Hide the absolute-positioned login overlay
-        loginContainer.style.display = 'none';
-    }
-    
-    // Initial data fetch (Assumes fetchUsers is a global function in admin.js)
-    if (typeof fetchUsers === 'function') {
-        fetchUsers();
-    }
-}
-
-/**
- * Logs the admin out by clearing the session state and showing the login screen.
+ * Logs the admin out, clears the session, and redirects to the login page.
  * This is exposed globally for the Logout Button's onclick handler.
  */
 window.logoutAdmin = function() {
     localStorage.removeItem('adminLoggedIn');
-    
-    // Hide the entire dashboard wrapper
-    if (dashboardWrapper) {
-        dashboardWrapper.style.display = 'none';
-    }
-    
-    // Show the login overlay
-    if (loginContainer) {
-        loginContainer.style.display = 'flex';
-    }
-
-    // Reset form and error message
-    const errorMessage = document.getElementById('login-error-message');
-    if (errorMessage) errorMessage.style.display = 'none';
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) loginForm.reset();
+    window.location.href = LOGIN_PAGE;
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+
+// --- Logic for admin_login.html (Login Page) ---
+
+function handleLoginPage() {
     const loginForm = document.getElementById('login-form');
     const errorMessage = document.getElementById('login-error-message');
 
-    // 1. Initial Session Check: Set the correct starting state
-    const loggedIn = checkAdminSession();
-    
-    if (loggedIn) {
-        // If already logged in, show dashboard immediately
-        showDashboard();
-        return; 
+    // If already logged in, redirect immediately to dashboard
+    if (checkAdminSession()) {
+        window.location.href = ADMIN_PAGE;
+        return;
     }
 
-    // Default state: If not logged in, ensure login is shown and dashboard is hidden
-    if (dashboardWrapper) {
-        dashboardWrapper.style.display = 'none';
-    }
-    if (loginContainer) {
-        loginContainer.style.display = 'flex';
-    }
-
-    // 2. Login Form Submission Handler
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -87,9 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.style.display = 'none';
             
             try {
-                // IMPORTANT: Replace '/api/admin/login' with your actual server endpoint
                 const response = await fetch('/api/login', {
-
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
@@ -99,13 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok && data.success) {
                     localStorage.setItem('adminLoggedIn', 'true');
-                    
-                    // Simple fade transition
-                    if (loginContainer) loginContainer.style.opacity = '0';
-                    setTimeout(() => {
-                        showDashboard();
-                        if (loginContainer) loginContainer.style.opacity = '1'; // Reset opacity for logout
-                    }, 300);
+                    // SUCCESS: Redirect to the main dashboard page
+                    window.location.href = ADMIN_PAGE; 
                     
                 } else {
                     errorMessage.textContent = data.message || 'Login failed. Invalid credentials or server error.';
@@ -117,5 +66,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorMessage.style.display = 'block';
             }
         });
+    }
+}
+
+
+// --- Logic for admin_dashboard.html (Dashboard Page) ---
+
+function handleDashboardPage() {
+    // If not logged in, redirect immediately to login page
+    if (!checkAdminSession()) {
+        window.location.href = LOGIN_PAGE;
+        return;
+    }
+    
+    // If logged in, fetch data after DOM content is loaded
+    // We assume fetchUsers is now loaded from admin.js
+    if (typeof window.fetchUsers === 'function') {
+        window.fetchUsers();
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Check which page we are on
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (currentPage === LOGIN_PAGE || currentPage === "") {
+        handleLoginPage();
+    } else if (currentPage === ADMIN_PAGE) {
+        handleDashboardPage();
     }
 });
