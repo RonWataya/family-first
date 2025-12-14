@@ -841,7 +841,7 @@ function showProfileView(user) {
   let importanceHTML = `<div class="profile-section"><h2>Partner Importance Scores</h2>`
 
   Object.entries(user.importanceScores || {}).forEach(([k, v]) => {
-    if (v) importanceHTML += `<div class="profile-field"><label>${k.replace('_', ' ')}</label><value>${v}/7</value></div>`
+    if (v) importanceHTML += `<div class="profile-field"><label>${k.replace('_', ' ')}</label><value>${v}</value></div>`
   })
 
   importanceHTML += `</div>`
