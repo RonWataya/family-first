@@ -769,84 +769,119 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         loginError.style.display = 'block';
     }
 });
-    function showProfileView(user) {
-      document.querySelector('.login-container').style.display = 'none'
-      document.getElementById('profileContainer').style.display = 'block'
+   function showProfileView(user) {
+  document.querySelector('.login-container').style.display = 'none'
+  document.getElementById('profileContainer').style.display = 'block'
 
-      // Populate profile header
-      document.getElementById('profileName').textContent = user.full_name || 'User'
-      document.getElementById('profileEmail').textContent = user.email
-      document.getElementById('profilePhone').textContent = user.phone || '-'
-      document.getElementById('profilePlan').textContent = user.pricing_plan || '-'
+  // Header
+  document.getElementById('profileName').textContent = user.full_name || 'User'
+  document.getElementById('profileEmail').textContent = user.email
+  document.getElementById('profilePhone').textContent = user.phone || '-'
+  document.getElementById('profilePlan').textContent = user.pricing_plan || '-'
 
-      if (user.profile_photo_base64) {
-        const img = document.createElement('img')
-        img.src = `${user.profile_photo_base64}`
-        document.getElementById('profilePicture').innerHTML = ''
-        document.getElementById('profilePicture').appendChild(img)
-      }
+  if (user.profile_photo_base64) {
+    const img = document.createElement('img')
+    img.src = user.profile_photo_base64
+    document.getElementById('profilePicture').innerHTML = ''
+    document.getElementById('profilePicture').appendChild(img)
+  }
 
-      // Build profile sections
-      const profileSections = document.getElementById('profileSections')
-      profileSections.innerHTML = ''
+  const profileSections = document.getElementById('profileSections')
+  profileSections.innerHTML = ''
 
-      // Personal Info Section
-      let personalHTML = `<div class="profile-section">
-        <h2>Personal Information</h2>`
+  /* ---------------- PERSONAL INFO ---------------- */
+  let personalHTML = `<div class="profile-section"><h2>Personal Information</h2>`
 
-      if (user.profile?.gender) personalHTML += `<div class="profile-field"><label>Gender</label><value>${user.profile.gender}</value></div>`
-      if (user.profile?.dob) personalHTML += `<div class="profile-field"><label>Date of Birth</label><value>${user.profile.dob}</value></div>`
-      if (user.profile?.height) personalHTML += `<div class="profile-field"><label>Height (cm)</label><value>${user.profile.height}</value></div>`
-      if (user.profile?.ethnicity) personalHTML += `<div class="profile-field"><label>Ethnicity</label><value>${user.profile.ethnicity}</value></div>`
+  if (user.profile?.gender) personalHTML += `<div class="profile-field"><label>Gender</label><value>${user.profile.gender}</value></div>`
+  if (user.profile?.dob) personalHTML += `<div class="profile-field"><label>Date of Birth</label><value>${user.profile.dob}</value></div>`
+  if (user.profile?.marital_status) personalHTML += `<div class="profile-field"><label>Marital Status</label><value>${user.profile.marital_status}</value></div>`
+  if (user.profile?.height) personalHTML += `<div class="profile-field"><label>Height (cm)</label><value>${user.profile.height}</value></div>`
+  if (user.profile?.ethnicity) personalHTML += `<div class="profile-field"><label>Ethnicity</label><value>${user.profile.ethnicity}</value></div>`
+  if (user.profile?.city) personalHTML += `<div class="profile-field"><label>City</label><value>${user.profile.city}</value></div>`
 
-      personalHTML += '</div>'
-      profileSections.innerHTML += personalHTML
+  personalHTML += `</div>`
+  profileSections.innerHTML += personalHTML
 
-      // Lifestyle Section
-      let lifestyleHTML = `<div class="profile-section">
-        <h2>Lifestyle</h2>`
+  /* ---------------- LIFESTYLE & CAREER ---------------- */
+  let lifestyleHTML = `<div class="profile-section"><h2>Lifestyle & Career</h2>`
 
-      if (user.profile?.education_level) lifestyleHTML += `<div class="profile-field"><label>Education</label><value>${user.profile.education_level}</value></div>`
-      if (user.profile?.profession) lifestyleHTML += `<div class="profile-field"><label>Profession</label><value>${user.profile.profession}</value></div>`
-      if (user.profile?.income_bracket) lifestyleHTML += `<div class="profile-field"><label>Income Bracket</label><value>${user.profile.income_bracket}</value></div>`
-      if (user.profile?.smoking_habit) lifestyleHTML += `<div class="profile-field"><label>Smoking</label><value>${user.profile.smoking_habit}</value></div>`
-      if (user.profile?.drinking_habit) lifestyleHTML += `<div class="profile-field"><label>Drinking</label><value>${user.profile.drinking_habit}</value></div>`
+  if (user.profile?.education_level) lifestyleHTML += `<div class="profile-field"><label>Education</label><value>${user.profile.education_level}</value></div>`
+  if (user.profile?.profession) lifestyleHTML += `<div class="profile-field"><label>Profession</label><value>${user.profile.profession}</value></div>`
+  if (user.profile?.income_bracket) lifestyleHTML += `<div class="profile-field"><label>Income</label><value>${user.profile.income_bracket}</value></div>`
+  if (user.profile?.smoking_habit) lifestyleHTML += `<div class="profile-field"><label>Smoking</label><value>${user.profile.smoking_habit}</value></div>`
+  if (user.profile?.drinking_habit) lifestyleHTML += `<div class="profile-field"><label>Drinking</label><value>${user.profile.drinking_habit}</value></div>`
+  if (user.profile?.children_in_household) lifestyleHTML += `<div class="profile-field"><label>Children</label><value>${user.profile.children_in_household}</value></div>`
 
-      lifestyleHTML += '</div>'
-      profileSections.innerHTML += lifestyleHTML
+  lifestyleHTML += `</div>`
+  profileSections.innerHTML += lifestyleHTML
 
-      // Values & Preferences Section
-      let valuesHTML = `<div class="profile-section">
-        <h2>Values & Preferences</h2>`
+  /* ---------------- VALUES ---------------- */
+  let valuesHTML = `<div class="profile-section"><h2>Values & Beliefs</h2>`
 
-      if (user.profile?.beliefs) valuesHTML += `<div class="profile-field"><label>Beliefs</label><value>${user.profile.beliefs}</value></div>`
-      if (user.profile?.children_in_household) valuesHTML += `<div class="profile-field"><label>Children</label><value>${user.profile.children_in_household}</value></div>`
-      if (user.profile?.city) valuesHTML += `<div class="profile-field"><label>City</label><value>${user.profile.city}</value></div>`
+  if (user.profile?.beliefs) valuesHTML += `<div class="profile-field"><label>Beliefs</label><value>${user.profile.beliefs}</value></div>`
+  if (user.profile?.partner_role) valuesHTML += `<div class="profile-field"><label>Partner Role</label><value>${user.profile.partner_role}</value></div>`
+  if (user.profile?.reconcile_style) valuesHTML += `<div class="profile-field"><label>Conflict Style</label><value>${user.profile.reconcile_style}</value></div>`
+  if (user.profile?.willingness_change) valuesHTML += `<div class="profile-field"><label>Willingness to Change</label><value>${user.profile.willingness_change}</value></div>`
 
-      if (user.multiSelectData?.interests && user.multiSelectData.interests.length > 0) {
-        valuesHTML += `<div class="profile-field list"><label style="width:100%">Interests</label>`
-        user.multiSelectData.interests.forEach(interest => {
-          valuesHTML += `<span>${interest}</span>`
-        })
-        valuesHTML += '</div>'
-      }
+  valuesHTML += `</div>`
+  profileSections.innerHTML += valuesHTML
 
-      valuesHTML += '</div>'
-      profileSections.innerHTML += valuesHTML
+  /* ---------------- IMPORTANCE SCORES ---------------- */
+  let importanceHTML = `<div class="profile-section"><h2>Partner Importance Scores</h2>`
 
-      // Partner Preferences Section
-      let partnerHTML = `<div class="profile-section">
-        <h2>Partner Preferences</h2>`
+  Object.entries(user.importanceScores || {}).forEach(([k, v]) => {
+    if (v) importanceHTML += `<div class="profile-field"><label>${k.replace('_', ' ')}</label><value>${v}/7</value></div>`
+  })
 
-      if (user.partnerPrefs?.partner_gender) partnerHTML += `<div class="profile-field"><label>Partner Gender</label><value>${user.partnerPrefs.partner_gender}</value></div>`
-      if (user.partnerPrefs?.partner_smoking) partnerHTML += `<div class="profile-field"><label>Partner Smoking</label><value>${user.partnerPrefs.partner_smoking}</value></div>`
-      if (user.partnerPrefs?.partner_drinking) partnerHTML += `<div class="profile-field"><label>Partner Drinking</label><value>${user.partnerPrefs.partner_drinking}</value></div>`
-      if (user.partnerPrefs?.max_distance) partnerHTML += `<div class="profile-field"><label>Max Distance</label><value>${user.partnerPrefs.max_distance}</value></div>`
+  importanceHTML += `</div>`
+  profileSections.innerHTML += importanceHTML
 
-      partnerHTML += '</div>'
-      profileSections.innerHTML += partnerHTML
-    }
+  /* ---------------- PSYCHOMETRICS ---------------- */
+  let psychoHTML = `<div class="profile-section"><h2>Psychometric Profile</h2>`
 
+  Object.entries(user.psychometrics || {}).forEach(([k, v]) => {
+    psychoHTML += `<div class="profile-field"><label>${k}</label><value>${v}/7</value></div>`
+  })
+
+  psychoHTML += `</div>`
+  profileSections.innerHTML += psychoHTML
+
+  /* ---------------- TEXT ANSWERS ---------------- */
+  let textHTML = `<div class="profile-section"><h2>Personal Reflections</h2>`
+
+  if (user.textData?.thankful_for) textHTML += `<div class="profile-field"><label>Thankful For</label><value>${user.textData.thankful_for}</value></div>`
+  if (user.textData?.free_time_activities) textHTML += `<div class="profile-field"><label>Free Time Activities</label><value>${user.textData.free_time_activities}</value></div>`
+
+  textHTML += `</div>`
+  profileSections.innerHTML += textHTML
+
+  /* ---------------- MULTI SELECTS ---------------- */
+  const renderList = (title, items) => {
+    if (!items || items.length === 0) return ''
+    let html = `<div class="profile-section"><h2>${title}</h2><div class="profile-field list">`
+    items.forEach(i => html += `<span>${i}</span>`)
+    return html + `</div></div>`
+  }
+
+  profileSections.innerHTML += renderList('Ethnic Preferences', user.multiSelectData?.ethnic_preferences)
+  profileSections.innerHTML += renderList('Partner Beliefs', user.multiSelectData?.partner_beliefs)
+  profileSections.innerHTML += renderList('Relationship Values', user.multiSelectData?.relationship_values)
+  profileSections.innerHTML += renderList('Friend Descriptions', user.multiSelectData?.friend_descriptions)
+  profileSections.innerHTML += renderList('Passions', user.multiSelectData?.passions)
+  profileSections.innerHTML += renderList('Age Preferences', user.multiSelectData?.age_preferences)
+
+  /* ---------------- PARTNER PREFERENCES ---------------- */
+  let partnerHTML = `<div class="profile-section"><h2>Partner Preferences</h2>`
+
+  if (user.partnerPrefs?.partner_gender) partnerHTML += `<div class="profile-field"><label>Gender</label><value>${user.partnerPrefs.partner_gender}</value></div>`
+  if (user.partnerPrefs?.partner_smoking) partnerHTML += `<div class="profile-field"><label>Smoking</label><value>${user.partnerPrefs.partner_smoking}</value></div>`
+  if (user.partnerPrefs?.partner_drinking) partnerHTML += `<div class="profile-field"><label>Drinking</label><value>${user.partnerPrefs.partner_drinking}</value></div>`
+  if (user.partnerPrefs?.partner_children) partnerHTML += `<div class="profile-field"><label>Children</label><value>${user.partnerPrefs.partner_children}</value></div>`
+  if (user.partnerPrefs?.max_distance) partnerHTML += `<div class="profile-field"><label>Max Distance</label><value>${user.partnerPrefs.max_distance}</value></div>`
+
+  partnerHTML += `</div>`
+  profileSections.innerHTML += partnerHTML
+}
     function logout() {
       localStorage.removeItem('currentUser')
       document.querySelector('.login-container').style.display = 'flex'
