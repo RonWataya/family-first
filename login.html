@@ -769,7 +769,18 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         loginError.style.display = 'block';
     }
 });
-   function showProfileView(user) {
+   // ✅ ADDED: numeric → agree/disagree labels
+const PSYCHO_SCALE_LABELS = {
+  1: "Strongly Disagree",
+  2: "Disagree",
+  3: "Slightly Disagree",
+  4: "Neither Agree nor Disagree",
+  5: "Slightly Agree",
+  6: "Agree",
+  7: "Strongly Agree"
+};
+
+function showProfileView(user) {
   document.querySelector('.login-container').style.display = 'none'
   document.getElementById('profileContainer').style.display = 'block'
 
@@ -836,11 +847,16 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   importanceHTML += `</div>`
   profileSections.innerHTML += importanceHTML
 
-  /* ---------------- PSYCHOMETRICS ---------------- */
+  /* ---------------- PSYCHOMETRICS (FIXED) ---------------- */
   let psychoHTML = `<div class="profile-section"><h2>Psychometric Profile</h2>`
 
   Object.entries(user.psychometrics || {}).forEach(([k, v]) => {
-    psychoHTML += `<div class="profile-field"><label>${k}</label><value>${v}/7</value></div>`
+    const label = PSYCHO_SCALE_LABELS[v] || v
+    psychoHTML += `
+      <div class="profile-field">
+        <label>${k.replace('psycho_', '').replace('_', ' ')}</label>
+        <value>${label}</value>
+      </div>`
   })
 
   psychoHTML += `</div>`
@@ -882,6 +898,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   partnerHTML += `</div>`
   profileSections.innerHTML += partnerHTML
 }
+
     function logout() {
       localStorage.removeItem('currentUser')
       document.querySelector('.login-container').style.display = 'flex'
